@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Spacepedia | Cosmoscope</title>
+    <meta name="description" content="Articles about Astronomy, Space Discoveries, Observations and more." />
+    <meta name="keywords" content="spacepedia,encyclopedia,encyclopaedia,space,universe,planets,astronomy,facts,discoveries,articles,solar system" />
+    <link rel="shortcut icon" href="../../images/favicon.png" />
+    <link rel="image_src" type="image/jpeg" href="../../images/favicon.png" />
+
+    <script>
+        var updateViewport = function() {
+            var minWidth = 500;
+            var screenWidth = screen.width;
+            switch (window.orientation) {
+                case -90:
+                case 90:
+                    minWidth = 730;
+                    screenWidth = screen.height;
+                    break;
+            }
+            document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=" + (screenWidth / minWidth));
+        }
+        window.addEventListener('orientationchange', updateViewport);
+        updateViewport();
+    </script>
+
+
+    <!-- GOOGLE TAG MANAGER -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MDW8FQ9');
+    </script>
+
+
+    <!-- OG -->
+    
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../lib/jquery.validate.min.js"></script>
+
+    <!-- BOOTSTRAP -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="../lib/bootstrap-xxs-tn.css">
+
+
+    <!-- MOBILE DETECT -->
+    <script src="../lib/mobile-detect.min.js"></script>
+
+    <!-- SOLAR CSS -->
+    <link rel="stylesheet" href="../../css/fonts.css?v=2.015" />
+    <link rel="stylesheet" href="../../css/main.css?v=2.015" />
+    <link rel="stylesheet" href="../../css/ui.css?v=2.015" />
+    <link rel="stylesheet" href="../../css/header.css?v=2.015" />
+    <link rel="stylesheet" href="../../css/footer.css?v=2.015" />
+    <link rel="stylesheet" href="../../css/spacepedia.css?v=2.015" />
+
+    <!-- SOLAR JS -->
+    <script src="../../js/solar.js?v=2.015"></script>
+
+</head>
+
+<body page="spacepedia">
+
+
+    <!-- GOOGLE TAG MANAGER -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDW8FQ9" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+    <div id="header">
+
+        <div class="first hidden-xs">
+            <a class="contact" href="mailto:contact@solarsystemscope.com">
+				<span>Contact us:</span>
+				<span>contact@solarsystemscope.com</span>
+			</a>
+            <a class="button facebook hidden-xs hidden-sm hidden-md" href="https://www.facebook.com/SolarSystemScopeModels/" target="_blank">Facebook</a>
+             
+        </div>
+        <div class="navbar">
+            <div class="glow-bottom-8px"> </div>
+            <div class="logo-holder">
+                <a href="/"><h2>Cosmoscope</h2></a>
+            </div>
+            <div class="menu">
+                <a class="button show-on-start text-glow home selected" href="../../home.html">Home</a>
+                <a class="button show-on-start text-glow" href="../../about.html">About</a>
+                <a class="button show-on-start text-glow" href="../../skydiary.html">SkyDiary</a>
+                <a class="button show-on-start text-glow" href="../../lab.html">Mission</a>
+                <a class="button show-on-start text-glow" href="http://localhost:3001">Shop</a>
+                <a class="button show-on-start text-glow" href="../../quiz.html">Quiz Game</a>
+                <a class="button show-on-start text-glow" href="http://localhost:3002/chatbot.html">Cosmobot</a>
+                <a href="#" class="button show-on-start text-glow" id="logout">Logout</a>
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        <!-- Hidden Form for Logout -->
+        <form id="logoutForm" action="/logout" method="POST" style="display: none;">
+            <button type="submit">Logout</button>
+        </form>
+
+        <script>
+            // Attach event listener to the logout link
+            document.getElementById('logout').addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default link behavior
+                document.getElementById('logoutForm').submit(); // Submit the hidden form
+            });
+        </script>
+        
+    </div>
+
+
+    <div class="spacepedia">
+
+        <div class="container">
+            <div class="spacepedia-header-title solar-h1-max"><a href="spacepedia" target="_self">Spacepedia</a></div>
+        </div>
+
+        <div class="spacepedia-header-image " style="background-image: url(../images/handbook/photos/sun.jpg);background-color: #3c0000;">
+            <div class="container">
+                <div class="vcenter-title">
+                    <div class="spacepedia-header-image-title show-on-start larger-text">The Sun</div>
+                </div>
+                <div class="spacepedia-header-image-credit show-on-start">Image Credit: SOHO spacecraft, NASA</div>
+                <div class="spacepedia-header-image-description">
+                    <div class="icon-holder"> <a class="icon"></a> </div>
+                    <div class="text-holder">
+                        Extreme Ultraviolet Imaging Telescope (EIT) image of a huge handle-shaped prominence. Acquired on <span style="white-space:nowrap">Sep 14, 1999.</span> Read more on
+                        <a href="https://photojournal.jpl.nasa.gov/catalog/PIA03149" target="_blank" style="white-space:nowrap">NASA Photo Journal</a>
+                    </div>
+                </div>
+                <script>
+                    var description = $(".spacepedia-header-image-description");
+                    var showDescription = function() {
+                        description.find(".icon-holder").slideUp();
+                        description.find(".text-holder").slideDown();
+                    }
+                    description.find(".icon").on("click mouseover", showDescription);
+                </script>
+            </div>
+        </div>
+        <script>
+            var backgroundWidth = 1300;
+            var backgroundHeight = 700;
+            var element = $(".spacepedia-header-image");
+            var updateCover = null;
+            if (element.hasClass("cover-small"))
+                updateCover = function() {
+                    element.css({
+                        backgroundSize: (element.width() > backgroundWidth || element.height() > backgroundHeight) ? "cover" : ""
+                    });
+                }
+            SolarSystemScope.Parallax.AddBackground(element, {
+                fixed: .5,
+                beforeUpdate: updateCover,
+                backgroundHeight: backgroundHeight,
+                enableScreenLimits: 1
+            });
+        </script>
+
+        <div class="container spacepedia-container-main">
+
+
+            <div class="article-icons">
+                <div class="article-icon-date">2018 January 31</div>
+                <div class="article-icon-views">120266 views</div>
+            </div>
+
+
+
+
+
+            <!--
+		IF SIBLING CATEGORY BOXES
+        <div class="solar-h3 spacepedia-margin-bottom-small">More categories:</div>
+		<div class="spacepedia-div-line-h"></div>
+		-->
+
+            <div class="spacepedia-left-major-right-minor">
+                <div>
+
+
+                    <div class="article-text">
+
+                        <html>
+
+                        <body><img src="../images/handbook/renders/sun.png" class="on-right">
+
+                            <p><b>The Sun, also referred to as "Sol", is the star at the center of the Solar System. Sunâ€™s mass accounts for some 99.86% of the total mass of the Solar System.</b></p>
+
+                            <h3>Composition</h3>
+
+                            <p>Roughly three-quarters of the Sunâ€™s mass is hydrogen, with the rest mostly helium. Only 1.69% of the Sun (which is still 5 628 times the mass of the Earth) is made up of heavier elements likeÂ carbon, iron, neon and oxygen.</p>
+
+                            <h3>Distance</h3>
+
+                            <p>The mean distance of the Sun from the Earth is approximately 149.6 million kilometres (1AU). On average, it takes light from the Sun about 8 minutes and 19 seconds to reach the Earth.</p>
+
+                            <h3>Galaxy</h3>
+
+                            <p>Once thought to be a relatively insignificant star, the Sun is now considered to be brighter than about 85% of the stars in the Milky Way galaxy. It is located about two thirds of the way out from the centre of the Milky Way.</p>
+
+
+
+                            <h1>Structure</h1>
+
+                            <img src="../images/handbook/structures/structure_sun.png" class="on-right">
+
+                            <table>
+                                <tr>
+                                    <th>Layer</th>
+                                    <th>Composition</th>
+                                </tr>
+                                <tr>
+                                    <td>Photosphere</td>
+                                    <td>Opaque layer</td>
+                                </tr>
+                                <tr>
+                                    <td>Convective zone</td>
+                                    <td>Heat circles in thermal columns</td>
+                                </tr>
+                                <tr>
+                                    <td>Radiative zone</td>
+                                    <td>Heat radiates outward</td>
+                                </tr>
+                                <tr>
+                                    <td>Core</td>
+                                    <td>Fusion reactions</td>
+                                </tr>
+                            </table>
+
+                            <h3>Photosphere</h3>
+
+                            <p>The photosphere is a thin outermost layer of the Sun. Below photosphere, the Sun becomes opaque. However, the photosphere itself is only slightly less opaque than the air on Earth.</p>
+
+                            <h3>Convective zone</h3>
+
+                            <p>Thermal columns carry hot material to the surface of the Sun. Once the material cools off, it plunges back towards the hot radiative zone.</p>
+
+                            <h3>Radiative zone</h3>
+
+                            <p>The radiative zone carries the intense heat of the core outward as thermal radiation, with material rapidly cooling and the density of solar material decreasing a hundredfold from the top of the core to the top of the radiative
+                                zone.</p>
+
+                            <h3>Core</h3>
+
+                            <p>99% of all power generated by the Sun comes from within 24% of the Sun's radius.</p>
+
+
+
+                            <div class="planets-list-holder">
+                                <div class="planets-list">
+                                    <div class="title-dark-bg">Planets of the Solar System</div>
+                                    <div class="planet-boxes-holder">
+
+                                        <a class="planet-box" href="../images/handbook/photos/mercury.jpg">
+                                            <div class="planet-list-image-box" style="background-image: url(../images/handbook/photos/mercury.jpg)">
+                                            </div>
+                                            <div class="planet-list-image-title">
+                                                Mercury
+                                            </div>
+                                        </a>
+                                        <a class="planet-box" href="../images/handbook/photos/venus.jpg">
+                                            <div class="planet-list-image-box" style="background-image: url(../images/handbook/photos/venus.jpg)">
+                                            </div>
+                                            <div class="planet-list-image-title">
+                                                Venus
+                                            </div>
+                                        </a>
+                                        <a class="planet-box" href="../images/handbook/photos/earth.jpg">
+                                            <div class="planet-list-image-box" style="background-image: url(../images/handbook/photos/earth.jpg)">
+                                            </div>
+                                            <div class="planet-list-image-title">
+                                                Earth
+                                            </div>
+                                        </a>
+                                        <a class="planet-box" href="../images/handbook/photos/mars.jpg">
+                                            <div class="planet-list-image-box" style="background-image: url(../images/handbook/photos/mars.jpg)">
+                                            </div>
+                                            <div class="planet-list-image-title">
+                                                Mars
+                                            </div>
+                                        </a>
+                                        <a class="planet-box" href="../images/handbook/photos/jupiter.jpg">
+                                            <div class="planet-list-image-box" style="background-image: url(../images/handbook/photos/jupiter.jpg)">
+                                            </div>
+                                            <div class="planet-list-image-title">
+                                                Jupiter
+                                            </div>
+                                        </a>
+                                        <a class="planet-box" href="../images/handbook/photos/saturn.jpg">
+                                            <div class="planet-list-image-box" style="background-image: url(../images/handbook/photos/saturn.jpg)">
+                                            </div>
+                                            <div class="planet-list-image-title">
+                                                Saturn
+                                            </div>
+                                        </a>
+                                        <a class="planet-box" href="../images/handbook/photos/uranus.jpg">
+                                            <div class="planet-list-image-box" style="background-image: url(../images/handbook/photos/uranus.jpg)">
+                                            </div>
+                                            <div class="planet-list-image-title">
+                                                Uranus
+                                            </div>
+                                        </a>
+                                        <a class="planet-box" href="../images/handbook/photos/neptune.jpg">
+                                            <div class="planet-list-image-box" style="background-image: url(../images/handbook/photos/neptune.jpg)">
+                                            </div>
+                                            <div class="planet-list-image-title">
+                                                Neptune
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="planets-list">
+                                    <div class="title-dark-bg">Dwarf Planets</div>
+                                    <div class="planet-boxes-holder">
+
+                                        <a class="planet-box" href="../images/handbook/photos/ceres.jpg">
+                                            <div class="planet-list-image-box" style="background-image: url(../images/handbook/photos/ceres.jpg)">
+                                            </div>
+                                            <div class="planet-list-image-title">
+                                                Ceres
+                                            </div>
+                                        </a>
+                                        <a class="planet-box" href="../images/handbook/photos/eris.jpg">
+                                            <div class="planet-list-image-box" style="background-image: url(../images/handbook/photos/eris.jpg)">
+                                            </div>
+                                            <div class="planet-list-image-title">
+                                                Eris
+                                            </div>
+                                        </a>
+                                        <a class="planet-box" href="../images/handbook/photos/haumea.jpg">
+                                            <div class="planet-list-image-box" style="background-image: url(../images/handbook/photos/haumea.jpg)">
+                                            </div>
+                                            <div class="planet-list-image-title">
+                                                Haumea
+                                            </div>
+                                        </a>
+                                        <a class="planet-box" href="../images/handbook/photos/makemake.jpg">
+                                            <div class="planet-list-image-box" style="background-image: url(../images/handbook/photos/makemake.jpg)">
+                                            </div>
+                                            <div class="planet-list-image-title">
+                                                Makemake
+                                            </div>
+                                        </a>
+                                        <a class="planet-box" href="../images/handbook/photos/pluto.jpg">
+                                            <div class="planet-list-image-box" style="background-image: url(../images/handbook/photos/pluto.jpg)">
+                                            </div>
+                                            <div class="planet-list-image-title">
+                                                Pluto
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </body>
+
+                        </html>
+
+                        <div class="article-author">Article by: Adrian Bayer</div>
+
+                    </div>
+
+                </div>
+                <div>
+
+
+                    <div class="title-dark-bg">Most Read:</div>
+                    <div class="spacepedia-article-preview-title-list">
+                        <a href="sun.html">Handbook - Sun</a> 
+                        <a href="mercury.html">Handbook - Mercury</a> 
+                        <a href="venus.html">Handbook - Venus</a> 
+                        <a href="earth.html">Handbook - Earth</a> 
+                        <a href="mars.html">Handbook - Mars</a> 
+                        <a href="jupiter.html">Handbook - Jupiter</a> 
+                        <a href="venus.html">Handbook - Venus</a> 
+                        <a href="saturn.html">Handbook - Saturn</a>
+                        <a href="neptune.html">Handbook - Neptune</a> 
+                        <a href="uranus.html">Handbook - Uranus</a> 
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="footer-dist-before"></div>
+    <div id="footer">
+        <div class="footer-background"></div>
+
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                    <div class="footer-col-topic">contact us</div>
+                    <div class="footer-col-content">
+                        <a class="email" href="mailto:contact@cosmoscope.com">contact@cosmoscope.com</a>
+                        <div class="footer-col-dist"></div>
+                        <div class="footer-social-btns">
+                            <a class="footer-social-btn fb" href="https://www.facebook.com/SolarSystemScopeModels/" target="_blank"></a>
+                            <a class="footer-social-btn tw" href="https://twitter.com/solarsystscope" target="_blank"></a>
+                            <a class="footer-social-btn yt" href="https://www.youtube.com/user/solarsystemscope" target="_blank"></a>
+                            <!--<a class="footer-social-btn gp" href="" target="_blank"></a>-->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xs-12 col-sm-4">
+                    
+                </div>
+                
+                
+                <div class="col-xs-12 col-sm-4">
+
+                    <div class="footer-col-topic">POPULAR SPACEPEDIA</div>
+                    <div class="footer-col-content footer-col-content-spacepedia">
+                        <a href="orbital-and-rotational-characteristics-of-earth.html">
+							<span>1.</span>
+							<!--<span>Feb 01</span>-->
+							<span>Orbital and rotational characteristics...</span>
+						</a> <a href="sun.html">
+							<span>2.</span>
+							<!--<span>Jan 31</span>-->
+							<span>Handbook - The Sun</span>
+						</a> <a href="mars.html">
+							<span>3.</span>
+							<!--<span>Jan 31</span>-->
+							<span>Handbook - Mars</span>
+						</a> <a href="jupiter.html">
+							<span>4.</span>
+							<!--<span>Jan 31</span>-->
+							<span>Handbook - Jupiter</span>
+						</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+</body>
+
+</html>

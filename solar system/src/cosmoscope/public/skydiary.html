@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+
+    <title>SkyDiary | Solar System Scope</title>
+    <meta name="description" content="Find out what’s up in the night sky: upcoming astoronomical events, interesting observations, packed with everything a stargazer needs to know" />
+    <meta name="keywords" content="solar system, planets, orbits, night sky, stars, constellations, space, universe, sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto" />
+    <link rel="shortcut icon" href="images/favicon.png" />
+    <link rel="image_src" type="image/jpeg" href="images/favicon.png" />
+
+    <script>
+        var updateViewport = function() {
+            var minWidth = 500;
+            var screenWidth = screen.width;
+            switch (window.orientation) {
+                case -90:
+                case 90:
+                    minWidth = 730;
+                    screenWidth = screen.height;
+                    break;
+            }
+            document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=" + (screenWidth / minWidth));
+        }
+        window.addEventListener('orientationchange', updateViewport);
+        updateViewport();
+    </script>
+
+
+    <!-- GOOGLE TAG MANAGER -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MDW8FQ9');
+    </script>
+
+
+    <!-- OG -->
+    <meta property="og:title" content="Solar System Scope" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.solarsystemscope.com/" />
+    <meta property="og:image" content="https://www.solarsystemscope.com/images/sss_og.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Online 3D simulation of the Solar System and night sky in real time - the Sun, planets, dwarf planets, comets, stars and constellations" />
+    <meta property="og:site_name" content="Solar System Scope" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="fb:admins" content="100002850404644" />
+
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/jquery.validate.min.js"></script>
+
+    <!-- BOOTSTRAP -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="lib/bootstrap-xxs-tn.css">
+
+
+    <!-- MOBILE DETECT -->
+    <script src="lib/mobile-detect.min.js"></script>
+
+    <!-- SOLAR CSS -->
+    <link rel="stylesheet" href="css/fonts.css?v=2.015" />
+    <link rel="stylesheet" href="css/main.css?v=2.015" />
+    <link rel="stylesheet" href="css/ui.css?v=2.015" />
+    <link rel="stylesheet" href="css/header.css?v=2.015" />
+    <link rel="stylesheet" href="css/footer.css?v=2.015" />
+    <link rel="stylesheet" href="css/skydiary.css?v=2.015" />
+
+
+    <!-- SOLAR JS -->
+    <script src="js/solar.js?v=2.015"></script>
+
+</head>
+
+<body page="skydiary">
+    <!-- Google Tag Manager NoScript -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDW8FQ9" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+    <!-- Header with Navigation and Contact Details -->
+    <!-- Header with Navigation and Contact Details -->
+    <div id="header">
+        <div class="first hidden-xs">
+            <a class="contact" href="mailto:contact@Cosmoscope.com">
+                <span>Contact us:</span>
+                <span>contact@Cosmoscope.com</span>
+            </a>
+            <a class="button facebook hidden-xs hidden-sm hidden-md" href="https://www.facebook.com/" target="_blank">Facebook</a>
+            <a class="button show-on-start text-glow" href="http://localhost:3001/chatbot.html">Chatbot</a>
+        </div>
+
+                <!-- Navigation Menu -->
+        <div class="navbar">
+            <div class="glow-bottom-8px"></div>
+            <div class="logo-holder">
+                <a href="/"><h2>Cosmoscope</h2></a>
+            </div>
+            <div class="menu">
+                <a class="button show-on-start text-glow home selected" href="home.html">Home</a>
+                <a class="button show-on-start text-glow" href="about.html">About</a>
+                <a class="button show-on-start text-glow" href="skydiary.html">SkyDiary</a>
+                <a class="button show-on-start text-glow" href="lab.html">Mission</a>
+                <a class="button show-on-start text-glow" href="shop.html">Shop</a>
+                <a class="button show-on-start text-glow" href="quiz.html">Quiz Game</a>
+                <a class="button show-on-start text-glow" href="http://localhost:3002/chatbot.html">Cosmobot</a>
+                <a href="#" class="button show-on-start text-glow" id="logout">Logout</a>
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        <!-- Hidden Form for Logout -->
+        <form id="logoutForm" action="/logout" method="POST" style="display: none;">
+            <button type="submit">Logout</button>
+        </form>
+        <script>
+            // Attach event listener to the logout link
+            document.getElementById('logout').addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default link behavior
+                document.getElementById('logoutForm').submit(); // Submit the hidden form
+            });
+        </script>
+    </div>
+
+    <!-- Menu Hover Functionality (Hidden by Default) -->
+    <div class="menu-hover-backdrop" style="display: none;"></div>
+    <div class="menu-hover" style="display: none;"></div>
+
+    <script>
+        $(document).ready(function() {
+            var menu = $("#header .menu-hover");
+            var menuBtn = $("#header .menu-hover-start-button");
+            var menuDrop = $("#header .menu-hover-backdrop");
+            var menuHideCheck = function(e) {
+                if (menu.is(":hidden"))
+                    return;
+                var target = $(e.target);
+                var modal = $(".modal");
+                if (menu.has(target).length || menu.is(target) || modal.has(target).length || modal.is(target))
+                    return;
+                menu.slideUp();
+                menuDrop.fadeOut();
+                $(document).off("click", menuHideCheck);
+                setTimeout(function() {
+                    menuBtn.on("click", menuShow);
+                }, 1);
+            }
+            var menuShow = function(e) {
+                if (!menu.is(":hidden"))
+                    return;
+                menu.slideDown();
+                menuDrop.fadeIn();
+                menuBtn.off("click", menuShow);
+                setTimeout(function() {
+                    $(document).on("click", menuHideCheck);
+                }, 1);
+            }
+            menuBtn.on("click", menuShow);
+        });
+    </script>
+
+</div>
+
+<div class="skydiary">
+
+    <div class="container">
+        <a class="skydiary-header-title solar-h1-max" href="skydiary.html" target="_self">
+        SkyDiary
+    </a>
+    </div>
+
+    <div class="skydiary-header-image">
+        <div class="container">
+            <div class="skydiary-header-image-credit show-on-start"></div>
+        </div>
+    </div>
+
+    <script>
+        SolarSystemScope.Parallax.AddBackground($(".skydiary-header-image"), {
+            fixed: .35
+        });
+    </script>
+
+    <div class="container">
+
+        <div class="skydiary-header-description">
+            <p>Find out what’s up in the night sky:<br/>Upcoming astoronomical events, interesting observations, packed with everything a stargazer needs to know.</p>
+            <p>Observations are described for the NORTHERN hemisphere and can be made by naked eye, small binoculars or by small telescope.</p>
+        </div>
+
+        <div class="skydiary-div-line-h"></div>
+        <div id="article"></div>
+
+        <div class="row skydiary-row-main">
+
+            <!--div class="col-xs-12 col-sm-12 col-md-8 col-lg-8"-->
+
+                <div class="skydiary-article-panel">
+                    <h1>July 2020</h1>
+                    <div class="skydiary-article-content">
+
+                        <h2>Phases of the Moon</h2>
+                        <table>
+                            <tr>
+                                <td>Full Moon:</td>
+                                <td>July 05</td>
+                            </tr>
+                            <tr>
+                                <td>Last Quarter:</td>
+                                <td>July 13</td>
+                            </tr>
+                            <tr>
+                                <td>New Moon:</td>
+                                <td>July 20</td>
+                            </tr>
+                            <tr>
+                                <td>First Quarter:</td>
+                                <td>July 27</td>
+                            </tr>
+                        </table>
+
+                        <h2>Mercury</h2>
+                        <p style="text-align: justify;">Mercury is on July 1 in the lower conjunction with the Sun, i.e., exactly between Sun and Earth and can not be observed. However, from July 20 it can be found on the morning north-eastern sky, about one hour before sunrise
+                            and about 5 degrees over horizon. The maximal height over horizon will be 7 degrees on July 27 and the planet's brightness will be -0.7 mag. Therefore you will need binoculars to find the planet.</p>
+
+                        <h2>Venus</h2>
+                        <p style="text-align: justify;">From the beginning of July, Venus can be found on the morning sky, less than 10 degrees over the north-eastern horizon about one hour before sunrise. On July 7, its brightness (-4.7) mag will be the largest of this morning
+                            apparition. Its height over the horizon will increase and will reach 23 degrees on July 31.</p>
+
+                        <h2>Jupiter and Saturn</h2>
+                        <p style="text-align: justify;">This July is the month of two giant planets. Jupiter is in the opposition on July 14 at (-2.8) mag, while Saturn reaches the opposition on July 20 at (+0.1) mag. At the opposition, any outer planet is on the line Sun-Earth-planet,
+                            so the distance between the Earth and an outer planet is minimal, and its brightness together with the angular diameter of the planet's disk are maximal. However, both planets are placed low over the horizon in the constellation
+                            Sagittarius. Nevertheless, try to observe both planets around the midnight in the second half of July. Even with the naked eye, it should be a nice view!</p>
+
+                    </div>
+                    <div class="signature">Article by (C) G. Okša</div>
+                </div>
+
+            <!--/div-->
+
+            
+        </div>
+
+    </div>
+
+</div>
+
+<div class="footer-dist-before"></div>
+<div id="footer">
+    <div class="footer-background"></div>
+
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-xs-12 col-sm-4">
+                <div class="footer-col-topic">contact us</div>
+                <div class="footer-col-content">
+                    <a class="email" href="mailto:contact@cosmoscope.com">contact@cosmoscope.com</a>
+                    <div class="footer-col-dist"></div>
+                    <div class="footer-social-btns">
+                        <a class="footer-social-btn fb" href="https://www.facebook.com/SolarSystemScopeModels/" target="_blank"></a>
+                        <a class="footer-social-btn tw" href="https://twitter.com/solarsystscope" target="_blank"></a>
+                        <a class="footer-social-btn yt" href="https://www.youtube.com/user/solarsystemscope" target="_blank"></a>
+                        <!--<a class="footer-social-btn gp" href="" target="_blank"></a>-->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-xs-12 col-sm-4">
+                
+            </div>
+            
+            
+            <div class="col-xs-12 col-sm-4">
+
+                <div class="footer-col-topic">POPULAR SPACEPEDIA</div>
+                <div class="footer-col-content footer-col-content-spacepedia">
+                    <a href="spacepedia/handbook/orbital-and-rotational-characteristics-of-earth.html">
+                        <span>1.</span>
+                        <!--<span>Feb 01</span>-->
+                        <span>Orbital and rotational characteristics...</span>
+                    </a> <a href="spacepedia/handbook/sun.html">
+                        <span>2.</span>
+                        <!--<span>Jan 31</span>-->
+                        <span>Handbook - The Sun</span>
+                    </a> <a href="spacepedia/handbook/mars.html">
+                        <span>3.</span>
+                        <!--<span>Jan 31</span>-->
+                        <span>Handbook - Mars</span>
+                    </a> <a href="spacepedia/handbook/jupiter.html">
+                        <span>4.</span>
+                        <!--<span>Jan 31</span>-->
+                        <span>Handbook - Jupiter</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+</div>
+
+
+</body>
+
+</html>

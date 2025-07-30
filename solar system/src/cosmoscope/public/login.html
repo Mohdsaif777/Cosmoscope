@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Login | Cosmoscope</title>
+    <meta name="description" content="Here is the right place to log in to the Solar System." />
+    <meta name="keywords" content="solar system, planets, orbits, night sky, stars, constellations, space, universe, sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto" />
+    <link rel="shortcut icon" href="images/favicon.png" />
+    <link rel="image_src" type="image/jpeg" href="images/favicon.png" />
+
+    <script>
+        var updateViewport = function() {
+            var minWidth = 500;
+            var screenWidth = screen.width;
+            switch (window.orientation) {
+                case -90:
+                case 90:
+                    minWidth = 730;
+                    screenWidth = screen.height;
+                    break;
+            }
+            document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=" + (screenWidth / minWidth));
+        }
+        window.addEventListener('orientationchange', updateViewport);
+        updateViewport();
+    </script>
+
+
+    <!-- GOOGLE TAG MANAGER -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MDW8FQ9');
+    </script>
+
+
+    <!-- OG -->
+    
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/jquery.validate.min.js"></script>
+
+    <!-- BOOTSTRAP -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="lib/bootstrap-xxs-tn.css">
+
+
+    <!-- MOBILE DETECT -->
+    <script src="lib/mobile-detect.min.js"></script>
+
+    <!-- SOLAR CSS -->
+    <link rel="stylesheet" href="css/fonts.css?v=2.015" />
+    <link rel="stylesheet" href="css/main.css?v=2.015" />
+    <link rel="stylesheet" href="css/ui.css?v=2.015" />
+    <link rel="stylesheet" href="css/header.css?v=2.015" />
+    <link rel="stylesheet" href="css/footer.css?v=2.015" />
+
+
+    <!-- SOLAR JS -->
+    <script src="js/solar.js?v=2.015"></script>
+
+</head>
+
+<body page="login">
+
+
+    <!-- GOOGLE TAG MANAGER -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDW8FQ9" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+    <!-- Header with Navigation and Contact Details -->
+    <div id="header">
+        <div class="first hidden-xs">
+            <a class="contact" href="mailto:contact@Cosmoscope.com">
+                <span>Contact us:</span>
+                <span>contact@Cosmoscope.com</span>
+            </a>
+            <a class="button facebook hidden-xs hidden-sm hidden-md" href="https://www.facebook.com/" target="_blank">Facebook</a>
+            <a class="button show-on-start text-glow" href="http://localhost:3001/chatbot.html">Chatbot</a>
+        </div>
+
+                <!-- Navigation Menu -->
+        <div class="navbar">
+            <div class="glow-bottom-8px"></div>
+            <div class="logo-holder">
+                <a href="/"><h2>Cosmoscope</h2></a>
+            </div>
+            <div class="menu">
+                <a class="button show-on-start text-glow home selected" href="home.html">Home</a>
+                <a class="button show-on-start text-glow" href="about.html">About</a>
+                <a class="button show-on-start text-glow" href="skydiary.html">SkyDiary</a>
+                <a class="button show-on-start text-glow" href="lab.html">Mission</a>
+                <a class="button show-on-start text-glow" href="http://localhost:3001">Shop</a>
+                <a class="button show-on-start text-glow" href="quiz.html">Quiz Game</a>
+                <a class="button show-on-start text-glow" href="http://localhost:3002/chatbot.html">Cosmobot</a>
+                <a href="#" class="button show-on-start text-glow" id="logout">Logout</a>
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        
+        <div class="menu-hover-backdrop" style="display: none;"></div>
+        <div class="menu-hover" style="display: none;">           
+        </div>
+
+        <script>
+            $(document).ready(function() {
+                var menu = $("#header .menu-hover");
+                var menuBtn = $("#header .menu-hover-start-button");
+                var menuDrop = $("#header .menu-hover-backdrop");
+                var menuHideCheck = function(e) {
+                    if (menu.is(":hidden"))
+                        return;
+                    var target = $(e.target);
+                    var modal = $(".modal");
+                    if (menu.has(target).length || menu.is(target) || modal.has(target).length || modal.is(target))
+                        return;
+                    menu.slideUp();
+                    menuDrop.fadeOut();
+                    $(document).off("click", menuHideCheck);
+                    setTimeout(function() {
+                        menuBtn.on("click", menuShow);
+                    }, 1);
+                }
+                var menuShow = function(e) {
+                    if (!menu.is(":hidden"))
+                        return;
+                    menu.slideDown();
+                    menuDrop.fadeIn();
+                    menuBtn.off("click", menuShow);
+                    setTimeout(function() {
+                        $(document).on("click", menuHideCheck);
+                    }, 1);
+                }
+                menuBtn.on("click", menuShow);
+            });
+        </script>
+
+    </div>
+
+    
+    <div class="solar-model-bottom"></div>
+
+    <div class="solar-content">
+        <div class="sub-page-header">
+            <div class="title-holder show-on-start">
+                <div class="title-1">Login</div>
+            </div>
+        </div>
+        
+        <div class="modal-alt-static">    
+            <form id="login-form_6713bd68492af" class="solar-form" method="post" novalidate="novalidate" action="login">
+                <div class="signin_error solar-form-row error" style="display: none;"></div>
+                <div class="solar-form-row form-group email">
+                    <input type="email" class="form-control input-type-1-inv account_signin_email" placeholder="Your e-mail" name="account_signin_email" value="">
+                </div>
+                <div class="solar-form-row form-group password">
+                    <input type="password" class="form-control input-type-1 account_signin_password" placeholder="Your password" name="account_signin_password" autocomplete="off">
+                </div>
+                <div class="solar-form-row remember">
+                    <input type="checkbox" class="form-control solar-checkbox remember-login account_signin_remember" data-val="true" name="account_signin_remember" value="1">
+                    <label for="account_signin_remember">remember login</label>
+                </div>
+                <div class="solar-form-row buttons-login-register">
+                    <button type="submit" class="btn-type-6-turquoise btn-signin" name="btn-signin">Login</button>
+                    <a href="register" class="btn-type-6-blue-fade register-button">Register</a>
+                </div>
+                <div class="solar-form-row">
+                    <a href="resetpassword">forgot password</a>
+                </div>
+
+                <div class="solar-form-row register">
+                    <a href="register" class="register-link">Register</a>
+                </div>
+
+            </form>
+
+            <script>
+                $('document').ready(function() {
+                    var signin_validator_6713bd68492af = $("#login-form_6713bd68492af").validate({
+                        rules: {
+                            account_signin_email: {
+                                required: true,
+                                email: true
+                            },
+                            account_signin_password: {
+                                required: true,
+                            },
+                        },
+                        messages: {
+                            account_signin_email: "please enter your email address",
+                            account_signin_password: {
+                                required: "please enter your password"
+                            },
+                        },
+                        submitHandler: submitForm
+                    });
+
+                    function submitForm() {
+                        var data = $("#login-form_6713bd68492af").serialize();
+                        $.ajax({
+                            type: 'POST',
+                            url: '/api/signin.php',
+                            data: data,
+                            beforeSend: function() {
+                                $("#login-form_6713bd68492af .signin_error").hide();
+                                $("#login-form_6713bd68492af .signin_error").html('');
+                                $("#login-form_6713bd68492af .btn-signin")
+                                    .html('Logging in...')
+                                    .attr('disabled', 'disabled');
+                                signin_validator_6713bd68492af.resetForm();
+                                signin_validator_6713bd68492af.reset();
+                            },
+                            success: function(response) {
+                                if (response.substring(0, 3) == "ok:") {
+                                    switch ($("body").attr("page")) {
+                                        case "login":
+                                        case "register":
+                                        case "resetpassword":
+                                            window.location.replace("account");
+                                            break;
+                                        default:
+                                            window.location.reload();
+                                            break;
+                                    }
+                                } else {
+                                    console.log("response: " + response);
+                                    $("#login-form_6713bd68492af .btn-signin")
+                                        .html('Login')
+                                        .removeAttr('disabled');
+                                    $("#login-form_6713bd68492af .signin_error").html(response);
+                                    $("#login-form_6713bd68492af .signin_error").show();
+                                }
+                            }
+                        });
+                        return false;
+                    }
+                });
+            </script>
+        </div>
+    </div>
+
+    <div class="footer-dist-before"></div>
+    <div id="footer">
+        <div class="footer-background"></div>
+
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                    <div class="footer-col-topic">contact us</div>
+                    <div class="footer-col-content">
+                        <a class="email" href="mailto:contact@cosmoscope.com">contact@cosmoscope.com</a>
+                        <div class="footer-col-dist"></div>
+                        <div class="footer-social-btns">
+                            <a class="footer-social-btn fb" href="https://www.facebook.com/profile.php?id=61568329887459/" target="_blank"></a>
+                            <a class="footer-social-btn tw" href="https://twitter.com/solarsystscope" target="_blank"></a>
+                            <a class="footer-social-btn yt" href="https://www.youtube.com/user/solarsystemscope" target="_blank"></a>
+                            <!--<a class="footer-social-btn gp" href="" target="_blank"></a>-->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xs-12 col-sm-4">
+                    
+                </div>
+                
+                
+                <div class="col-xs-12 col-sm-4">
+
+                    <div class="footer-col-topic">POPULAR SPACEPEDIA</div>
+                    <div class="footer-col-content footer-col-content-spacepedia">
+                        <a href="spacepedia/handbook/orbital-and-rotational-characteristics-of-earth.html">
+							<span>1.</span>
+							<!--<span>Feb 01</span>-->
+							<span>Orbital and rotational characteristics...</span>
+						</a> <a href="spacepedia/handbook/sun.html">
+							<span>2.</span>
+							<!--<span>Jan 31</span>-->
+							<span>Handbook - The Sun</span>
+						</a> <a href="spacepedia/handbook/mars.html">
+							<span>3.</span>
+							<!--<span>Jan 31</span>-->
+							<span>Handbook - Mars</span>
+						</a> <a href="spacepedia/handbook/jupiter.html">
+							<span>4.</span>
+							<!--<span>Jan 31</span>-->
+							<span>Handbook - Jupiter</span>
+						</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+</body>
+
+</html>

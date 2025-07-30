@@ -1,0 +1,1015 @@
+/*-----------------------------------*/
+
+/*SPACEPEDIA*/
+
+/*-----------------------------------*/
+
+div.spacepedia {
+    background-color: #fff;
+    color: #155869;
+    padding-bottom: 90px;
+    margin-bottom: 50px;
+}
+
+.spacepedia-container-main {
+    padding-top: 70px;
+}
+
+.spacepedia .solar-h1,
+.spacepedia .solar-h1-max,
+.spacepedia .solar-h2,
+.spacepedia .solar-h3,
+.spacepedia .solar-h4 {
+    text-shadow: none;
+    color: #155869;
+}
+
+.spacepedia .solar-h4 {
+    font-weight: bold;
+    text-shadow: 1px 1px 0 rgba(20, 90, 100, .5);
+}
+
+.spacepedia-margin-bottom-small {
+    margin-bottom: 30px;
+}
+
+.spacepedia-margin-bottom-medium {
+    margin-bottom: 70px;
+}
+
+.spacepedia-margin-top-medium {
+    margin-top: 70px;
+}
+
+.spacepedia-div-line-h {
+    height: 2px;
+    margin: 70px 0;
+    background-color: rgba(20, 90, 100, .5);
+}
+
+.spacepedia-left-major-right-minor:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.spacepedia-left-major-right-minor>* {
+    float: left;
+    margin-bottom: 70px;
+    position: relative;
+    text-align: left;
+}
+
+.spacepedia-left-major-right-minor>*:nth-child(1) {
+    width: 66.66666667%;
+    padding-right: 70px;
+}
+
+.spacepedia-left-major-right-minor>*:nth-child(2) {
+    width: 33.33333333%;
+    padding-left: 70px;
+}
+
+@media(max-width:991px) {
+    .spacepedia-left-major-right-minor>*:nth-child(1),
+    .spacepedia-left-major-right-minor>*:nth-child(2) {
+        width: 100%;
+        padding: 0;
+        float: none;
+        text-align: center;
+    }
+}
+
+@media(min-width:992px) {
+    .spacepedia-left-major-right-minor>*:nth-child(2) {
+        border-left: 2px solid rgba(20, 90, 100, .5);
+    }
+}
+
+.spacepedia-left-major-right-minor>*:nth-child(2)>*:not(:last-child) {
+    margin-bottom: 50px;
+}
+
+.spacepedia-left-major-right-minor>*>[class*='title']:nth-child(1) {
+    margin-bottom: 30px;
+}
+
+@media(max-width:991px) {
+    .spacepedia-left-major-right-minor>*>[class*='title']:nth-child(1) {
+        margin-bottom: 70px;
+    }
+}
+
+.spacepedia .title-dark-bg {
+    background-color: rgba(10, 45, 50, .8);
+    color: #fff;
+    padding: 12px 10px;
+    margin-bottom: 50px;
+    font-size: 133%;
+    font-family: "SF-Fourche";
+    line-height: 120%;
+}
+
+.spacepedia [class*='solar-h'].bg-dark {
+    background-color: rgba(10, 45, 50, .8);
+    color: #fff;
+    padding: 12px 10px;
+    margin-bottom: 50px;
+}
+
+/*-----------------------------------*/
+
+/*SPACEPEDIA: HEADER*/
+
+/*-----------------------------------*/
+
+.spacepedia-header-title {
+    text-transform: uppercase;
+    margin-bottom: 70px;
+}
+
+.spacepedia-header-title a {
+    color: #155869;
+}
+
+.spacepedia-header-path {
+    position: relative;
+    top: -65px;
+    left: 4px;
+    font-family: "SF-Fourche";
+    font-size: 110%;
+    height: 0;
+    margin-left: -4px;
+}
+
+.spacepedia-header-path a {
+    //color: #155869;
+    background-color: #155869;
+    color: #fff;
+    white-space: nowrap;
+    padding: 0 4px;
+    margin: 0 4px;
+}
+
+.spacepedia-header-path a:hover {
+    text-decoration: underline;
+}
+
+.spacepedia-header-image {
+    position: relative;
+    background-color: #000;
+    background-position: center center;
+    background-size: auto auto;
+}
+
+.spacepedia-header-image:not(.no-image) {
+    background-repeat: no-repeat;
+    height: 340px;
+}
+
+.spacepedia-header-image.no-image {
+    padding: 90px 0;
+    background-repeat: repeat;
+    background-image: url(../images/background_sub_page_header_repeat_xy.jpg);
+}
+
+.spacepedia-header-image .spacepedia-header-image-title {
+    margin: 0;
+    padding: 0 15px;
+    text-align: center;
+    color: #fff;
+    font-family: "SF-Fourche";
+    line-height: 120%;
+    font-size: 500%;
+}
+
+.spacepedia-header-image .spacepedia-header-image-title.smaller-text {
+    font-size: 360%;
+    font-weight: bold;
+}
+
+.spacepedia-header-image .spacepedia-header-image-title.larger-text {
+    font-size: 600%;
+}
+
+@media (max-width: 767px) {
+    .spacepedia-header-image .spacepedia-header-image-title,
+    .spacepedia-header-image .spacepedia-header-image-title.smaller-text,
+    .spacepedia-header-image .spacepedia-header-image-title.larger-text {
+        font-size: 360%;
+        font-weight: bold;
+    }
+}
+
+.spacepedia-header-image:not(.no-image) .vcenter-title {
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .spacepedia-header-image .vcenter-title {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .spacepedia-header-image .vcenter-title {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .spacepedia-header-image .vcenter-title {
+        width: 1170px;
+    }
+}
+
+.spacepedia-header-image:not(.no-image) .spacepedia-header-image-title {
+    display: inline-block;
+    padding: 10px 15px;
+}
+
+.spacepedia-header-image.no-image .spacepedia-header-image-title {}
+
+.spacepedia-header-image>.container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.spacepedia-header-image-credit {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #fff;
+    font-style: italic;
+    font-size: 90%;
+    text-align: right;
+    padding: 0 15px;
+}
+
+.spacepedia-header-image-description {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding: 15px;
+    color: #fff;
+    font-size: 90%;
+    text-align: right;
+    display: inline-block;
+}
+
+.spacepedia-header-image-description>.icon-holder>.icon {
+    display: block;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-image: url(../images/icons/glow-icon-info.png);
+    height: 50px;
+    width: 50px;
+    margin: -10px -10px -10px auto;
+}
+
+.spacepedia-header-image-description>.text-holder {
+    display: none;
+    text-align: right;
+    line-height: 140%;
+    background-color: rgba(0, 20, 45, .5);
+    padding: 4px;
+}
+
+@media(max-width:991px) {
+    .spacepedia-header-image-description>.text-holder {
+        text-align: left;
+    }
+}
+
+@media(min-width:992px) {
+    .spacepedia-header-image-description>.text-holder {
+        text-align: right;
+        margin-left: auto;
+        max-width: 40%;
+    }
+}
+
+.spacepedia-header-description {
+    max-width: 620px;
+    margin: 0 auto 70px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 110%;
+}
+
+/*-----------------------------------*/
+
+/*SPACEPEDIA: HEADER SPECIALS*/
+
+/*-----------------------------------*/
+
+.spacepedia-header-image.text-bg .spacepedia-header-image-title,
+.spacepedia-header-image.text-bg .spacepedia-header-image-credit {
+    background-color: rgba(0, 20, 45, .50);
+}
+
+/*-----------------------------------*/
+
+/*SPACEPEDIA: CATEGORY BOXES LIST*/
+
+/*-----------------------------------*/
+
+.spacepedia-category-boxes {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.spacepedia-category-box {
+    min-width: 16.6666667%;
+    width: 182px;
+    position: relative;
+    padding: 8px;
+}
+
+@media(max-width:767px) {
+    .spacepedia-category-box {
+        min-width: 50%;
+    }
+}
+
+@media(min-width:768px) and (max-width:991px) {
+    .spacepedia-category-box {
+        min-width: 33.3333333%;
+    }
+}
+
+.spacepedia-category-box:not(.no-image) {
+    display: table;
+    height: 110px;
+}
+
+.spacepedia-category-box.no-image {
+    display: flex;
+    align-items: stretch;
+}
+
+.spacepedia-category-box .part-top {
+    display: table-row;
+    height: 100%;
+}
+
+.spacepedia-category-box .part-bottom {
+    display: table-row;
+    height: 0;
+}
+
+.spacepedia-category-box .img {
+    display: table-cell;
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.spacepedia-category-box .topic {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    font-family: "SF-Fourche";
+    font-size: 110%;
+    line-height: 120%;
+    -webkit-transition: background-color 200ms ease;
+    -ms-transition: background-color 200ms ease;
+    -moz-transition: background-color 200ms ease;
+    transition: background-color 200ms ease;
+}
+
+.spacepedia-category-box:not(.no-image) .topic {
+    display: table-cell;
+    padding: 4px 12px;
+}
+
+.spacepedia-category-box.no-image .topic {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a.spacepedia-category-box:hover .topic {
+    background-color: #195968;
+}
+
+.spacepedia-category-box:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    top: 4px;
+    bottom: 4px;
+    background-image: none;
+    border-style: solid;
+    border-color: transparent;
+    border-image-slice: 12 fill;
+    border-image-width: 12px;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-image-source: url(../images/panels/btn-type-7-edge-on-white-br-teal-white.png);
+}
+
+/*-----------------------------------*/
+
+/*SPACEPEDIA: ARTICLE PREVIEW BOX*/
+
+/*-----------------------------------*/
+
+.spacepedia-article-preview-box-list>.spacepedia-article-preview-box:first-child {
+    margin-top: 0;
+}
+
+.spacepedia-article-preview-box-list>.spacepedia-article-preview-box:last-child {
+    margin-bottom: 0;
+}
+
+.spacepedia-article-preview-box {
+    padding: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: left;
+    background-image: none;
+    border-style: solid;
+    border-color: transparent;
+    border-image-slice: 12 fill;
+    border-image-width: 12px;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-image-source: url(../images/panels/btn-type-7-edge-on-white-br-teal.png);
+}
+
+a.spacepedia-article-preview-box {
+    display: block;
+    color: #155869;
+}
+
+a.spacepedia-article-preview-box:hover {
+    background-color: rgba(20, 90, 100, .08);
+}
+
+.spacepedia-article-preview-box .text-and-image {
+    position: relative;
+    margin: -10px;
+}
+
+.spacepedia-article-preview-box .text-and-image:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.spacepedia-article-preview-box .text-and-image>* {
+    float: left;
+    padding: 10px;
+    position: relative;
+}
+
+.spacepedia-article-preview-box .text-and-image>.image-box {
+    width: 25%;
+}
+
+.spacepedia-article-preview-box .text-and-image>.text-box {
+    width: 75%;
+}
+
+.spacepedia-article-preview-box .text-and-image>.image-box>.image {
+    width: 100%;
+    padding-bottom: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.spacepedia-article-preview-box .bottom-info {
+    //padding-top: 0;
+    //padding-bottom: 0;
+}
+
+.spacepedia-article-preview-box .bottom-info>span {
+    white-space: nowrap;
+}
+
+.spacepedia-article-preview-box .text-box>.title {
+    color: #155869;
+    font-size: 170%;
+    text-shadow: 0 0 10px rgba(255, 255, 255, .6);
+    font-family: "SF-Fourche";
+    line-height: 120%;
+    margin-bottom: 20px;
+}
+
+.spacepedia-article-preview-box .text-box>.sub-title {
+    margin-top: -16px;
+    margin-bottom: 10px;
+    line-height: 20px;
+    font-weight: bold;
+    font-size: 90%;
+}
+
+.spacepedia-article-preview-box .text-box>.text {
+    line-height: 20px;
+    max-height: 80px;
+    overflow: hidden;
+}
+
+.spacepedia-article-preview-box .bottom-info {
+    font-size: 90%;
+    font-style: italic;
+    clear: both;
+}
+
+/*-----------------------------------*/
+
+/*SPACEPEDIA: ARTICLE PREVIEW TITLES*/
+
+/*-----------------------------------*/
+
+.spacepedia-article-preview-title-list:before,
+.spacepedia-article-preview-title-list:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.spacepedia-article-preview-title-list {
+    counter-reset: article-counter;
+    font-weight: bold;
+    margin-top: -20px;
+    margin-bottom: -20px;
+    display: inline-block;
+}
+
+.spacepedia-article-preview-title-list>a {
+    position: relative;
+    border-bottom: 2px solid rgba(20, 90, 100, .5);
+    margin-left: 40px;
+    padding: 20px 4px 20px 4px;
+    display: block;
+    color: #155869;
+}
+
+.spacepedia-article-preview-title-list>a:last-child {
+    border-bottom: none;
+}
+
+.spacepedia-article-preview-title-list>a:after {
+    content: counter(article-counter);
+    counter-increment: article-counter;
+    position: absolute;
+    left: -45px;
+    top: 20px;
+    padding-left: 15px;
+}
+
+.spacepedia-article-preview-title-list>a:hover:before {
+    content: "";
+    position: absolute;
+    left: -40px;
+    top: 0;
+    right: -10px;
+    bottom: 0;
+    background-color: rgba(20, 90, 100, .08);
+}
+
+/*-----------------------------------*/
+
+/*SPACEPEDIA: TAGS LIST*/
+
+/*-----------------------------------*/
+
+.spacepedia-tags-list {
+    color: #218eaa;
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+.spacepedia-tags-list>* {
+    white-space: pre;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+@media(max-width:991px) {
+    .spacepedia-tags-list {
+        text-align: center;
+    }
+}
+
+/*-----------------------------------*/
+
+/*SPACEPEDIA: HOME*/
+
+/*-----------------------------------*/
+
+.spacepedia-description-preparing {
+    max-width: 480px;
+    margin: 50px auto;
+    color: #00b4ff;
+    font-weight: bold;
+    background-image: url(../images/icons/blue_icon_info.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding: 4px 0 4px 65px;
+    min-height: 45px;
+}
+
+/*-----------------------------------*/
+
+/*SPACEPEDIA: ARTICLE*/
+
+/*-----------------------------------*/
+
+.spacepedia .article-icons {
+    margin-top: -60px;
+    margin-bottom: 70px;
+}
+
+.spacepedia .article-icons:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.spacepedia .article-icons [class*='article-icon-'] {
+    float: left;
+    background-position: left top;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+    line-height: 32px;
+    white-space: nowrap;
+    font-size: 90%;
+    font-weight: bold;
+}
+
+.spacepedia .article-icons [class*='article-icon-']:not(:first-child) {
+    margin-left: 40px;
+}
+
+.spacepedia .article-icon-date {
+    background-image: url(../images/icons/article_date.png);
+}
+
+.spacepedia .article-icon-comments {
+    background-image: url(../images/icons/article_comments.png);
+}
+
+.spacepedia .article-icon-views {
+    background-image: url(../images/icons/article_views.png);
+}
+
+.spacepedia .article-text {
+    font-size: 110%;
+}
+
+.spacepedia .article-author {
+    margin-top: 50px;
+    font-size: 90%;
+    font-weight: bold;
+    font-style: italic;
+    color: #155869;
+}
+
+/*-----------------------------------*/
+
+/*SPACEPEDIA: ARTICLE*/
+
+/*-----------------------------------*/
+
+.article-text h1,
+.article-text h2,
+.article-text h3,
+.article-text h4,
+.article-text h5 {
+    color: #155869;
+    font-family: "SF-Fourche";
+    line-height: 120%;
+    margin: 0;
+}
+
+.article-text a {
+    color: #155869;
+    text-decoration: underline;
+}
+
+.article-text h1 {
+    font-size: 360%;
+}
+
+.article-text h1:not(:first-child) {
+    margin-top: 50px;
+}
+
+.article-text h1:not(:last-child) {
+    margin-bottom: 50px;
+}
+
+.article-text h2 {
+    font-size: 180%;
+    font-weight: bold;
+}
+
+.article-text h2:not(:first-child) {
+    margin-top: 50px;
+}
+
+.article-text h2:not(:last-child) {
+    margin-bottom: 50px;
+}
+
+.article-text h3 {
+    font-size: 110%;
+    font-weight: bold;
+}
+
+.article-text h3:not(:first-child) {
+    margin-top: 35px;
+}
+
+.article-text h3:not(:last-child) {
+    margin-bottom: 35px;
+}
+
+.article-text .title-dark-bg {
+    background-color: rgba(10, 45, 50, .8);
+    color: #fff;
+    padding: 12px 10px;
+    margin-bottom: 50px;
+    font-size: 133%;
+    font-family: "SF-Fourche";
+    line-height: 120%;
+}
+
+.article-text .title-dark-bg:not(:first-child) {
+    margin-top: 60px;
+}
+
+.article-text .title-dark-bg:not(:last-child) {
+    margin-bottom: 60px;
+}
+
+.article-text p:not(:first-child),
+.article-text .row:not(:first-child) {
+    margin-top: 15px;
+}
+
+.article-text p:not(:last-child),
+.article-text .row:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.article-text p,
+.article-text .row {
+    text-align: left;
+}
+
+.article-text b {
+    text-shadow: 1px 1px 0 rgba(10, 45, 50, .5);
+}
+
+.article-text .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.article-text table {
+    font-size: 90%;
+    border-spacing: 3px;
+    border-collapse: separate;
+}
+
+.article-text table th,
+.article-text table td {
+    padding: 3px 6px;
+    vertical-align: top;
+    text-align: left;
+}
+
+.article-text table th {
+    color: #fff;
+    background-color: rgba(10, 45, 50, .7);
+}
+
+.article-text table td {
+    background-color: rgba(10, 45, 50, .1);
+}
+
+@media(max-width:991px) {
+    .article-text table {
+        width: 100%;
+    }
+}
+
+/*-----------------------------------*/
+
+/*SPACEPEDIA: ARTICLE - IMAGE*/
+
+/*-----------------------------------*/
+
+.article-text img {
+    max-width: 100%;
+}
+
+.article-text .img-holder {
+    display: block;
+}
+
+.article-text .img-holder>.text {
+    display: block;
+}
+
+.article-text .img-holder {
+    text-align: center;
+}
+
+.article-text .img-holder:not(.on-left):not(.on-right),
+.article-text *:not(.img-holder)>img:not(.on-left):not(.on-right) {
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+.article-text>img.on-left,
+.article-text>img.on-right,
+.article-text *:not(.img-holder)>img.on-left,
+.article-text *:not(.img-holder)>img.on-right,
+.article-text .img-holder.on-left,
+.article-text .img-holder.on-right {
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.article-text .img-holder:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.article-text .img-holder>.text {
+    margin-top: 20px;
+    font-size: 80%;
+    font-weight: bold;
+    text-align: center;
+}
+
+@media(max-width:991px) {
+    .article-text img.on-left,
+    .article-text img.on-right,
+    .article-text .img-holder.on-left>img,
+    .article-text .img-holder.on-right>img {
+        max-width: 100%;
+        max-height: 320px;
+    }
+}
+
+@media(min-width:992px) {
+    .article-text img.on-left,
+    .article-text img.on-right,
+    .article-text .img-holder.on-left,
+    .article-text .img-holder.on-right {
+        width: 42%;
+        height: auto;
+    }
+    .article-text .img-holder.on-left>img,
+    .article-text .img-holder.on-right>img {
+        max-width: 100%;
+        max-height: 320px;
+    }
+    .article-text img.on-left,
+    .article-text .img-holder.on-left {
+        float: left;
+        margin-right: 40px;
+    }
+    .article-text img.on-right,
+    .article-text .img-holder.on-right {
+        float: right;
+        margin-left: 40px;
+    }
+}
+
+/*-----------------------------------*/
+
+/*SPACEPEDIA: ARTICLE - PLANETS LIST*/
+
+/*-----------------------------------*/
+
+.article-text .planets-list-holder:not(:first-child) {
+    margin-top: 90px;
+}
+
+.article-text .planets-list-holder:not(:last-child) {
+    margin-bottom: 90px;
+}
+
+.article-text .planets-list-holder .planets-list:not(:first-child) {
+    margin-top: 70px;
+}
+
+.article-text .planets-list-holder .planets-list:not(:last-child) {
+    margin-bottom: 70px;
+}
+
+.article-text .planets-list .planet-boxes-holder {
+    margin: -5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.article-text .planets-list .planet-boxes-holder:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.article-text .planets-list .planet-box {
+    display: block;
+    padding: 6px;
+    text-align: center;
+    float: left;
+    width: 12.5%;
+    width: 16.66666667%;
+    position: relative;
+    text-decoration: none;
+}
+
+.article-text .planets-list .planet-box:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 3px;
+    right: 3px;
+    top: 3px;
+    bottom: 3px;
+    background-image: none;
+    border-style: solid;
+    border-color: transparent;
+    border-image-slice: 12 fill;
+    border-image-width: 12px;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-image-source: url(../images/panels/btn-type-7-edge-on-white-br-teal-white.png);
+}
+
+.article-text .planets-list .planet-list-image-title {
+    background-color: #fff;
+    color: #155869;
+    font-weight: bold;
+    font-size: 90%;
+    -webkit-transition: background-color 200ms ease, color 200ms ease;
+    -ms-transition: background-color 200ms ease, color 200ms ease;
+    -moz-transition: background-color 200ms ease, color 200ms ease;
+    transition: background-color 200ms ease, color 200ms ease;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    margin-bottom: -3px;
+}
+
+.article-text .planets-list a.planet-box:hover .planet-list-image-title {
+    background-color: #195968;
+    color: #fff;
+}
+
+.article-text .planets-list .planet-list-image-box {
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto 100%;
+    padding-bottom: 100%;
+    position: relative;
+}
+
+@media(max-width:767px),
+(min-width:992px) and (max-width:1199px) {
+    .article-text .planets-list .planet-box {
+        width: 25%;
+        padding: 8px;
+    }
+    .article-text .planets-list .planet-box:after {
+        left: 4px;
+        right: 4px;
+        top: 4px;
+        bottom: 4px;
+    }
+    .article-text .planets-list .planet-list-image-title {
+        font-size: 100%;
+    }
+}
+
+.article-text .handbook.planets-list-holder {
+    margin-top: 0;
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Model Embedding | Solar System Scope</title>
+    <meta name="description" content="Full screen experience of desktop aplikacion of Solar System Scope. You can start here." />
+    <meta name="keywords" content="solar system, planets, orbits, night sky, stars, constellations, space, universe, sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto" />
+    <link rel="shortcut icon" href="images/favicon.png" />
+    <link rel="image_src" type="image/jpeg" href="images/favicon.png" />
+
+    <script>
+        var updateViewport = function() {
+            var minWidth = 500;
+            var screenWidth = screen.width;
+            switch (window.orientation) {
+                case -90:
+                case 90:
+                    minWidth = 730;
+                    screenWidth = screen.height;
+                    break;
+            }
+            document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=" + (screenWidth / minWidth));
+        }
+        window.addEventListener('orientationchange', updateViewport);
+        updateViewport();
+    </script>
+
+
+    <!-- GOOGLE TAG MANAGER -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MDW8FQ9');
+    </script>
+
+
+    <!-- OG -->
+    
+
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/jquery.validate.min.js"></script>
+
+    <!-- BOOTSTRAP -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="lib/bootstrap-xxs-tn.css">
+
+
+    <!-- MOBILE DETECT -->
+    <script src="lib/mobile-detect.min.js"></script>
+
+    <!-- SOLAR CSS -->
+    <link rel="stylesheet" href="css/fonts.css?v=2.015" />
+    <link rel="stylesheet" href="css/main.css?v=2.015" />
+    <link rel="stylesheet" href="css/ui.css?v=2.015" />
+    <link rel="stylesheet" href="css/header.css?v=2.015" />
+    <link rel="stylesheet" href="css/footer.css?v=2.015" />
+    <link rel="stylesheet" href="css/model-iframe.css?v=2.015" />
+    <link rel="stylesheet" href="css/iframe.css?v=2.015" />
+
+
+    <!-- SOLAR JS -->
+    <script src="js/solar.js?v=2.015"></script>
+
+</head>
+
+<body page="iframe">
+
+
+    <!-- GOOGLE TAG MANAGER -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDW8FQ9" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+    <div class="solar-model-ok only-dsk">
+        
+        <div class="solar-model-ok-inner" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0;">
+            <div class="bg-image"></div>
+            <div class="model-header">
+                <div class="solar-h1">Online Model</div>
+                <div class="solar-h2">Solar System and Night sky</div>
+            </div>
+            <a class="model-btn-start btn-type-8-turquoise" href="module.html">
+                <div class="t1">Start</div>
+               
+            </a>
+        </div>
+    </div>
+
+    <!-- ------------------------MODEL WINDOW RUNNING------------------------- -->
+    <div class="solar-model-run" style="display: none;">
+        <div id="solar-model-container" style="width: 100%; height: 100%;">
+            <svg id="solar-system" viewBox="0 0 800 800" style="width: 100%; height: 100%;">
+                <circle cx="400" cy="400" r="50" fill="yellow" id="sun" />
+                <circle cx="300" cy="400" r="20" fill="blue" id="earth" />
+                <circle cx="500" cy="400" r="15" fill="red" id="mars" />
+                <!-- Add more planets as needed -->
+            </svg>
+        </div>
+    </div>
+
+    <!-- ------------------------MODEL WINDOW BROWSER DISABLED------------------------- -->
+   
+    <!-- ------------------------MODEL WINDOW MOBILE------------------------- -->
+
+    <div class="solar-model-mobile only-mbl">       
+        <div class="bg-image"></div>
+        <div class="model-header">
+            <div class="solar-h1">Solar System</div>
+            <div class="solar-h2" style="margin-bottom: 40px;">Free model of Solar System and Night sky</div>
+        </div>
+    </div>
+
+    <!-- ------------------------SCRIPT FOR FUNCTIONALITY------------------------- -->
+    
+</div>
+
+</body>
+
+</html>

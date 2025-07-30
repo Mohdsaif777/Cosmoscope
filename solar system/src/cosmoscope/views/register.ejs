@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Register</h2>
+    <form action="/register" method="post">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" placeholder="Enter your username" required>
+      <span id="username-error" style="color:red;"></span>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      <span id="email-error" style="color:red;"></span>
+
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required pattern="^[0-9]{10}$" title="Phone number must be 10 digits long">
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      <span id="password-error" style="color:red;"></span>
+
+      <button type="submit">Register</button>
+    </form>
+
+    <div class="link-container">
+      <p>Already have an account? <a href="/">Login</a></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("username").addEventListener("input", function () {
+      const username = this.value;
+      const errorSpan = document.getElementById("username-error");
+      const minLength = 4;
+      const maxLength = 16;
+      const regex = /^[a-zA-Z0-9_]+$/;
+      const nonNumericRegex = /[a-zA-Z_]/;
+
+      if (username.length < minLength) {
+        errorSpan.textContent = `Username must be at least ${minLength} characters long.`;
+      } else if (username.length > maxLength) {
+        errorSpan.textContent = `Username must not exceed ${maxLength} characters.`;
+      } else if (!regex.test(username)) {
+        errorSpan.textContent = "Username can only contain letters, numbers, and underscores.";
+      } else if (!nonNumericRegex.test(username)) {
+        errorSpan.textContent = "Username cannot consist of only numbers.";
+      } else {
+        errorSpan.textContent = "";
+      }
+    });
+
+    document.getElementById("email").addEventListener("input", function () {
+      const email = this.value;
+      const emailError = document.getElementById("email-error");
+      const usernamePart = email.split('@')[0];
+      const domainPart = email.split('@')[1];
+      const allowedDomains = ['gmail.com', 'yahoo.com', 'outlook.com'];
+
+      const isOnlyDigits = /^[0-9]+$/.test(usernamePart);
+      const isOnlySymbols = /^[^a-zA-Z0-9]+$/.test(usernamePart);
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailRegex.test(email)) {
+        emailError.textContent = "Please enter a valid email address.";
+      } else if (isOnlyDigits || isOnlySymbols) {
+        emailError.textContent = "Email username cannot be only numbers or symbols.";
+      } else if (!allowedDomains.includes(domainPart)) {
+        emailError.textContent = `Email domain must be one of: ${allowedDomains.join(', ')}`;
+      } else {
+        emailError.textContent = "";
+      }
+    });
+
+    document.querySelector("form").addEventListener("submit", function (e) {
+      const emailError = document.getElementById("email-error").textContent;
+      if (emailError !== "") {
+        e.preventDefault();
+        alert("Please fix the email errors before submitting.");
+      }
+    });
+  </script>
+<script>
+  const passwordInput = document.getElementById("password");
+  const passwordError = document.getElementById("password-error");
+
+  passwordInput.addEventListener("input", function () {
+    const password = this.value;
+
+    const minLength = 8;
+    const uppercaseRegex = /[A-Z]/;
+    const lowercaseRegex = /[a-z]/;
+    const numberRegex = /[0-9]/;
+    const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+
+    if (password.length < minLength) {
+      passwordError.textContent = `Password must be at least ${minLength} characters long.`;
+    } else if (!uppercaseRegex.test(password)) {
+      passwordError.textContent = "Password must include at least one uppercase letter.";
+    } else if (!lowercaseRegex.test(password)) {
+      passwordError.textContent = "Password must include at least one lowercase letter.";
+    } else if (!numberRegex.test(password)) {
+      passwordError.textContent = "Password must include at least one number.";
+    } else if (!specialCharRegex.test(password)) {
+      passwordError.textContent = "Password must include at least one special character.";
+    } else {
+      passwordError.textContent = "";
+    }
+  });
+
+  document.querySelector("form").addEventListener("submit", function (e) {
+    if (passwordError.textContent !== "") {
+      e.preventDefault();
+      alert("Please fix the password errors before submitting.");
+    }
+  });
+</script>
+
+  <script>
+    <% if (typeof error !== 'undefined' && error) { %>
+      alert("<%= error %>");
+    <% } %>
+  </script>
+</body>
+</html>

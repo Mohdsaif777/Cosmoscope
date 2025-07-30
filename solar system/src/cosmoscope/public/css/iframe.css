@@ -1,0 +1,169 @@
+/*-----------------------------------*/
+
+/*IFRAME*/
+
+/*-----------------------------------*/
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.solar-model-embed {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-repeat: repeat;
+    background-size: auto auto;
+    background-image: url(../images/background_sub_page_header_repeat_xy.jpg);
+    background-position: center center;
+}
+
+.solar-model-embed-table {
+    display: table;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    max-height: 400px;
+    margin: auto auto;
+    text-align: center;
+    font-family: "SF-Fourche";
+}
+
+.solar-model-embed-table>.solar-model-embed-row {
+    display: table-row;
+}
+
+.solar-model-embed-table>.solar-model-embed-row:nth-child(1) {
+    height: 30%;
+}
+
+.solar-model-embed-table>.solar-model-embed-row:nth-child(2) {
+    height: 40%;
+}
+
+.solar-model-embed-table>.solar-model-embed-row:nth-child(3) {
+    height: 30%;
+}
+
+.solar-model-embed-table>.solar-model-embed-row>.solar-model-embed-cell {
+    display: table-cell;
+}
+
+.solar-model-embed-table .solar-model-embed-logo {
+    margin: -31px;
+}
+
+.solar-model-embed-table.solar-model-ok>.solar-model-embed-row:nth-child(1)>.solar-model-embed-cell {
+    vertical-align: bottom;
+}
+
+.solar-model-embed-table.solar-model-ok>.solar-model-embed-row:nth-child(2)>.solar-model-embed-cell {
+    vertical-align: middle;
+}
+
+.solar-model-embed-table.solar-model-ok>.solar-model-embed-row:nth-child(3)>.solar-model-embed-cell {
+    vertical-align: top;
+}
+
+.solar-model-embed-table.solar-model-ok .solar-model-embed-topic:nth-child(1) {
+    font-size: 280%;
+    text-transform: uppercase;
+    line-height: 100%;
+    margin-top: 14px;
+    margin-bottom: 4px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, .6);
+}
+
+.solar-model-embed-table.solar-model-ok .solar-model-embed-topic:nth-child(2) {
+    text-transform: uppercase;
+    line-height: 100%;
+    font-size: 90%;
+    margin-bottom: 20px;
+}
+
+.solar-model-embed-table.solar-model-ok .solar-model-button {
+    margin: 0;
+    font-size: 150%;
+    line-height: 100%;
+    padding: 20px 60px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.solar-model-embed-table.solar-model-browser>.solar-model-embed-row>.solar-model-embed-cell {
+    vertical-align: middle;
+}
+
+.solar-model-embed-table.solar-model-browser .solar-model-embed-topic {
+    margin: 30px 0;
+}
+
+.solar-model-embed-table.solar-model-browser .solar-model-embed-list>a {
+    display: block;
+}
+
+.solar-model-embed-table.solar-model-mobile>.solar-model-embed-row:nth-child(1)>.solar-model-embed-cell {
+    vertical-align: bottom;
+}
+
+.solar-model-embed-table.solar-model-mobile>.solar-model-embed-row:nth-child(2)>.solar-model-embed-cell {
+    vertical-align: middle;
+}
+
+.solar-model-embed-table.solar-model-mobile>.solar-model-embed-row:nth-child(3)>.solar-model-embed-cell {
+    vertical-align: top;
+}
+
+.solar-model-embed-table.solar-model-mobile .solar-model-embed-topic:nth-child(1) {
+    text-transform: uppercase;
+    line-height: 100%;
+    margin-top: 20px;
+}
+
+.solar-model-embed-table.solar-model-mobile .solar-model-embed-topic:nth-child(2) {
+    font-size: 260%;
+    text-shadow: 0 0 20px rgba(255, 255, 255, .6);
+    text-transform: uppercase;
+    line-height: 100%;
+    margin-bottom: 26px;
+}
+
+.solar-model-embed-table.solar-model-mobile .solar-model-embed-stores-list>a {
+    display: inline-block;
+    padding: 14px 10px 14px 60px;
+    margin: -14px 4px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: contain;
+}
+
+.solar-model-embed-table.solar-model-mobile .solar-model-embed-stores-list .btn-android {
+    background-image: url(../images/logo_android.png);
+}
+
+.solar-model-embed-table.solar-model-mobile .solar-model-embed-stores-list .btn-ios {
+    background-image: url(../images/logo_ios.png);
+}
+
+.solar-model-embed-table.solar-model-mobile .solar-model-embed-stores-list .btn-stores-topic:nth-child(1) {
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.solar-model-embed-table.solar-model-mobile .solar-model-embed-stores-list .btn-stores-topic:nth-child(2) {
+    color: #fff;
+    font-family: "Gotham";
+    font-size: 80%;
+    font-weight: bold;
+    color: #adadad;
+}

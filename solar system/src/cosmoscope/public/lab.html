@@ -1,0 +1,2300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta Tags for Charset, Compatibility, and Viewport -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Page Title and SEO Meta Tags -->
+    <title>Cosmoscope - Online Model of Solar System</title>
+    <meta name="description" content="Online 3D simulation of the Solar System and night sky in real-time - the Sun, planets, dwarf planets, comets, stars and constellations" />
+    <meta name="keywords" content="solar system, planets, orbits, night sky, stars, constellations, space, universe, sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto" />
+
+    <!-- Favicon and Social Media Image -->
+    <link rel="shortcut icon" href="images/favicon.png" />
+    <link rel="image_src" type="image/jpeg" href="images/favicon.png" />
+
+    <!-- Viewport Update Script: Adjusts for different screen orientations -->
+    <script>
+        var updateViewport = function() {
+            var minWidth = 500;
+            var screenWidth = screen.width;
+            switch (window.orientation) {
+                case -90:
+                case 90:
+                    minWidth = 730;
+                    screenWidth = screen.height;
+                    break;
+            }
+            document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=" + (screenWidth / minWidth));
+        }
+        window.addEventListener('orientationchange', updateViewport);
+        updateViewport();
+    </script>
+
+    <!-- Google Tag Manager Script -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MDW8FQ9');
+    </script>
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/jquery.validate.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="lib/bootstrap-xxs-tn.css">
+
+    <!-- Mobile Detect -->
+    <script src="lib/mobile-detect.min.js"></script>
+
+    <!-- CSS Files for Solar System Model -->
+    <link rel="stylesheet" href="css/fonts.css?v=2.015" />
+    <link rel="stylesheet" href="css/main.css?v=2.015" />
+    <link rel="stylesheet" href="css/ui.css?v=2.015" />
+    <link rel="stylesheet" href="css/header.css?v=2.015" />
+    <link rel="stylesheet" href="css/footer.css?v=2.015" />
+    <link rel="stylesheet" href="css/lab.css?v=2.015" />
+
+    <!-- JavaScript for Solar System Model -->
+    <script src="js/solar.js?v=2.015"></script>
+    <!-- Script for Menu Hover Show/Hide -->
+    <script>
+        
+        $(document).ready(function() {
+             
+            // Menu toggle functionality
+            var menu = $("#header .menu-hover");
+            var menuBtn = $("#header .menu-hover-start-button");
+            var menuDrop = $("#header .menu-hover-backdrop");
+
+            // Function to Hide Menu
+            var menuHideCheck = function(e) {
+                if (menu.is(":hidden")) return;
+                var target = $(e.target);
+                var modal = $(".modal");
+                if (menu.has(target).length || menu.is(target) || modal.has(target).length || modal.is(target)) return;
+                menu.slideUp();
+                menuDrop.fadeOut();
+                $(document).off("click", menuHideCheck);
+                setTimeout(function() {
+                    menuBtn.on("click", menuShow);
+                }, 1);
+            }
+
+            // Function to Show Menu
+            var menuShow = function(e) {
+                if (!menu.is(":hidden")) return;
+                menu.slideDown();
+                menuDrop.fadeIn();
+                menuBtn.off("click", menuShow);
+                setTimeout(function() {
+                    $(document).on("click", menuHideCheck);
+                }, 1);
+            }
+
+            menuBtn.on("click", menuShow);
+        });
+    </script>
+</head>
+
+<body page="home">
+
+    <!-- Google Tag Manager NoScript -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDW8FQ9" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+    <!-- Header with Navigation and Contact Details -->
+    <!-- Header with Navigation and Contact Details -->
+    <div id="header">
+        <div class="first hidden-xs">
+            <a class="contact" href="mailto:contact@Cosmoscope.com">
+                <span>Contact us:</span>
+                <span>contact@Cosmoscope.com</span>
+            </a>
+            <a class="button facebook hidden-xs hidden-sm hidden-md" href="https://www.facebook.com/" target="_blank">Facebook</a>
+            <a class="button show-on-start text-glow" href="http://localhost:3001/chatbot.html">Chatbot</a>
+        </div>
+
+                <!-- Navigation Menu -->
+        <div class="navbar">
+            <div class="glow-bottom-8px"></div>
+            <div class="logo-holder">
+                <a href="/"><h2>Cosmoscope</h2></a>
+            </div>
+            <div class="menu">
+                <a class="button show-on-start text-glow home selected" href="home.html">Home</a>
+                <a class="button show-on-start text-glow" href="about.html">About</a>
+                <a class="button show-on-start text-glow" href="skydiary.html">SkyDiary</a>
+                <a class="button show-on-start text-glow" href="lab.html">Mission</a>
+                <a class="button show-on-start text-glow" href="http://localhost:3001">Shop</a>
+                <a class="button show-on-start text-glow" href="quiz.html">Quiz Game</a>
+                <a class="button show-on-start text-glow" href="http://localhost:3002/chatbot.html">Cosmobot</a>
+                <a href="#" class="button show-on-start text-glow" id="logout">Logout</a>
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        <!-- Hidden Form for Logout -->
+        <form id="logoutForm" action="/logout" method="POST" style="display: none;">
+            <button type="submit">Logout</button>
+        </form>
+        <script>
+            // Attach event listener to the logout link
+            document.getElementById('logout').addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default link behavior
+                document.getElementById('logoutForm').submit(); // Submit the hidden form
+            });
+        </script>
+    </div>
+
+    <!-- Menu Hover Functionality (Hidden by Default) -->
+    <div class="menu-hover-backdrop" style="display: none;"></div>
+    <div class="menu-hover" style="display: none;"></div>
+
+
+    <div class="lab">
+
+        <div class="lab-header-carousel">
+            <div class="holder">
+                <!--<div class="image-starmap"></div>-->
+                <div class="image-earth"></div>
+                <div class="image-curiosity"></div>
+                <div class="image-hst"></div>
+                <div class="image-iss"></div>
+                <div class="image-nebula"></div>
+                <div class="image-apollo"></div>
+                <div class="image-labart"></div>
+                <div class="image-nightsky"></div>
+                <div class="image-planets"></div>
+                <div class="image-structure"></div>
+                <!--<div class="image-nearstars"></div>-->
+            </div>
+        </div>
+
+        <div class="solar-model-bottom"></div>
+
+        <div class="distance-medium"></div>
+
+        <div class="container lab-container-main">
+
+            <div class="lab-title-holder">
+                <a href="{/lab}" target="_self">
+                    <h1>Missions</h1>
+                </a>
+                <div class="solarlab-lines">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </div>
+
+            <div class="lab-description">Our mission is to explore and share knowledge about groundbreaking space missions conducted by leading space agencies, inspiring collaboration and innovation in the field of aerospace exploration</div>
+
+            <div class="distance-large"></div>
+
+            <div class="panel-ideas panel-type-1">
+
+
+                <a class="ideas-category-title">ISRO (Indian Space Research Organisation)</a>
+
+                <div class="ideas-list">
+
+<!--    ISRO (Indian Space Research Organisation) Mission 1    -->
+
+                    <div class="idea-box" id="add-objects">
+                        <a class="idea-vote-holder">
+                            <div class="panel-type-10-semi-black-bg">
+                                <div class="idea-vote-count">0</div>
+                                <div class="idea-vote-topic-holder">
+                                    <div class="idea-vote-topic-click">click to vote</div>
+                                    <div class="idea-vote-topic-thanks">thanks!</div>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="idea-main-holder">
+                            <div class="idea-title">Aryabhata (1975)</div>
+                            <div class="idea-mini-info">
+                                <span class="idea-authors">Objective: India's first satellite aimed to test various space technologies. </span>
+                                <span class="idea-read-more-title">Read more...</span>
+                            </div>
+
+                            <div class="idea-openable">
+                                <p class="idea-text">Launched by the Soviet Union, Aryabhata marked India's entry into space research. The satellite conducted experiments in X-ray astronomy and solar physics, though technical issues led to power loss shortly after reaching orbit. Despite these setbacks, it was pivotal in gaining expertise in satellite design and systems, setting a foundation for India’s space technology.</p>
+                            </div>
+                        </a>
+                    </div>
+
+<!--    ISRO (Indian Space Research Organisation) Mission 2   -->
+
+                    <div class="idea-box" id="add-probes">
+
+                        <a class="idea-vote-holder">
+
+                            <div class="panel-type-10-semi-black-bg">
+
+                                <div class="idea-vote-count">0</div>
+                                <div class="idea-vote-topic-holder">
+                                    <div class="idea-vote-topic-click">click to vote</div>
+                                    <div class="idea-vote-topic-thanks">thanks!</div>
+                                </div>
+
+                            </div>
+
+
+                        </a>
+
+                        <a class="idea-main-holder">
+
+                            <div class="idea-title">Rohini Satellite Series (1980-1994)</div>
+                            <div class="idea-mini-info">
+                                <span class="idea-authors">Objective: A series of satellites for Earth observation.</span>
+                                <span class="idea-read-more-title">Read more...</span>
+                            </div>
+
+                            <div class="idea-openable">
+                                <p class="idea-text">The Rohini series saw India launch satellites using its own rockets, starting with Rohini-1 on the SLV-3 rocket, marking India's first indigenous satellite launch. The program faced early challenges but succeeded in developing ISRO’s satellite launching capabilities, leading to more refined observation satellites in subsequent missions.</p>
+                            </div>
+
+                        </a>
+
+                    </div>
+
+<!--    ISRO (Indian Space Research Organisation) Mission 3    -->
+
+                    <div class="idea-box" id="constellation-texts">
+
+                        <a class="idea-vote-holder">
+
+                            <div class="panel-type-10-semi-black-bg">
+
+                                <div class="idea-vote-count">0</div>
+                                <div class="idea-vote-topic-holder">
+                                    <div class="idea-vote-topic-click">click to vote</div>
+                                    <div class="idea-vote-topic-thanks">thanks!</div>
+                                </div>
+
+                            </div>
+
+
+                        </a>
+
+                        <a class="idea-main-holder">
+
+                            <div class="idea-title">INSAT Series (1983-Present)</div>
+                            <div class="idea-mini-info">
+                                <span class="idea-authors">Objective: Establishing India’s communication, broadcasting, and weather monitoring capabilities.</span>
+                                <span class="idea-read-more-title">Read more...</span>
+                            </div>
+
+                            <div class="idea-openable">
+                                <p class="idea-text">The INSAT series is a multipurpose satellite constellation used for meteorology, broadcasting, telecommunications, and disaster alert systems. Each generation of INSAT improved on its predecessors with advanced instruments and sensors, supporting India’s national broadcasting network and providing crucial meteorological data for weather forecasting and disaster management. INSAT has grown into a critical communication infrastructure in India.</p>
+                            </div>
+
+                        </a>
+
+                    </div>
+
+<!--    ISRO (Indian Space Research Organisation) Mission 4   -->
+
+                    <div class="idea-box" id="constellation-images">
+
+                        <a class="idea-vote-holder">
+
+                            <div class="panel-type-10-semi-black-bg">
+
+                                <div class="idea-vote-count">0</div>
+                                <div class="idea-vote-topic-holder">
+                                    <div class="idea-vote-topic-click">click to vote</div>
+                                    <div class="idea-vote-topic-thanks">thanks!</div>
+                                </div>
+
+                            </div>
+
+                            <a class="idea-main-holder">
+
+                                <div class="idea-title">IRS (Indian Remote Sensing) Series (1988-Present)</div>
+                                <div class="idea-mini-info">
+                                    <span class="idea-authors">Objective: Providing Earth observation for resource management.</span>
+                                    <span class="idea-read-more-title">Read more...</span>
+                                </div>
+    
+                                <div class="idea-openable">
+                                    <p class="idea-text">IRS satellites have equipped India with high-resolution imaging, assisting in agriculture, land-use planning, and forestry. The series pioneered resource monitoring for the nation, providing satellite images used by government agencies. These satellites also supported disaster relief and environmental studies, showcasing India’s growing technological prowess in remote sensing.</p>
+                                </div>
+    
+                            </a>
+    
+                        </div>
+    <!--    ISRO (Indian Space Research Organisation) Mission 5    -->
+                        <div class="idea-box" id="add-probes">
+                            <a class="idea-vote-holder">
+                                <div class="panel-type-10-semi-black-bg">
+                                    <div class="idea-vote-count">0</div>
+                                    <div class="idea-vote-topic-holder">
+                                        <div class="idea-vote-topic-click">click to vote</div>
+                                        <div class="idea-vote-topic-thanks">thanks!</div>
+                                    </div>
+                                </div>
+                            </a>    
+                            <a class="idea-main-holder">
+                              <div class="idea-title">PSLV First Mission (1993)</div>
+                               <div class="idea-mini-info">
+                                  <span class="idea-authors">Objective: Developing a reliable launch vehicle for polar orbits.</span>
+                                  <span class="idea-read-more-title">Read more...</span>
+                               </div>
+
+                                <div class="idea-openable">
+                                     <p class="idea-text"> Although the first PSLV mission encountered partial failure, ISRO addressed technical flaws, transforming the PSLV into a highly reliable workhorse with a record of successful missions. This vehicle became essential in launching Indian and international satellites, known for its capability to launch multiple satellites in one mission, increasing India’s global launch services reputation.</p>
+                                </div>
+                            </a>
+
+                        </div>
+<!--    ISRO (Indian Space Research Organisation) Mission 6   -->
+                    <div class="idea-box" id="add-probes">
+                        <a class="idea-vote-holder">
+                            <div class="panel-type-10-semi-black-bg">
+                                <div class="idea-vote-count">0</div>
+                                <div class="idea-vote-topic-holder">
+                                    <div class="idea-vote-topic-click">click to vote</div>
+                                    <div class="idea-vote-topic-thanks">thanks!</div>
+                                </div>
+                            </div>
+                        </a>    
+                        <a class="idea-main-holder">
+                        <div class="idea-title">GSAT Series (2001)</div>
+                        <div class="idea-mini-info">
+                            <span class="idea-authors">Objective: A network of communication satellites for telecommunication and broadcasting.</span>
+                            <span class="idea-read-more-title">Read more...</span>
+                        </div>
+
+                            <div class="idea-openable">
+                                <p class="idea-text"> GSAT satellites provide secure, high-capacity communication across India. These satellites handle digital TV broadcasting, internet connectivity, and telecommunications. Over the years, ISRO has integrated advanced transponders and communication equipment, helping to maintain continuous connectivity in remote areas and enhancing the national broadband infrastructure.</p>
+                            </div>
+                        </a>
+
+                    </div>
+   <!--    ISRO (Indian Space Research Organisation) Mission 7   -->
+                        <div class="idea-box" id="add-probes">
+                            <a class="idea-vote-holder">
+                                <div class="panel-type-10-semi-black-bg">
+                                    <div class="idea-vote-count">0</div>
+                                    <div class="idea-vote-topic-holder">
+                                        <div class="idea-vote-topic-click">click to vote</div>
+                                        <div class="idea-vote-topic-thanks">thanks!</div>
+                                    </div>
+                                </div>
+                            </a>    
+                            <a class="idea-main-holder">
+                            <div class="idea-title">Kalpana-1 (2002)</div>
+                            <div class="idea-mini-info">
+                                <span class="idea-authors">Objective: India’s first dedicated meteorological satellite.</span>
+                                <span class="idea-read-more-title">Read more...</span>
+                            </div>
+
+                                <div class="idea-openable">
+                                    <p class="idea-text">Launched to monitor weather patterns over the Indian Ocean, Kalpana-1 provided data on cyclones, monsoon patterns, and storms. The satellite helped refine forecasting models for India’s meteorological department, offering timely updates on extreme weather, which proved essential for disaster preparedness and management.</p>
+                                </div>
+                            </a>
+
+                        </div>   
+<!--    ISRO (Indian Space Research Organisation) Mission 8    -->
+                        <div class="idea-box" id="add-probes">
+                            <a class="idea-vote-holder">
+                                <div class="panel-type-10-semi-black-bg">
+                                    <div class="idea-vote-count">0</div>
+                                    <div class="idea-vote-topic-holder">
+                                        <div class="idea-vote-topic-click">click to vote</div>
+                                        <div class="idea-vote-topic-thanks">thanks!</div>
+                                    </div>
+                                </div>
+                            </a>    
+                            <a class="idea-main-holder">
+                            <div class="idea-title">Edusat (2004)</div>
+                            <div class="idea-mini-info">
+                                <span class="idea-authors">Objective: First satellite dedicated to educational services and telemedicine.</span>
+                                <span class="idea-read-more-title">Read more...</span>
+                            </div>
+
+                                <div class="idea-openable">
+                                    <p class="idea-text">Edusat provided connectivity for rural education programs, bridging gaps for students in remote areas through virtual classrooms. The satellite facilitated distance learning, connecting educational institutions with schools in underserved areas, and played a significant role in India’s rural education reform.</p>
+                                </div>
+                            </a>
+
+                        </div>
+<!--    ISRO (Indian Space Research Organisation) Mission 9    -->
+                           <div class="idea-box" id="add-probes">
+                            <a class="idea-vote-holder">
+                                <div class="panel-type-10-semi-black-bg">
+                                    <div class="idea-vote-count">0</div>
+                                    <div class="idea-vote-topic-holder">
+                                        <div class="idea-vote-topic-click">click to vote</div>
+                                        <div class="idea-vote-topic-thanks">thanks!</div>
+                                    </div>
+                                </div>
+                            </a>    
+                            <a class="idea-main-holder">
+                              <div class="idea-title">Cartosat-1 (2005)</div>
+                               <div class="idea-mini-info">
+                                  <span class="idea-authors">Objective: Earth observation for high-resolution cartographic applications.</span>
+                                  <span class="idea-read-more-title">Read more...</span>
+                               </div>
+
+                                <div class="idea-openable">
+                                     <p class="idea-text">Equipped with two panchromatic cameras, Cartosat-1 provided detailed 3D imagery of the Earth’s surface, supporting urban planning, natural resource management, and infrastructure development projects. It generated data used by government departments for creating maps and managing land resources.</p>
+                                </div>
+                            </a>
+
+                        </div>
+<!--    ISRO (Indian Space Research Organisation) Mission 10    -->
+                           <div class="idea-box" id="add-probes">
+                            <a class="idea-vote-holder">
+                                <div class="panel-type-10-semi-black-bg">
+                                    <div class="idea-vote-count">0</div>
+                                    <div class="idea-vote-topic-holder">
+                                        <div class="idea-vote-topic-click">click to vote</div>
+                                        <div class="idea-vote-topic-thanks">thanks!</div>
+                                    </div>
+                                </div>
+                            </a>    
+                            <a class="idea-main-holder">
+                              <div class="idea-title">Chandrayaan-1 (2008)</div>
+                               <div class="idea-mini-info">
+                                  <span class="idea-authors">Objective: India’s first lunar mission to study the Moon’s surface.</span>
+                                  <span class="idea-read-more-title">Read more...</span>
+                               </div>
+
+                                <div class="idea-openable">
+                                     <p class="idea-text"> Chandrayaan-1 used a variety of instruments to survey the lunar surface and was the first mission to confirm water molecules on the Moon, a discovery that reshaped lunar science. The satellite’s Moon Impact Probe deliberately crashed into the Moon's surface, further verifying water’s presence. Chandrayaan-1 also mapped elements and minerals, with findings still used in lunar studies today.</p>
+                                </div>
+                            </a>
+
+                        </div>
+   <!--    ISRO (Indian Space Research Organisation) Mission 11    -->
+                           <div class="idea-box" id="add-probes">
+                            <a class="idea-vote-holder">
+                                <div class="panel-type-10-semi-black-bg">
+                                    <div class="idea-vote-count">0</div>
+                                    <div class="idea-vote-topic-holder">
+                                        <div class="idea-vote-topic-click">click to vote</div>
+                                        <div class="idea-vote-topic-thanks">thanks!</div>
+                                    </div>
+                                </div>
+                            </a>    
+                            <a class="idea-main-holder">
+                              <div class="idea-title">Oceansat-2 (2009)</div>
+                               <div class="idea-mini-info">
+                                  <span class="idea-authors">Objective: Monitor ocean color and surface winds.</span>
+                                  <span class="idea-read-more-title">Read more...</span>
+                               </div>
+
+                                <div class="idea-openable">
+                                     <p class="idea-text"> Oceansat-2 was designed to monitor phytoplankton and ocean currents, aiding in fisheries management, coastal research, and environmental monitoring. It helped predict changes in marine ecosystems, which are crucial for weather prediction and studying climate change.</p>
+                                </div>
+                            </a>
+
+                        </div>
+
+<!--    ISRO (Indian Space Research Organisation) Mission 12    -->
+    
+                           <div class="idea-box" id="add-probes">
+                            <a class="idea-vote-holder">
+                                <div class="panel-type-10-semi-black-bg">
+                                    <div class="idea-vote-count">0</div>
+                                    <div class="idea-vote-topic-holder">
+                                        <div class="idea-vote-topic-click">click to vote</div>
+                                        <div class="idea-vote-topic-thanks">thanks!</div>
+                                    </div>
+                                </div>
+                            </a>    
+                            <a class="idea-main-holder">
+                              <div class="idea-title"> RISAT-1 (2012)</div>
+                               <div class="idea-mini-info">
+                                  <span class="idea-authors">Objective: Radar imaging for all-weather Earth observation.</span>
+                                  <span class="idea-read-more-title">Read more...</span>
+                               </div>
+
+                                <div class="idea-openable">
+                                     <p class="idea-text">Using C-band Synthetic Aperture Radar, RISAT-1 provided all-weather data vital for disaster relief and crop assessment. It improved India’s defense monitoring capabilities and provided precise data on agricultural conditions, especially during the monsoon, boosting the country’s agricultural planning.</p>
+                                </div>
+                            </a>
+
+                        </div>
+<!--    ISRO (Indian Space Research Organisation) Mission 13    -->
+                           <div class="idea-box" id="add-probes">
+                            <a class="idea-vote-holder">
+                                <div class="panel-type-10-semi-black-bg">
+                                    <div class="idea-vote-count">0</div>
+                                    <div class="idea-vote-topic-holder">
+                                        <div class="idea-vote-topic-click">click to vote</div>
+                                        <div class="idea-vote-topic-thanks">thanks!</div>
+                                    </div>
+                                </div>
+                            </a>    
+                            <a class="idea-main-holder">
+                              <div class="idea-title">Mars Orbiter Mission (Mangalyaan) (2013)</div>
+                               <div class="idea-mini-info">
+                                  <span class="idea-authors">Objective: India’s first interplanetary mission to Mars.</span>
+                                  <span class="idea-read-more-title">Read more...</span>
+                               </div>
+
+                                <div class="idea-openable">
+                                     <p class="idea-text"> Launched on a limited budget, Mangalyaan reached Mars orbit on its first attempt. It gathered data on Martian weather, topography, and methane presence, contributing insights into Mars’ atmosphere. This mission made India the first Asian country to reach Mars, showcasing cost-effective space exploration.</p>
+                                </div>
+                            </a>
+
+                        </div>
+<!--    ISRO (Indian Space Research Organisation) Mission 14    -->
+                           <div class="idea-box" id="add-probes">
+                            <a class="idea-vote-holder">
+                                <div class="panel-type-10-semi-black-bg">
+                                    <div class="idea-vote-count">0</div>
+                                    <div class="idea-vote-topic-holder">
+                                        <div class="idea-vote-topic-click">click to vote</div>
+                                        <div class="idea-vote-topic-thanks">thanks!</div>
+                                    </div>
+                                </div>
+                            </a>    
+                            <a class="idea-main-holder">
+                              <div class="idea-title">GSAT-7 (2013)</div>
+                               <div class="idea-mini-info">
+                                  <span class="idea-authors">Objective: India’s first defense communication satellite, designed for the Navy.</span>
+                                  <span class="idea-read-more-title">Read more...</span>
+                               </div>
+
+                                <div class="idea-openable">
+                                     <p class="idea-text">  GSAT-7 provides secure and encrypted communication to Indian naval forces, covering the Indian Ocean region. This satellite enhanced naval communication, especially for vessels far from Indian shores, ensuring robust maritime surveillance and security.</p>
+                                </div>
+                            </a>
+
+                        </div>
+<!--    ISRO (Indian Space Research Organisation) Mission 15    -->
+                           <div class="idea-box" id="add-probes">
+                            <a class="idea-vote-holder">
+                                <div class="panel-type-10-semi-black-bg">
+                                    <div class="idea-vote-count">0</div>
+                                    <div class="idea-vote-topic-holder">
+                                        <div class="idea-vote-topic-click">click to vote</div>
+                                        <div class="idea-vote-topic-thanks">thanks!</div>
+                                    </div>
+                                </div>
+                            </a>    
+                            <a class="idea-main-holder">
+                              <div class="idea-title"> Astrosat (2015)</div>
+                               <div class="idea-mini-info">
+                                  <span class="idea-authors">Objective: India’s first multi-wavelength space observatory.</span>
+                                  <span class="idea-read-more-title">Read more...</span>
+                               </div>
+
+                                <div class="idea-openable">
+                                     <p class="idea-text"> Astrosat is capable of observing the universe in visible, ultraviolet, and X-ray spectrums simultaneously, used to study black holes, neutron stars, and distant galaxies. It has helped Indian scientists in understanding high-energy phenomena in the universe and placed India among a select few countries with dedicated space observatories.</p>
+                                </div>
+                            </a>
+
+                        </div>
+<!--    ISRO (Indian Space Research Organisation) Mission 16    -->
+                           <div class="idea-box" id="add-probes">
+                            <a class="idea-vote-holder">
+                                <div class="panel-type-10-semi-black-bg">
+                                    <div class="idea-vote-count">0</div>
+                                    <div class="idea-vote-topic-holder">
+                                        <div class="idea-vote-topic-click">click to vote</div>
+                                        <div class="idea-vote-topic-thanks">thanks!</div>
+                                    </div>
+                                </div>
+                            </a>    
+                            <a class="idea-main-holder">
+                              <div class="idea-title">IRNSS (NavIC) (2013-2018)</div>
+                               <div class="idea-mini-info">
+                                  <span class="idea-authors">Objective: Establishing India’s regional navigation system.</span>
+                                  <span class="idea-read-more-title">Read more...</span>
+                               </div>
+
+                                <div class="idea-openable">
+                                     <p class="idea-text"> NavIC provides precise navigation for the Indian subcontinent, used in various applications like mapping, transportation, and personal positioning. NavIC’s resilience and accuracy make it reliable for military and civilian use, ensuring independence from global navigation systems.</p>
+                                </div>
+                            </a>
+
+                        </div>
+ <!--    ISRO (Indian Space Research Organisation) Mission 17    -->
+                           <div class="idea-box" id="add-probes">
+                            <a class="idea-vote-holder">
+                                <div class="panel-type-10-semi-black-bg">
+                                    <div class="idea-vote-count">0</div>
+                                    <div class="idea-vote-topic-holder">
+                                        <div class="idea-vote-topic-click">click to vote</div>
+                                        <div class="idea-vote-topic-thanks">thanks!</div>
+                                    </div>
+                                </div>
+                            </a>    
+                            <a class="idea-main-holder">
+                              <div class="idea-title">South Asia Satellite (GSAT-9) (2017)</div>
+                               <div class="idea-mini-info">
+                                  <span class="idea-authors">Objective: Enhancing communication for SAARC countries.</span>
+                                  <span class="idea-read-more-title">Read more...</span>
+                               </div>
+
+                                <div class="idea-openable">
+                                     <p class="idea-text">  GSAT-9 offers telecommunication, telemedicine, and broadcasting services to South Asia. It strengthens India’s regional relationships, providing essential services like emergency communication and improving digital connectivity.</p>
+                                </div>
+                            </a>
+
+                        </div>
+<!--    ISRO (Indian Space Research Organisation) Mission 18    -->
+                           <div class="idea-box" id="add-probes">
+                            <a class="idea-vote-holder">
+                                <div class="panel-type-10-semi-black-bg">
+                                    <div class="idea-vote-count">0</div>
+                                    <div class="idea-vote-topic-holder">
+                                        <div class="idea-vote-topic-click">click to vote</div>
+                                        <div class="idea-vote-topic-thanks">thanks!</div>
+                                    </div>
+                                </div>
+                            </a>    
+                            <a class="idea-main-holder">
+                              <div class="idea-title">Cartosat-2 Series (2017)</div>
+                               <div class="idea-mini-info">
+                                  <span class="idea-authors">Objective: High-resolution Earth imaging for military and civilian applications.</span>
+                                  <span class="idea-read-more-title">Read more...</span>
+                               </div>
+
+                                <div class="idea-openable">
+                                     <p class="idea-text"> These satellites are designed for precise surveillance and cartographic applications, providing data for defense, urban planning, and infrastructure development. Their high-resolution images support critical surveillance for India’s defense.</p>
+                                </div>
+                            </a>
+
+                        </div>
+<!--    ISRO (Indian Space Research Organisation) Mission 19    -->
+                           <div class="idea-box" id="add-probes">
+                            <a class="idea-vote-holder">
+                                <div class="panel-type-10-semi-black-bg">
+                                    <div class="idea-vote-count">0</div>
+                                    <div class="idea-vote-topic-holder">
+                                        <div class="idea-vote-topic-click">click to vote</div>
+                                        <div class="idea-vote-topic-thanks">thanks!</div>
+                                    </div>
+                                </div>
+                            </a>    
+                            <a class="idea-main-holder">
+                              <div class="idea-title"> Chandrayaan-2 (2019)</div>
+                               <div class="idea-mini-info">
+                                  <span class="idea-authors">Objective: Explore the Moon’s south pole with orbiter, lander, and rover.</span>
+                                  <span class="idea-read-more-title">Read more...</span>
+                               </div>
+
+                                <div class="idea-openable">
+                                     <p class="idea-text"> While the Vikram lander’s descent did not succeed, the orbiter continues to send valuable data, including mapping of lunar surface minerals. The orbiter supports ISRO’s planned future lunar missions with data on temperature, surface elements, and exosphere conditions.</p>
+                                </div>
+                            </a>
+
+                        </div>
+<!--    ISRO (Indian Space Research Organisation) Mission 20    -->
+                           <div class="idea-box" id="add-probes">
+                            <a class="idea-vote-holder">
+                                <div class="panel-type-10-semi-black-bg">
+                                    <div class="idea-vote-count">0</div>
+                                    <div class="idea-vote-topic-holder">
+                                        <div class="idea-vote-topic-click">click to vote</div>
+                                        <div class="idea-vote-topic-thanks">thanks!</div>
+                                    </div>
+                                </div>
+                            </a>    
+                            <a class="idea-main-holder">
+                              <div class="idea-title">RISAT-2BR1 (2019)</div>
+                               <div class="idea-mini-info">
+                                  <span class="idea-authors">Objective: Advanced radar imaging for day-and-night Earth observation.</span>
+                                  <span class="idea-read-more-title">Read more...</span>
+                               </div>
+
+                                <div class="idea-openable">
+                                     <p class="idea-text"> This satellite supports agriculture and defense surveillance, offering detailed imaging irrespective of weather. It plays an essential role in border security and crop health monitoring.</p>
+                                </div>
+                            </a>
+
+                        </div>
+
+<!--    ISRO (Indian Space Research Organisation) Mission 21    -->
+
+                           <div class="idea-box" id="add-probes">
+                            <a class="idea-vote-holder">
+                                <div class="panel-type-10-semi-black-bg">
+                                    <div class="idea-vote-count">0</div>
+                                    <div class="idea-vote-topic-holder">
+                                        <div class="idea-vote-topic-click">click to vote</div>
+                                        <div class="idea-vote-topic-thanks">thanks!</div>
+                                    </div>
+                                </div>
+                            </a>    
+                            <a class="idea-main-holder">
+                              <div class="idea-title">GSAT-30 (2020)</div>
+                               <div class="idea-mini-info">
+                                  <span class="idea-authors">Objective: Replacement for the INSAT-4A, supporting telecommunications.</span>
+                                  <span class="idea-read-more-title">Read more...</span>
+                               </div>
+
+                                <div class="idea-openable">
+                                     <p class="idea-text"> GSAT-30 provides advanced broadcasting, DTH, and VSAT services. It serves as a high-throughput satellite for internet services and enhances India’s disaster management communication network.</p>
+                                </div>
+                            </a>
+
+                        </div>
+
+<!--    ISRO (Indian Space Research Organisation) Mission 22    -->
+
+                           <div class="idea-box" id="add-probes">
+                            <a class="idea-vote-holder">
+                                <div class="panel-type-10-semi-black-bg">
+                                    <div class="idea-vote-count">0</div>
+                                    <div class="idea-vote-topic-holder">
+                                        <div class="idea-vote-topic-click">click to vote</div>
+                                        <div class="idea-vote-topic-thanks">thanks!</div>
+                                    </div>
+                                </div>
+                            </a>    
+                            <a class="idea-main-holder">
+                              <div class="idea-title">EOS-01 (2020)</div>
+                               <div class="idea-mini-info">
+                                  <span class="idea-authors">Objective: Earth observation satellite supporting agriculture and disaster management.</span>
+                                  <span class="idea-read-more-title">Read more...</span>
+                               </div>
+
+                                <div class="idea-openable">
+                                     <p class="idea-text">EOS-01 provides high-quality remote sensing data for environmental monitoring, supporting initiatives for sustainable resource management, land use planning, and disaster response.</p>
+                                </div>
+                            </a>
+
+                        </div>
+
+<!--    ISRO (Indian Space Research Organisation) Mission 23    -->
+
+                           <div class="idea-box" id="add-probes">
+                            <a class="idea-vote-holder">
+                                <div class="panel-type-10-semi-black-bg">
+                                    <div class="idea-vote-count">0</div>
+                                    <div class="idea-vote-topic-holder">
+                                        <div class="idea-vote-topic-click">click to vote</div>
+                                        <div class="idea-vote-topic-thanks">thanks!</div>
+                                    </div>
+                                </div>
+                            </a>    
+                            <a class="idea-main-holder">
+                              <div class="idea-title"> Chandrayaan-3 (2023)</div>
+                               <div class="idea-mini-info">
+                                  <span class="idea-authors">Objective: Attempting a soft landing near the Moon’s south pole.</span>
+                                  <span class="idea-read-more-title">Read more...</span>
+                               </div>
+
+                                <div class="idea-openable">
+                                     <p class="idea-text"> Chandrayaan-3 achieved a successful soft landing, deploying the Pragyan rover, which analyzed soil composition and temperature variations, making India the first country to land near the lunar south pole.</p>
+                                </div>
+                            </a>
+
+                        </div>
+<!--    ISRO (Indian Space Research Organisation) Mission 24    -->
+                           <div class="idea-box" id="add-probes">
+                            <a class="idea-vote-holder">
+                                <div class="panel-type-10-semi-black-bg">
+                                    <div class="idea-vote-count">0</div>
+                                    <div class="idea-vote-topic-holder">
+                                        <div class="idea-vote-topic-click">click to vote</div>
+                                        <div class="idea-vote-topic-thanks">thanks!</div>
+                                    </div>
+                                </div>
+                            </a>    
+                            <a class="idea-main-holder">
+                              <div class="idea-title">Aditya-L1 (2023)</div>
+                               <div class="idea-mini-info">
+                                  <span class="idea-authors">Objective: Observing the Sun’s atmosphere and solar dynamics.</span>
+                                  <span class="idea-read-more-title">Read more...</span>
+                               </div>
+
+                                <div class="idea-openable">
+                                     <p class="idea-text"> Positioned at the L1 point, Aditya-L1 studies the Sun’s outer layers, particularly the corona, gathering data that contributes to global solar research, especially on solar flares and space weather effects impacting Earth.
+                                     </p>
+                                </div>
+                            </a>
+                        </div>
+                </div>
+<!-----------------------------------------NASA (National Aeronautics and Space Administration------------------------------------------>
+
+                <a class="ideas-category-title">NASA (National Aeronautics and Space Administration)</a>
+
+                <div class="ideas-list">
+
+<!--NASA (National Aeronautics and Space Administration)  Mission 1-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Explorer 1 (1958)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: The United States' first successful satellite launch.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Explorer 1 discovered the Van Allen radiation belts, a significant discovery in space science. The mission, developed quickly in response to the Soviet Union’s Sputnik, used scientific instruments to measure radiation, marking NASA’s entrance into space exploration and setting the stage for further studies of Earth's magnetosphere.
+                            </p>
+                        </div>
+                    </a>
+
+                         </div>
+
+<!--NASA (National Aeronautics and Space Administration)  Mission 2-->
+
+                    <div class="idea-box" id="add-probes">
+                        <a class="idea-vote-holder">
+                            <div class="panel-type-10-semi-black-bg">
+                                <div class="idea-vote-count">0</div>
+                                <div class="idea-vote-topic-holder">
+                                    <div class="idea-vote-topic-click">click to vote</div>
+                                    <div class="idea-vote-topic-thanks">thanks!</div>
+                                </div>
+                            </div>
+                        </a>    
+                        <a class="idea-main-holder">
+                        <div class="idea-title">Explorer 1 (1958)</div>
+                        <div class="idea-mini-info">
+                            <span class="idea-authors">Objective: The United States' first successful satellite launch.</span>
+                            <span class="idea-read-more-title">Read more...</span>
+                        </div>
+
+                            <div class="idea-openable">
+                                <p class="idea-text"> Explorer 1 discovered the Van Allen radiation belts, a significant discovery in space science. The mission, developed quickly in response to the Soviet Union’s Sputnik, used scientific instruments to measure radiation, marking NASA’s entrance into space exploration and setting the stage for further studies of Earth's magnetosphere.
+                                </p>
+                            </div>
+                        </a>
+
+                    </div>
+
+                    
+<!--NASA (National Aeronautics and Space Administration)  Mission 3-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Explorer 1 (1958)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: The United States' first successful satellite launch.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Explorer 1 discovered the Van Allen radiation belts, a significant discovery in space science. The mission, developed quickly in response to the Soviet Union’s Sputnik, used scientific instruments to measure radiation, marking NASA’s entrance into space exploration and setting the stage for further studies of Earth's magnetosphere.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+                    
+                
+<!--NASA (National Aeronautics and Space Administration)  Mission 4-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Explorer 1 (1958)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: The United States' first successful satellite launch.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Explorer 1 discovered the Van Allen radiation belts, a significant discovery in space science. The mission, developed quickly in response to the Soviet Union’s Sputnik, used scientific instruments to measure radiation, marking NASA’s entrance into space exploration and setting the stage for further studies of Earth's magnetosphere.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+                                
+<!--NASA (National Aeronautics and Space Administration)  Mission 5-->
+
+                    <div class="idea-box" id="add-probes">
+                        <a class="idea-vote-holder">
+                            <div class="panel-type-10-semi-black-bg">
+                                <div class="idea-vote-count">0</div>
+                                <div class="idea-vote-topic-holder">
+                                    <div class="idea-vote-topic-click">click to vote</div>
+                                    <div class="idea-vote-topic-thanks">thanks!</div>
+                                </div>
+                            </div>
+                        </a>    
+                        <a class="idea-main-holder">
+                        <div class="idea-title">Explorer 1 (1958)</div>
+                        <div class="idea-mini-info">
+                            <span class="idea-authors">Objective: The United States' first successful satellite launch.</span>
+                            <span class="idea-read-more-title">Read more...</span>
+                        </div>
+
+                            <div class="idea-openable">
+                                <p class="idea-text"> Explorer 1 discovered the Van Allen radiation belts, a significant discovery in space science. The mission, developed quickly in response to the Soviet Union’s Sputnik, used scientific instruments to measure radiation, marking NASA’s entrance into space exploration and setting the stage for further studies of Earth's magnetosphere.
+                                </p>
+                            </div>
+                        </a>
+
+                    </div>
+
+                                
+<!--NASA (National Aeronautics and Space Administration)  Mission 6-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Explorer 1 (1958)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: The United States' first successful satellite launch.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Explorer 1 discovered the Van Allen radiation belts, a significant discovery in space science. The mission, developed quickly in response to the Soviet Union’s Sputnik, used scientific instruments to measure radiation, marking NASA’s entrance into space exploration and setting the stage for further studies of Earth's magnetosphere.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+                                
+<!--NASA (National Aeronautics and Space Administration)  Mission 7-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Explorer 1 (1958)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: The United States' first successful satellite launch.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Explorer 1 discovered the Van Allen radiation belts, a significant discovery in space science. The mission, developed quickly in response to the Soviet Union’s Sputnik, used scientific instruments to measure radiation, marking NASA’s entrance into space exploration and setting the stage for further studies of Earth's magnetosphere.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+<!--NASA (National Aeronautics and Space Administration)  Mission 8-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Explorer 1 (1958)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: The United States' first successful satellite launch.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Explorer 1 discovered the Van Allen radiation belts, a significant discovery in space science. The mission, developed quickly in response to the Soviet Union’s Sputnik, used scientific instruments to measure radiation, marking NASA’s entrance into space exploration and setting the stage for further studies of Earth's magnetosphere.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+                            
+<!--NASA (National Aeronautics and Space Administration)  Mission 9-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Explorer 1 (1958)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: The United States' first successful satellite launch.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Explorer 1 discovered the Van Allen radiation belts, a significant discovery in space science. The mission, developed quickly in response to the Soviet Union’s Sputnik, used scientific instruments to measure radiation, marking NASA’s entrance into space exploration and setting the stage for further studies of Earth's magnetosphere.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+<!--NASA (National Aeronautics and Space Administration)  Mission 10-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Explorer 1 (1958)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: The United States' first successful satellite launch.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Explorer 1 discovered the Van Allen radiation belts, a significant discovery in space science. The mission, developed quickly in response to the Soviet Union’s Sputnik, used scientific instruments to measure radiation, marking NASA’s entrance into space exploration and setting the stage for further studies of Earth's magnetosphere.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+<!--NASA (National Aeronautics and Space Administration)  Mission 11 -->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Explorer 1 (1958)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: The United States' first successful satellite launch.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Explorer 1 discovered the Van Allen radiation belts, a significant discovery in space science. The mission, developed quickly in response to the Soviet Union’s Sputnik, used scientific instruments to measure radiation, marking NASA’s entrance into space exploration and setting the stage for further studies of Earth's magnetosphere.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+<!--NASA (National Aeronautics and Space Administration)  Mission 12-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Explorer 1 (1958)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: The United States' first successful satellite launch.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Explorer 1 discovered the Van Allen radiation belts, a significant discovery in space science. The mission, developed quickly in response to the Soviet Union’s Sputnik, used scientific instruments to measure radiation, marking NASA’s entrance into space exploration and setting the stage for further studies of Earth's magnetosphere.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+<!--NASA (National Aeronautics and Space Administration)  Mission 13 -->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Explorer 1 (1958)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: The United States' first successful satellite launch.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Explorer 1 discovered the Van Allen radiation belts, a significant discovery in space science. The mission, developed quickly in response to the Soviet Union’s Sputnik, used scientific instruments to measure radiation, marking NASA’s entrance into space exploration and setting the stage for further studies of Earth's magnetosphere.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+<!--NASA (National Aeronautics and Space Administration)  Mission 14-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Explorer 1 (1958)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: The United States' first successful satellite launch.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Explorer 1 discovered the Van Allen radiation belts, a significant discovery in space science. The mission, developed quickly in response to the Soviet Union’s Sputnik, used scientific instruments to measure radiation, marking NASA’s entrance into space exploration and setting the stage for further studies of Earth's magnetosphere.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+<!--NASA (National Aeronautics and Space Administration)  Mission 15-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Explorer 1 (1958)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: The United States' first successful satellite launch.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Explorer 1 discovered the Van Allen radiation belts, a significant discovery in space science. The mission, developed quickly in response to the Soviet Union’s Sputnik, used scientific instruments to measure radiation, marking NASA’s entrance into space exploration and setting the stage for further studies of Earth's magnetosphere.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+<!--NASA (National Aeronautics and Space Administration)  Mission 17-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Explorer 1 (1958)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: The United States' first successful satellite launch.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Explorer 1 discovered the Van Allen radiation belts, a significant discovery in space science. The mission, developed quickly in response to the Soviet Union’s Sputnik, used scientific instruments to measure radiation, marking NASA’s entrance into space exploration and setting the stage for further studies of Earth's magnetosphere.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-----------------------------------------------Roscosmos (Russian Federal Space Agency)----------------------------------------------->
+
+
+                <a class="ideas-category-title">Roscosmos (Russian Federal Space Agency)</a>
+
+                <div class="ideas-list">
+
+<!--Roscosmos (Russian Federal Space Agency)  Mission 1-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Luna Program (1959-1976)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: Conduct lunar exploration with unmanned probes.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Luna missions achieved several space exploration firsts, including the first impact on the Moon (Luna 2, 1959) and the first photos of the Moon’s far side (Luna 3, 1959). Luna 9 (1966) was the first to perform a soft landing on the Moon, sending back panoramic images of the surface, while Luna 16, 20, and 24 successfully returned lunar soil samples to Earth. These missions provided invaluable data on the lunar surface, composition, and temperature, advancing lunar science.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+
+<!--Roscosmos (Russian Federal Space Agency)  Mission 2-->
+
+                    <div class="idea-box" id="add-probes">
+                        <a class="idea-vote-holder">
+                            <div class="panel-type-10-semi-black-bg">
+                                <div class="idea-vote-count">0</div>
+                                <div class="idea-vote-topic-holder">
+                                    <div class="idea-vote-topic-click">click to vote</div>
+                                    <div class="idea-vote-topic-thanks">thanks!</div>
+                                </div>
+                            </div>
+                        </a>    
+                        <a class="idea-main-holder">
+                        <div class="idea-title">Venera Program (1961-1984)</div>
+                        <div class="idea-mini-info">
+                            <span class="idea-authors">Objective:  Explore Venus and study its atmosphere and surface.</span>
+                            <span class="idea-read-more-title">Read more...</span>
+                        </div>
+
+                            <div class="idea-openable">
+                                <p class="idea-text"> The Venera program achieved the first human-made impact on Venus (Venera 3, 1966), the first landing on another planet (Venera 7, 1970), and the first images of Venus’ surface (Venera 9, 1975). Later missions (Venera 13 and 14, 1982) conducted chemical analyses of Venusian soil and provided data on its atmosphere, which is thick with sulfuric acid clouds. Venera's data helped shape our understanding of Venus’ extreme conditions, high atmospheric pressure, and surface composition.
+                                </p>
+                            </div>
+                        </a>
+
+                    </div>
+
+                    
+<!--Roscosmos (Russian Federal Space Agency)  Mission 3-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Soyuz Program (1967-Present)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: Human spaceflight missions, including crew transport and cargo.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Soyuz has become the world’s most reliable crewed spacecraft, instrumental in space station support, including transporting astronauts to the International Space Station (ISS) since 2000. Early missions provided essential experience for long-term human spaceflight, while later missions continuously advanced life-support, safety, and re-entry technology. Soyuz is integral to international space collaboration and continues to support ISS operations.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+                    
+                
+<!--Roscosmos (Russian Federal Space Agency)  Mission 4-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Salyut Space Station Program (1971-1986)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: Develop space station technology and conduct long-duration human spaceflight experiments.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> The Salyut program included the world’s first space station, Salyut 1, which laid the groundwork for extended human missions. Later stations, like Salyut 6 and Salyut 7, supported scientific experiments on Earth observation, materials science, and medicine, paving the way for future space station designs, particularly the Mir space station. The program’s successes and challenges, including crewed docking and repairs, set standards for orbital operations.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+                                
+<!--Roscosmos (Russian Federal Space Agency)  Mission 5-->
+
+                    <div class="idea-box" id="add-probes">
+                        <a class="idea-vote-holder">
+                            <div class="panel-type-10-semi-black-bg">
+                                <div class="idea-vote-count">0</div>
+                                <div class="idea-vote-topic-holder">
+                                    <div class="idea-vote-topic-click">click to vote</div>
+                                    <div class="idea-vote-topic-thanks">thanks!</div>
+                                </div>
+                            </div>
+                        </a>    
+                        <a class="idea-main-holder">
+                        <div class="idea-title">Mars Program (1971-1974)</div>
+                        <div class="idea-mini-info">
+                            <span class="idea-authors">Objective: Study Mars with orbiters and landers.</span>
+                            <span class="idea-read-more-title">Read more...</span>
+                        </div>
+
+                            <div class="idea-openable">
+                                <p class="idea-text"> Mars 3 was the first spacecraft to land on Mars (1971), although it ceased transmission shortly after landing. Mars orbiters like Mars 5 sent back data on the Martian atmosphere and surface. While facing technical difficulties, the missions contributed to early mapping efforts and increased knowledge of Martian conditions, which helped inform later international Mars missions.
+                                </p>
+                            </div>
+                        </a>
+
+                    </div>
+
+                                
+<!--Roscosmos (Russian Federal Space Agency)  Mission 6-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Mir Space Station (1986-2001)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: Long-term human habitation in space and international collaboration.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Mir was the world’s first modular space station, supporting complex scientific and biological research in orbit for nearly 15 years. It hosted international astronauts and became a hub for joint space missions with the U.S. and European Space Agencies. Mir allowed for unprecedented research into the effects of long-term space exposure on the human body and refined techniques for on-orbit repairs, laying the groundwork for the ISS.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+                                
+<!--Roscosmos (Russian Federal Space Agency)  Mission 7-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title"> Phobos Program (1988-1989)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: Study Mars and its moon Phobos.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Phobos 2 successfully reached Mars and sent back images of Mars and Phobos, revealing detailed surface features and contributing early data on the Martian atmosphere and Phobos' surface. Despite losing contact before releasing its landers, the mission advanced imaging techniques and orbital operations near Mars.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+<!--Roscosmos (Russian Federal Space Agency)  Mission 8-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Spektr-R (RadioAstron) (2011-2019)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: Conduct high-resolution radio astronomy by linking with ground-based telescopes.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text">  Spektr-R, a radio telescope, enabled extremely high-resolution observations by acting in concert with terrestrial observatories. It studied distant quasars, black holes, and interstellar phenomena, helping map distant cosmic objects and refine astronomical imaging technology. This mission provided insights into the structure of the universe and furthered radio astronomy capabilities.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+                            
+<!--Roscosmos (Russian Federal Space Agency)  Mission 9-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">ExoMars Trace Gas Orbiter (2016)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: Study Martian atmospheric gases, particularly methane, which could indicate biological or geological activity.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> The Trace Gas Orbiter has mapped Mars’ atmosphere, analyzing trace gases and detecting hydrogen reserves linked to possible water sources beneath the surface. The mission continues to provide data for Mars research, focusing on potential biosignatures and helping prepare for future Mars exploration missions, including rover missions.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+<!--Roscosmos (Russian Federal Space Agency)  Mission 10-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Luna-25 (2023)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: Land on the Moon’s south pole to study the surface and soil composition.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Although Luna-25 did not complete its landing, it marked Russia's renewed lunar ambitions. The mission, intended to explore lunar polar soil and ice deposits, highlighted Russia's current lunar technology and provided experience for future lunar projects. This attempt emphasized Roscosmos’ commitment to re-establishing a lunar presence and developing technology for sustained lunar exploration.
+                            </p>
+                        </div>
+                    </a>
+                </div>
+             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---------------------------------------------------- ESA (European Space Agency) ----------------------------------------------------->
+
+
+                <a class="ideas-category-title">ESA (European Space Agency) – Europe</a>
+
+                <div class="ideas-list">
+
+<!--ESA (European Space Agency) Mission 1-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Ariane Rocket Program (1979-Present)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: Develop reliable launch vehicles for Europe.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> The Ariane program made Europe a major player in space access, providing reliable, commercial launch services. Ariane 5, for example, has launched numerous scientific, commercial, and governmental payloads, contributing significantly to global satellite deployment. ESA's success with Ariane has strengthened Europe’s autonomy in space launch capabilities and fostered the growth of the European satellite market.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+<!--ESA (European Space Agency)  Mission 2-->
+
+                    <div class="idea-box" id="add-probes">
+                        <a class="idea-vote-holder">
+                            <div class="panel-type-10-semi-black-bg">
+                                <div class="idea-vote-count">0</div>
+                                <div class="idea-vote-topic-holder">
+                                    <div class="idea-vote-topic-click">click to vote</div>
+                                    <div class="idea-vote-topic-thanks">thanks!</div>
+                                </div>
+                            </div>
+                        </a>    
+                        <a class="idea-main-holder">
+                        <div class="idea-title">Giotto (1985-1992)</div>
+                        <div class="idea-mini-info">
+                            <span class="idea-authors">Objective: Study Halley’s Comet.</span>
+                            <span class="idea-read-more-title">Read more...</span>
+                        </div>
+
+                            <div class="idea-openable">
+                                <p class="idea-text"> Giotto became the first spacecraft to make a close encounter with a comet, capturing detailed images of Halley’s nucleus and gathering data on its composition. The mission revealed the structure of the comet’s dust and gas, advancing comet science and contributing to the broader understanding of primordial solar system material.
+                                </p>
+                            </div>
+                        </a>
+
+                    </div>
+
+                    
+<!--ESA (European Space Agency) Mission 3-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Hipparcos (1989-1993)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: Measure stellar positions and motions with unprecedented accuracy.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text">  Hipparcos created the first high-precision catalog of star positions, distances, and motions, revolutionizing astronomy by providing fundamental data on stellar distances and parallax measurements. The mission allowed for precise measurements of over 100,000 stars, providing insights into the structure and dynamics of our galaxy.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+                    
+
+<!--ESA (European Space Agency) Mission 4-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Cluster (2000-Present)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: Study Earth's magnetosphere in 3D.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text">Cluster's four satellites orbit Earth in formation, studying the complex interactions between solar wind and Earth's magnetic field. The mission has provided valuable insights into magnetic reconnection, auroras, and space weather dynamics. Its observations are crucial for understanding how solar activity affects Earth’s space environment and communication systems.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+                                
+<!--ESA (European Space Agency)  Mission 5-->
+
+                    <div class="idea-box" id="add-probes">
+                        <a class="idea-vote-holder">
+                            <div class="panel-type-10-semi-black-bg">
+                                <div class="idea-vote-count">0</div>
+                                <div class="idea-vote-topic-holder">
+                                    <div class="idea-vote-topic-click">click to vote</div>
+                                    <div class="idea-vote-topic-thanks">thanks!</div>
+                                </div>
+                            </div>
+                        </a>    
+                        <a class="idea-main-holder">
+                        <div class="idea-title">Mars Express (2003-Present)</div>
+                        <div class="idea-mini-info">
+                            <span class="idea-authors">Objective: Study Mars' atmosphere, surface, and subsurface.</span>
+                            <span class="idea-read-more-title">Read more...</span>
+                        </div>
+
+                            <div class="idea-openable">
+                                <p class="idea-text"> Mars Express has delivered extensive data on Mars, including evidence of water ice and methane gas. The spacecraft's radar has penetrated Mars’ surface, hinting at possible subsurface lakes. The mission continues to contribute to our understanding of Mars' climate, geology, and potential habitability.
+                                </p>
+                            </div>
+                        </a>
+
+                    </div>
+
+                                
+<!--ESA (European Space Agency)  Mission 6-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">SMART-1 (2003-2006)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: Test ion propulsion and study the Moon.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> SMART-1 successfully demonstrated ion propulsion, marking a technological milestone. The mission also mapped the lunar surface, providing detailed topography and mineralogical data that aided future lunar exploration planning. Its success with ion propulsion has influenced spacecraft design, especially for long-duration missions.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+                                
+<!--ESA (European Space Agency)  Mission 7-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Huygens (2005)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: Land on Saturn’s moon Titan to study its atmosphere and surface.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Part of the Cassini-Huygens mission with NASA, Huygens became the first probe to land on Titan, revealing a surface shaped by methane rivers and lakes. Huygens’ atmospheric descent and surface images provided unprecedented data on Titan’s climate, geology, and potential for prebiotic chemistry, reshaping our understanding of this unique moon.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+<!--ESA (European Space Agency)  Mission 8-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Venus Express (2005-2015)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: Study Venus’ atmosphere, focusing on greenhouse effects and atmospheric dynamics.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Venus Express provided detailed insights into Venus’ atmosphere, including evidence of active volcanism, unusual wind patterns, and high-altitude atmospheric changes. The data improved understanding of Venusian climate and greenhouse effects, offering comparative insights into planetary atmospheres and climate science relevant to Earth.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+                            
+<!--ESA (European Space Agency) Mission 9-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Herschel Space Observatory (2009-2013)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: Study the formation of stars and galaxies in the far-infrared spectrum.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text">  Herschel observed cold, dust-filled regions of the universe, where stars and planets form. It discovered water vapor around stars, revealed new star-forming regions, and provided detailed studies of galaxy evolution. Herschel’s infrared data has enhanced our understanding of cosmic life cycles and interstellar chemistry.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+<!--ESA (European Space Agency)  Mission 10-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Planck (2009-2013)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: Map the cosmic microwave background (CMB) to understand the universe’s origin.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Planck produced the most detailed map of the CMB, refining measurements of the universe’s age, composition, and structure. Its data confirmed and improved the standard model of cosmology, helping researchers understand the distribution of dark matter and energy, and offering insights into the early universe’s inflationary phase.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+<!--ESA (European Space Agency)  Mission 11 -->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Rosetta (2004-2016)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: Orbit and land on Comet 67P/Churyumov–Gerasimenko.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Rosetta made history by orbiting a comet and delivering the Philae lander onto its surface. The mission provided insights into comet composition, revealing organic molecules and helping scientists understand the role of comets in delivering water and organic material to Earth. Rosetta's close-up observations of a comet’s activity transformed comet science and origins of life research.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+<!--ESA (European Space Agency)  Mission 12-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Gaia (2013-Present)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: Create a precise 3D map of the Milky Way.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Gaia’s mapping of over a billion stars is the most accurate 3D map of our galaxy, revolutionizing fields such as stellar evolution, galactic dynamics, and cosmology. It has tracked the movement of stars, discovered exoplanets, and contributed to studies of dark matter distribution, offering a detailed understanding of the Milky Way’s structure.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+<!--ESA (European Space Agency)  Mission 13 -->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">ExoMars Trace Gas Orbiter (2016-Present)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: Analyze trace gases in Mars’ atmosphere for signs of biological or geological activity</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> The orbiter has analyzed Martian atmospheric gases, finding minimal levels of methane while detecting large subsurface hydrogen deposits. This helps scientists understand Mars’ geological activity and potential habitability, while its data on atmospheric composition is crucial for planning human exploration.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+<!--ESA (European Space Agency)  Mission 14-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">Solar Orbiter (2020-Present)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective:  Study the Sun’s poles and outer corona to understand solar dynamics and space weather.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text"> Solar Orbiter has provided unprecedented views of the Sun’s poles and detailed data on solar wind, magnetic fields, and particle storms. Its proximity allows for detailed observations of solar activity, improving our understanding of space weather’s impact on Earth’s environment, satellites, and power systems.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+
+<!--ESA (European Space Agency)  Mission 15-->
+
+                <div class="idea-box" id="add-probes">
+                    <a class="idea-vote-holder">
+                        <div class="panel-type-10-semi-black-bg">
+                            <div class="idea-vote-count">0</div>
+                            <div class="idea-vote-topic-holder">
+                                <div class="idea-vote-topic-click">click to vote</div>
+                                <div class="idea-vote-topic-thanks">thanks!</div>
+                            </div>
+                        </div>
+                    </a>    
+                    <a class="idea-main-holder">
+                    <div class="idea-title">BepiColombo (2018-Present)</div>
+                    <div class="idea-mini-info">
+                        <span class="idea-authors">Objective: Study Mercury’s surface, magnetic field, and exosphere.</span>
+                        <span class="idea-read-more-title">Read more...</span>
+                    </div>
+
+                        <div class="idea-openable">
+                            <p class="idea-text">  BepiColombo is en route to Mercury, where it will study the planet’s unique magnetic environment and surface composition. Early flybys have already provided preliminary images and data, helping to prepare for the main science mission. The mission aims to understand Mercury’s formation, magnetic field, and potential tectonic activity, offering insights into planetary formation in close proximity to stars.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <script>
+                    $(".ideas-category-title").each(function(index, object) {
+                        var categoryTitle = $(this);
+                        var categoryIdeas = categoryTitle.next(".ideas-list")
+                        categoryTitle.on("click", function() {
+                            categoryIdeas.toggleClass("opened");
+                            categoryIdeas.animate({
+                                height: "toggle"
+                            }, "easeOut");
+                        });
+                    });
+
+                    $(".idea-box").each(function(index, object) {
+                        var ideaBox = $(this);
+                        var ideaID = ideaBox.attr('id');
+                        var ideaBoxMain = ideaBox.find(".idea-main-holder");
+                        var ideaBoxOpenable = ideaBox.find(".idea-openable");
+                        ideaBoxMain.on("click", function() {
+                            ideaBox.toggleClass("opened");
+                            ideaBoxOpenable.animate({
+                                opacity: "toggle",
+                                height: "toggle"
+                            }, "easeOut");
+                        });
+                        var ideaBoxVote = ideaBox.find(".idea-vote-holder");
+                        var ideaBoxVoteCount = ideaBox.find(".idea-vote-count");
+                        ideaBoxVote.on("click", function() {
+                            if (ideaBox.hasClass("voted"))
+                                return;
+                            ideaBox.addClass("voted");
+                            ideaBoxVoteCount.html(parseInt(ideaBoxVoteCount.html()) + 1);
+                            $.ajax({
+                                type: 'POST',
+                                url: '../pages/lab-ideas-data.php',
+                                data: {
+                                    action: "ideaVote",
+                                    ideaID: ideaID
+                                },
+                                success: function(votes) {
+                                    ideaBoxVoteCount.html(votes);
+                                }
+                            });
+                        });
+                    });
+                </script>
+
+
+
+            </div>
+
+            <div class="distance-large"></div>
+
+            <div class="thankyou-holder">
+                <h2>Thank you!</h2>
+                <div class="description">Your curiosity and enthusiasm for exploring the universe inspire us to bring the wonders of space closer to everyone. Together, we uncover mysteries, learn from the cosmoscope, and celebrate the vast beauty of the cosmos.</div>
+            </div>   
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="lib/photoswipe/photoswipe.css">
+    <link rel="stylesheet" href="lib/photoswipe/default-skin/default-skin.css">
+    <script src="lib/photoswipe/photoswipe.min.js"></script>
+    <script src="lib/photoswipe/photoswipe-ui-default.min.js"></script>
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <!--<button class="pswp__button pswp__button--share" title="Share"></button>-->
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(".pswp-gallery").each(function(galleryIndex, object) {
+            var holderPSWP = $(".pswp")[0];
+            var holderGallery = $(this);
+            var id = "pswp-uid-" + galleryIndex;
+            holderGallery.attr("data-pswp-uid", id);
+            var images = holderGallery.find("img");
+            var items = [];
+
+            images.each(function(imageIndex, object) {
+                var image = images.eq(imageIndex);
+                var imageSrc = image.attr("src");
+                var imageAlt = image.attr("alt");
+                var imageTarget = image.attr("pswp-target");
+                if (!imageTarget)
+                    imageTarget = imageSrc;
+                var imageTargetSize = image.attr("pswp-target-size").split("x");
+                image.css({
+                    cursor: "pointer"
+                });
+                items.push({
+                    src: imageTarget,
+                    msrc: imageSrc,
+                    title: imageAlt,
+                    w: imageTargetSize[0],
+                    h: imageTargetSize[1]
+                });
+            });
+
+            images.each(function(imageIndex, object) {
+                var image = images.eq(imageIndex);
+                var openedIndex = imageIndex;
+                image.on("click", function() {
+                    var options = {
+                        history: false,
+                        galleryUID: id,
+                        getThumbBoundsFn: function(index) {
+                            var image = images.eq(index);
+                            var offset = image.offset();
+                            return {
+                                x: offset.left,
+                                y: offset.top,
+                                w: image.width()
+                            };
+                        },
+                        index: imageIndex
+                    };
+                    var pswp = new PhotoSwipe(holderPSWP, PhotoSwipeUI_Default, items, options);
+                    pswp.listen("afterChange", function() {
+                        images.eq(openedIndex).css({
+                            visibility: ""
+                        });
+                        openedIndex = pswp.getCurrentIndex();
+                        images.eq(openedIndex).css({
+                            visibility: "hidden"
+                        });
+                    });
+                    pswp.listen('destroy', function() {
+                        images.css({
+                            visibility: ""
+                        });
+                    });
+                    pswp.init();
+                    return false;
+                });
+            });
+
+        });
+    </script>
+
+    <div class="footer-dist-before"></div>
+    <div id="footer">
+        <div class="footer-background"></div>
+
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                    <div class="footer-col-topic">contact us</div>
+                    <div class="footer-col-content">
+                        <a class="email" href="mailto:contact@cosmoscope.com">contact@cosmoscope.com</a>
+                        <div class="footer-col-dist"></div>
+                        <div class="footer-social-btns">
+                            <a class="footer-social-btn fb" href="https://www.facebook.com/profile.php?id=61568329887459/" target="_blank"></a>
+                            <a class="footer-social-btn tw" href="https://twitter.com/solarsystscope" target="_blank"></a>
+                            <a class="footer-social-btn yt" href="https://www.youtube.com/user/solarsystemscope" target="_blank"></a>
+                            <!--<a class="footer-social-btn gp" href="" target="_blank"></a>-->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xs-12 col-sm-4">
+                    
+                </div>
+                
+                
+                <div class="col-xs-12 col-sm-4">
+
+                    <div class="footer-col-topic">POPULAR SPACEPEDIA</div>
+                    <div class="footer-col-content footer-col-content-spacepedia">
+                        <a href="spacepedia/handbook/orbital-and-rotational-characteristics-of-earth.html">
+							<span>1.</span>
+							<!--<span>Feb 01</span>-->
+							<span>Orbital and rotational characteristics...</span>
+						</a> <a href="spacepedia/handbook/sun.html">
+							<span>2.</span>
+							<!--<span>Jan 31</span>-->
+							<span>Handbook - The Sun</span>
+						</a> <a href="spacepedia/handbook/mars.html">
+							<span>3.</span>
+							<!--<span>Jan 31</span>-->
+							<span>Handbook - Mars</span>
+						</a> <a href="spacepedia/handbook/jupiter.html">
+							<span>4.</span>
+							<!--<span>Jan 31</span>-->
+							<span>Handbook - Jupiter</span>
+						</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+</body>
+
+</html>

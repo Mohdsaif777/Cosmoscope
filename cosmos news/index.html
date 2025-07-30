@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmos News - Latest in Astronomy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="stars-bg"></div>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-galaxy"></i>
+                <span>CosmosNews</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#featured" class="active">Featured</a></li>
+                <li><a href="#latest">Latest News</a></li>
+                <li><a href="#discoveries">Discoveries</a></li>
+                <li><a href="#events">Space Events</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="search-toggle">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="featured" class="featured-section">
+            <div class="featured-content">
+                <h1>Explore the Cosmos</h1>
+                <p>Your gateway to the latest astronomical discoveries and space exploration</p>
+            </div>
+        </section>
+
+        <section id="latest" class="news-section">
+            <div class="section-header">
+                <h2>Latest News</h2>
+                <div class="section-nav">
+                    <button class="nav-arrow prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-arrow next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="news-grid" id="newsContainer">
+                <!-- News items will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <section id="discoveries" class="discoveries-section">
+            <div class="section-header">
+                <h2>Recent Discoveries</h2>
+            </div>
+            <div class="discoveries-grid" id="discoveriesContainer">
+                <!-- Discoveries will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <section id="events" class="events-section">
+            <div class="section-header">
+                <h2>Upcoming Space Events</h2>
+            </div>
+            <div class="events-timeline" id="eventsContainer">
+                <!-- Events will be dynamically inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>CosmosNews</h3>
+                <p>Bringing the universe closer to you</p>
+            </div>
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#featured">Featured</a></li>
+                    <li><a href="#latest">Latest News</a></li>
+                    <li><a href="#discoveries">Discoveries</a></li>
+                    <li><a href="#events">Space Events</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 CosmosNews. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

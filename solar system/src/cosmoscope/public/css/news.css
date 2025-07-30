@@ -1,0 +1,204 @@
+/*-----------------------------------*/
+
+/*PLACES AND EVENTS*/
+
+/*-----------------------------------*/
+
+div.places {
+    background-color: #000;
+    color: #e0e6ef;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 32px 0 rgba(0,0,0,0.3);
+    border-radius: 18px;
+    padding-bottom: 36px;
+}
+
+.places-container-main {
+    margin-top: 90px;
+}
+
+.places-div-line-h {
+    height: 2px;
+    margin: 90px 0;
+    background-color: rgba(18, 75, 114, .5);
+}
+
+.btn-load-more-places-holder {
+    text-align: center;
+    margin: 24px 0;
+}
+
+a.btn-load-more-places {
+    display: inline-block;
+    padding: 7px 24px;
+    background: linear-gradient(90deg, #00deff 0%, #124972 100%);
+    color: #101820;
+    font-weight: bold;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px 0 #00deff33;
+    font-size: 110%;
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+}
+a.btn-load-more-places:not(.loading):hover {
+    background: linear-gradient(90deg, #124972 0%, #00deff 100%);
+    color: #fff;
+    box-shadow: 0 4px 16px 0 #00deff55;
+}
+
+a.btn-load-more-places:not(.loading):hover {
+    background-color: #1f6599;
+}
+
+a.btn-load-more-places.loading {
+    pointer-events: none;
+    cursor: default;
+    opacity: .5;
+}
+
+.row-places-location a.btn-load-more-places {
+    display: block;
+}
+
+/*-----------------------------------*/
+
+/*PLACES: HEADER*/
+
+/*-----------------------------------*/
+
+.places-header-image {
+    height: 340px;
+    margin-bottom: 90px;
+    position: relative;
+    color: #fff;
+    background: #000;
+    background-position: right center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 18px 18px 0 0;
+    box-shadow: 0 2px 18px 0 #00deff33;
+}
+
+.places-header-title-holder {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+.places-header-title-holder .places-header-title-main {
+    font-family: "SF-Fourche";
+    font-size: 460%;
+    margin-bottom: 20px;
+}
+
+
+
+/*-----------------------------------*/
+
+/*PLACES LIST*/
+
+/*-----------------------------------*/
+
+.places-list {
+    max-width: 750px;
+    margin: 90px auto 110px;
+}
+
+.places-list .places-list-title {
+    margin-bottom: 50px;
+    background: linear-gradient(90deg, #0e2747 80%, #00deff 100%);
+    color: #fff;
+    padding: 12px 22px;
+    font-size: 140%;
+    font-family: "SF-Fourche";
+    border-radius: 8px;
+    box-shadow: 0 2px 12px 0 #00deff33;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 8px #00deff99, 0 0 2px #000;
+}
+
+/*-----------------------------------*/
+
+/*PLACES LIST -> PLACE BOX*/
+
+/*-----------------------------------*/
+
+.places-list .places-list-boxes .place-box {
+    background: #000;
+    border-radius: 14px;
+    box-shadow: 0 2px 18px 0 rgba(0,0,0,0.6);
+    border: 1.5px solid #22334a;
+    padding: 28px 32px;
+    margin: 28px 0;
+    position: relative;
+    transition: transform 0.18s, box-shadow 0.18s;
+}
+.places-list .places-list-boxes .place-box:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 32px 0 #00deff55;
+}
+
+
+.places-list .places-list-boxes .place-box .place-distance {
+    position: absolute;
+    right: 30px;
+    top: 6px;
+    font-size: 90%;
+}
+
+.places-list .places-list-boxes .place-box .place-title1 {
+    font-family: "SF-Fourche";
+    font-size: 170%;
+    line-height: 130%;
+    color: #00deff;
+    text-shadow: 0 0 8px #00deff55, 0 0 2px #000;
+    margin-bottom: 10px;
+}
+
+.places-list .places-list-boxes .place-box .place-type {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.places-list .places-list-boxes .place-box .place-type,
+.places-list .places-list-boxes .place-box .place-address,
+.places-list .places-list-boxes .place-box .place-homepage {
+    font-size: 90%;
+}
+
+.places-list .places-list-boxes .place-box .place-address,
+.places-list .places-list-boxes .place-box .place-homepage {
+    padding: 1px 0 1px 30px;
+    position: relative;
+}
+
+.places-list .places-list-boxes .place-box .place-address:before,
+.places-list .places-list-boxes .place-box .place-homepage:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 18px;
+    height: 18px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+
+.places-list .places-list-boxes .place-box .place-address:before {
+    background-image: url(../images/icons/place_address.png);
+}
+
+.places-list .places-list-boxes .place-box .place-homepage:before {
+    background-image: url(../images/icons/place_homepage.png);
+}
+
+.places-list .places-list-boxes .place-box .place-homepage {
+    display: block;
+    color: #155869;
+    text-decoration: underline;
+}
+

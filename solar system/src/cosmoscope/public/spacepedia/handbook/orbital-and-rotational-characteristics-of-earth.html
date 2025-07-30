@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Spacepedia | Cosmoscope</title>
+    <meta name="description" content="Articles about Astronomy, Space Discoveries, Observations and more." />
+    <meta name="keywords" content="spacepedia,encyclopedia,encyclopaedia,space,universe,planets,astronomy,facts,discoveries,articles,solar system" />
+    <link rel="shortcut icon" href="../../images/favicon.png" />
+    <link rel="image_src" type="image/jpeg" href="../../images/favicon.png" />
+
+    <script>
+        var updateViewport = function() {
+            var minWidth = 500;
+            var screenWidth = screen.width;
+            switch (window.orientation) {
+                case -90:
+                case 90:
+                    minWidth = 730;
+                    screenWidth = screen.height;
+                    break;
+            }
+            document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=" + (screenWidth / minWidth));
+        }
+        window.addEventListener('orientationchange', updateViewport);
+        updateViewport();
+    </script>
+
+
+    <!-- GOOGLE TAG MANAGER -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MDW8FQ9');
+    </script>
+
+
+    <!-- OG -->
+   
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../lib/jquery.validate.min.js"></script>
+
+    <!-- BOOTSTRAP -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="../lib/bootstrap-xxs-tn.css">
+
+
+    <!-- MOBILE DETECT -->
+    <script src="../lib/mobile-detect.min.js"></script>
+
+    <!-- SOLAR CSS -->
+    <link rel="stylesheet" href="../../css/fonts.css?v=2.015" />
+    <link rel="stylesheet" href="../../css/main.css?v=2.015" />
+    <link rel="stylesheet" href="../../css/ui.css?v=2.015" />
+    <link rel="stylesheet" href="../../css/header.css?v=2.015" />
+    <link rel="stylesheet" href="../../css/footer.css?v=2.015" />
+    <link rel="stylesheet" href="../../css/spacepedia.css?v=2.015" />
+
+    <!-- SOLAR JS -->
+    <script src="../../js/solar.js?v=2.015"></script>
+
+</head>
+
+<body page="spacepedia">
+
+
+    <!-- GOOGLE TAG MANAGER -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDW8FQ9" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+    <div id="header">
+
+        <div class="first hidden-xs">
+            <a class="contact" href="mailto:contact@solarsystemscope.com">
+				<span>Contact us:</span>
+				<span>contact@solarsystemscope.com</span>
+			</a>
+            <a class="button facebook hidden-xs hidden-sm hidden-md" href="https://www.facebook.com/SolarSystemScopeModels/" target="_blank">Facebook</a>
+             
+        </div>
+        <div class="navbar">
+            <div class="glow-bottom-8px"> </div>
+            <div class="logo-holder">
+                <a href="/"><h2>Cosmoscope</h2></a>
+            </div>
+            <div class="menu">
+                <a class="button show-on-start text-glow home selected" href="../../home.html">Home</a>
+                <a class="button show-on-start text-glow" href="../../about.html">About</a>
+                <a class="button show-on-start text-glow" href="../../skydiary.html">SkyDiary</a>
+                <a class="button show-on-start text-glow" href="../../lab.html">Mission</a>
+                <a class="button show-on-start text-glow" href="http://localhost:3001">Shop</a>
+                <a class="button show-on-start text-glow" href="../../quiz.html">Quiz Game</a>
+                <a class="button show-on-start text-glow" href="http://localhost:3002/chatbot.html">Cosmobot</a>
+                <a href="#" class="button show-on-start text-glow" id="logout">Logout</a>
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        <!-- Hidden Form for Logout -->
+        <form id="logoutForm" action="/logout" method="POST" style="display: none;">
+            <button type="submit">Logout</button>
+        </form>
+
+        <script>
+            // Attach event listener to the logout link
+            document.getElementById('logout').addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default link behavior
+                document.getElementById('logoutForm').submit(); // Submit the hidden form
+            });
+        </script>
+        
+    </div>
+    <div class="spacepedia">
+
+        <div class="container">
+            <div class="spacepedia-header-title solar-h1-max"><a href="spacepedia" target="_self">Spacepedia</a></div>
+
+        </div>
+
+        <div class="spacepedia-header-image cover-small" style="background-image: url(../images/headers/solar_earth.jpg);">
+            <div class="container">
+                <div class="vcenter-title">
+                    <div class="spacepedia-header-image-title show-on-start smaller-text">Orbital and rotational characteristics of our planet Earth</div>
+                </div>
+
+
+            </div>
+        </div>
+        <script>
+            var backgroundWidth = 1800;
+            var backgroundHeight = 700;
+            var element = $(".spacepedia-header-image");
+            var updateCover = null;
+            if (element.hasClass("cover-small"))
+                updateCover = function() {
+                    element.css({
+                        backgroundSize: (element.width() > backgroundWidth || element.height() > backgroundHeight) ? "cover" : ""
+                    });
+                }
+            SolarSystemScope.Parallax.AddBackground(element, {
+                fixed: .5,
+                beforeUpdate: updateCover,
+                backgroundHeight: backgroundHeight,
+                enableScreenLimits: 1
+            });
+        </script>
+
+        <div class="container spacepedia-container-main">  
+            <div class="spacepedia-left-major-right-minor">
+                <div>
+                    <div class="article-text">
+                        <span class="img-holder on-right"><img src="../images/articles_2017/orbital-and-rotational-characteristics-of-earth_01.jpg" alt=""><span class="text">A sidereal day is the time it takes for the Earth to rotate about its axis so that the distant stars appear in the same position in the sky. A solar day is the time it takes for the Earth to rotate about its axis so that the Sun appears in the same position in the sky. The sidereal day is ~4 minutes shorter than the solar day</span></span>
+
+                            <p style="text-align: justify;">Our planet Earth rotates around its axis from west to east. An axis is an imaginary line that runs from the North Pole to the South Pole.If you look on the Earth from the northern hemisphere,it rotates counter clockwise.
+                                One complete rotation around its own axis relative to the Sun is called a solar day and has a duration of 24 hours. Our Earth doesn't rotate just around its own axis,but it also orbits in the same direction around
+                                the Sun and moves a little bit on orbit every day. Therefore the Earth gets in the same position relative to the celestial stars in a shorter time. This is called a sidereal day which has a duration of 23 hours 56 minutes
+                                and 4.1 seconds. This is the reason why the stars appear about four minutes earlier in the sky every day. A sidereal day is a period that takes the Earth to rotate around its axis so that the distant stars appear in the
+                                same position in the sky.</p>
+                            <h2>Our planet rotation</h2>
+                            <span class="img-holder on-right"><img src="../images/articles_2017/orbital-and-rotational-characteristics-of-earth_02.jpg" alt=""><span class="text">The point at which a planet is closest to the sun is called perihelion. The farthest point is called aphelion.</span></span>
+
+                            <p style="text-align: justify;">Earth's rotation around its axis results in the alternation of day and night. Earth also moves around the Sun on the ecliptic plane in an elliptical orbit. This movement along with the fact that its axis is tilted to the
+                                ecliptic plane is causing the changing of seasons. But Earth's rotation and speed is even more complex: There is a long term slowing of its rotation due to the tidal forces of the Moon and Sun. As a result of the precession (a
+                                slow movement of an axis of a spinning body around another axis due to a torque such as gravitational influence, casuses a change of direction of the first axis) and nutation (a periodic variation in an inclination of an
+                                axis of a rotating object) the change of a rotational axis direction occurs.</p>
+                            <h2>We have four seasons</h2>
+                            <p style="text-align: justify;">The length of Earth's trajectory around the sun is 940 million km. Thus the Earth travels about 107,000 kilometers per hour. This means that our planet moves around the Sun at an average speed of 30 kilometers per second.
+                                Earth's speed is not constant as the Earth orbits elliptical orbit. If the Earth is the closest to the Sun (perihelion), it moves the fastest. On the other hand when the Earth is the farthest from the Sun (aphelion),
+                                it moves the slowest.</p>
+
+                            <span class="img-holder on-center"><img src="../images/articles_2017/orbital-and-rotational-characteristics-of-earth_03.jpg" alt=""><span class="text">Over the course of a year the orientation of the axis remains fixed in space, producing changes in the distribution of solar radiation.</span></span>
+                            
+                            <p style="text-align: justify;">It takes the planet Earth about 23.9 hours to complete one rotation on its axis. Complete orbit around the Sun takes about 365.26 days. The Earth's rotation axis is tilted relative to the imaginary space orbit around the
+                                Sun.This imaginary plane is called the ecliptic plane.Position of northern and southern hemisphere toward the Sun varies depending on the season. These movements of the planet change the amount of light that each hemisphere
+                                receives, thus causing the changing of seasons. We all know that our calendar has 365 days per standard year. The extra quarter of a day presents a challenge to our calendar system. If we want to keep our annual calendar
+                                system consistent with the Earth's orbit around the Sun,then every four years one day is added to the standard year. Such a year is called a leap year and the extra day is called a leap day. So what actually causes
+                                our four-year cycle? It is the position of the Earth axis, which is tilted 23.4 degrees relative to the plane of its orbit around the Sun.This tilt causes our yearly cycle of seasons. The Northern hemisphere is tilted
+                                towards the Sun one part of a year and during this time the southern hemisphere is diverted. During this time, the solar heating is greater in the north so we have summer there, on the other hand less direct solar heating
+                                causes winter season in the southern part of our planet. The weather conditions change every six months. There is a position when both hemispheres receive approximately the same amount of heat. It is the time when spring
+                                and fall begin on our planet.</p>
+                            
+
+
+                            <h2>Some characteristics about Earth</h2>
+
+                            <table>
+                                <tr>
+                                    <td>Average distance from Sun</td>
+                                    <td>149,598,262 km (1.0 AU)</td>
+                                </tr>
+                                <tr>
+                                    <td>Perihelion (closest distance to the Sun)</td>
+                                    <td>147,098,291 km</td>
+                                </tr>
+                                <tr>
+                                    <td>Aphelion (farthest distance from the Sun)</td>
+                                    <td>152,098,233 km</td>
+                                </tr>
+                                <tr>
+                                    <td>Orbital eccentricity</td>
+                                    <td>0.007</td>
+                                </tr>
+                                <tr>
+                                    <td>Orbital velocity</td>
+                                    <td>107,244 km/h</td>
+                                </tr>
+                                <tr>
+                                    <td>Tilt of axis</td>
+                                    <td>23.43697Â°</td>
+                                </tr>
+                                <tr>
+                                    <td>Single period of revolution around the Sun</td>
+                                    <td>365.26 Earth days (1.00 year)</td>
+                                </tr>
+                                <tr>
+                                    <td>Single rotation period on its axis</td>
+                                    <td>23.934 h</td>
+                                </tr>
+                                <tr>
+                                    <td>Equatorial inclination to orbit</td>
+                                    <td>23.4393 degrees</td>
+                                </tr>
+                            </table>
+                            
+
+
+                            <h2>Our planets orbit is not a perfect circle</h2>
+
+                            <p style="text-align: justify;">An orbit is a regular and cyclic path on which an object in space is orbiting another object. Individual objects on orbit are called satellites and may be natural or artificial. Planets and moons are examples of natural satellites.
+                                An example of an artificial satellite can be the International Space Station. Our Sun, as the dominant star in the Solar System, is orbited by a number of planets, comets, asteroids and other space objects. Most of these
+                                orbiting objects are moving along or near the imaginary flat surface,which is called the ecliptic plane.An orbit of the planet Earth is not a perfect circle but it rather has a character of an oval-shaped ellipse.
+                                The Earth is slightly closer to the Sun in early January and farther away in the month of July. However a much greater effect on the intensity of heating or cooling of our planet has the tilte axis of the Earth.A
+                                very important fact is that the Earth is located in the so-called Goldilocks zone, where a temperature is just acceptable to maintain liquid water on the surface.</p>
+
+
+
+                            <h2>And finally a final motion</h2>
+
+                            <p style="text-align: justify;">Our planet Earth, like other planets of the Solar System,has three motions. It spins on its axis, it travels around the Sun, and it moves through the Milky Way Galaxy with the rest of the Solar System. The third and
+                                final motion of the Earth is along with the Solar System around the center of our Milky Way Galaxy. The Sun, along with other stars of our galaxy, revolves around its center. It takes the Solar System to orbit the center
+                                about 220 million years and it orbits at the speed of about 250 kilometers per second.</p>
+                       
+                        <div class="article-author">Article by: Viliam Oruinsk, Andrej Faung</div>
+
+                    </div>
+
+                </div>
+                
+                <div class="title-dark-bg">Most Read:</div>
+                <div class="spacepedia-article-preview-title-list">
+                    <a href="sun.html">Handbook - Sun</a> 
+                    <a href="mercury.html">Handbook - Mercury</a> 
+                    <a href="venus.html">Handbook - Venus</a> 
+                    <a href="earth.html">Handbook - Earth</a> 
+                    <a href="mars.html">Handbook - Mars</a> 
+                    <a href="jupiter.html">Handbook - Jupiter</a> 
+                    <a href="venus.html">Handbook - Venus</a> 
+                    <a href="saturn.html">Handbook - Saturn</a>
+                    <a href="neptune.html">Handbook - Neptune</a> 
+                    <a href="uranus.html">Handbook - Uranus</a> 
+                </div>
+
+        
+
+
+                
+            </div>
+
+        </div>
+
+    </div>
+    <div class="footer-dist-before"></div>
+    <div id="footer">
+        <div class="footer-background"></div>
+
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                    <div class="footer-col-topic">contact us</div>
+                    <div class="footer-col-content">
+                        <a class="email" href="mailto:contact@cosmoscope.com">contact@cosmoscope.com</a>
+                        <div class="footer-col-dist"></div>
+                        <div class="footer-social-btns">
+                            <a class="footer-social-btn fb" href="https://www.facebook.com/SolarSystemScopeModels/" target="_blank"></a>
+                            <a class="footer-social-btn tw" href="https://twitter.com/solarsystscope" target="_blank"></a>
+                            <a class="footer-social-btn yt" href="https://www.youtube.com/user/solarsystemscope" target="_blank"></a>
+                            <!--<a class="footer-social-btn gp" href="" target="_blank"></a>-->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xs-12 col-sm-4">
+                    
+                </div>
+                
+                
+                <div class="col-xs-12 col-sm-4">
+
+                    <div class="footer-col-topic">POPULAR SPACEPEDIA</div>
+                    <div class="footer-col-content footer-col-content-spacepedia">
+                        <a href="orbital-and-rotational-characteristics-of-earth.html">
+							<span>1.</span>
+							<!--<span>Feb 01</span>-->
+							<span>Orbital and rotational characteristics...</span>
+						</a> <a href="sun.html">
+							<span>2.</span>
+							<!--<span>Jan 31</span>-->
+							<span>Handbook - The Sun</span>
+						</a> <a href="mars.html">
+							<span>3.</span>
+							<!--<span>Jan 31</span>-->
+							<span>Handbook - Mars</span>
+						</a> <a href="jupiter.html">
+							<span>4.</span>
+							<!--<span>Jan 31</span>-->
+							<span>Handbook - Jupiter</span>
+						</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+</body>
+
+</html>

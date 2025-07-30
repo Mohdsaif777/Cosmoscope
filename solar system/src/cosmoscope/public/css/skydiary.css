@@ -1,0 +1,304 @@
+/*-----------------------------------*/
+
+/*SKYDIARY*/
+
+/*-----------------------------------*/
+
+div.skydiary {
+    background-color: #000;
+    color: #e0e6ef;
+    padding-bottom: 120px;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 32px 0 rgba(0,0,0,0.3);
+    border-radius: 18px;
+}
+
+.skydiary-div-line-h {
+    height: 2px;
+    margin: 70px 0;
+    background-color: rgba(20, 90, 100, .5);
+}
+
+.skydiary #article {
+    position: relative;
+    top: -50px;
+}
+
+/*-----------------------------------*/
+
+/*SKYDIARY: HEADER*/
+
+/*-----------------------------------*/
+
+.skydiary-header-title {
+    position: relative;
+    margin-bottom: 70px;
+}
+
+a.skydiary-header-title {
+    display: block;
+    color: #00deff;
+    text-align: center;
+    text-shadow: 0 0 8px #00deff99, 0 0 2px #000;
+}
+
+/*-----------------------------------*/
+
+/*SKYDIARY: HEADER IMAGE*/
+
+/*-----------------------------------*/
+
+.skydiary-header-image {
+    height: 340px;
+    position: relative;
+    background-color: #000;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../images/skydiary/skydiary_header_image.jpg);
+    border-radius: 18px 18px 0 0;
+    box-shadow: 0 2px 18px 0 #00deff33;
+}
+
+.skydiary-header-image .container {
+    height: 340px;
+    position: relative;
+}
+
+.skydiary-header-image-credit {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #fff;
+    font-style: italic;
+    font-size: 90%;
+    text-align: right;
+    padding: 0 15px;
+}
+
+/*-----------------------------------*/
+
+/*SKYDIARY: HEADER DESCRIPTION*/
+
+/*-----------------------------------*/
+
+.skydiary-header-description {
+    max-width: 500px;
+    margin: 70px auto;
+    text-align: center;
+    color: #e0e6ef;
+    background: #101820;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px 0 #00deff33;
+    padding: 24px 18px;
+}
+
+.skydiary-header-description p {
+    margin: 0;
+}
+
+.skydiary-header-description p:not(:last-child) {
+    margin-bottom: 25px;
+}
+
+.skydiary-header-description p:not(:first-child) {
+    margin-top: 25px;
+}
+
+.skydiary-header-description p:nth-child(1) {
+    font-size: 110%;
+    font-weight: bold;
+}
+
+.skydiary-header-description p:nth-child(2) {
+    font-size: 100%;
+    font-style: italic;
+    opacity: 80%;
+}
+
+/*-----------------------------------*/
+
+/*SKYDIARY: ROW MAIN*/
+
+/*-----------------------------------*/
+
+.skydiary-row-main {
+    margin-right: -70px;
+    margin-left: -70px;
+    margin-top: 90px;
+    margin-bottom: -70px;
+    background: #101820;
+    border-radius: 14px;
+    box-shadow: 0 2px 18px 0 rgba(0,0,0,0.6);
+}
+
+.skydiary-row-main>[class*='col-'] {
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-bottom: 70px;
+}
+
+/*-----------------------------------*/
+
+/*SKYDIARY: ARTICLE PANEL*/
+
+/*-----------------------------------*/
+
+.skydiary-article-panel {
+    padding: 30px 70px 70px;
+    background-image: none;
+    border-style: solid;
+    border-color: transparent;
+    border-image-slice: 12 fill;
+    border-image-width: 12px;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-image-source: url(images/panels/btn-type-7-edge-on-white-br-teal.png);
+}
+
+.skydiary-article-panel>h1 {
+    font-size: 260%;
+    font-family: "SF-Fourche";
+    line-height: 120%;
+    display: block;
+    text-align: center;
+    background-color: rgba(18, 74, 114, .05);
+    padding: 20px;
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+
+.skydiary-article-panel .signature {
+    font-style: italic;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.skydiary-article-content {
+    text-align: center;
+}
+
+.skydiary-article-content p,
+.skydiary-article-content h2,
+.skydiary-article-content table {
+    margin: 0;
+}
+
+.skydiary-article-content h2 {
+    font-size: 120%;
+    font-weight: bold;
+    font-family: "SF-Fourche";
+    line-height: 140%;
+    display: block;
+    text-align: center;
+}
+
+.skydiary-article-content p {
+    text-align: left;
+    font-size: 110%;
+    line-height: 160%;
+    text-indent: 8%;
+}
+
+.skydiary-article-content table {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 90%;
+}
+
+.skydiary-article-content table td {
+    padding: 7px 26px;
+    border: 1px solid rgba(18, 74, 114, .25);
+}
+
+.skydiary-article-content h2:not(:first-child) {
+    margin-top: 40px;
+}
+
+.skydiary-article-content h2:not(:last-child) {
+    margin-bottom: 40px;
+}
+
+.skydiary-article-content p:not(:first-child) {
+    margin-top: 20px;
+}
+
+.skydiary-article-content p:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+/*-----------------------------------*/
+
+/*SKYDIARY: PART RIGHT*/
+
+/*-----------------------------------*/
+
+@media (min-width: 992px) {
+    .skydiary-part-right {
+        border-left: 2px solid rgba(20, 90, 100, .5);
+    }
+}
+
+.skydiary-menu-right>.box:not(:first-child) {
+    margin-top: 30px;
+}
+
+.skydiary-menu-right>.box:not(:last-child) {
+    margin-bottom: 30px;
+}
+
+.skydiary-menu-right>.box>.title {
+    font-size: 120%;
+    font-family: "SF-Fourche";
+    line-height: 140%;
+    display: block;
+    text-align: left;
+    background-color: rgba(18, 74, 114, .6);
+    color: #fff;
+    padding: 10px 30px;
+    margin-bottom: 20px;
+}
+
+.skydiary-menu-right>.box>.buttons>a {
+    display: block;
+    padding: 15px 30px;
+    color: #155869;
+    font-size: 110%;
+    position: relative;
+}
+
+.skydiary-menu-right>.box>.buttons>a:not(:first-child) {
+    border-top: 1px solid rgba(20, 90, 100, .15);
+}
+
+.skydiary-menu-right>.box>.buttons>a:not(:last-child) {
+    border-bottom: 1px solid rgba(20, 90, 100, .15);
+}
+
+.skydiary-menu-right>.box>.buttons>a.sel {
+    font-weight: bold;
+}
+
+.skydiary-menu-right>.box>.buttons>a:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background-color: rgb(18, 74, 114);
+    opacity: 0;
+    transition: opacity .15s ease-in-out;
+    -moz-transition: opacity .15s ease-in-out;
+    -webkit-transition: opacity .15s ease-in-out;
+}
+
+.skydiary-menu-right>.box>.buttons>a:hover:before {
+    opacity: .4;
+}
+
+.skydiary-menu-right>.box>.buttons>a.sel:before {
+    opacity: .8;
+}

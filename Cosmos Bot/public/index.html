@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CosmosChat</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #000510;
+            color: #fff;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(3, 17, 39, 0.97) 0%, rgba(0, 5, 16, 0.97) 100%),
+                url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIj48Y2lyY2xlIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMDUpIiBzdHJva2Utd2lkdGg9IjEiLz48L3N2Zz4=');
+            background-attachment: fixed;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 15px;
+            background: linear-gradient(180deg, rgba(3, 17, 39, 0.8) 0%, rgba(0, 5, 16, 0.8) 100%);
+            box-shadow: 0 4px 20px rgba(0, 136, 255, 0.1);
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(120deg, #0088ff, #00ffea);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 136, 255, 0.3);
+        }
+        .header p {
+            color: #0088ff;
+            margin: 0;
+            font-size: 1.1em;
+            opacity: 0.8;
+        }
+        #chat-container {
+            height: 500px;
+            overflow-y: auto;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: rgba(3, 17, 39, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 136, 255, 0.1);
+            border: 1px solid rgba(0, 136, 255, 0.1);
+        }
+        .message {
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            max-width: 80%;
+            white-space: pre-line;
+            line-height: 1.5;
+            backdrop-filter: blur(5px);
+        }
+        .user-message {
+            background: linear-gradient(135deg, rgba(0, 136, 255, 0.2), rgba(0, 255, 234, 0.1));
+            margin-left: auto;
+            color: #fff;
+            border: 1px solid rgba(0, 136, 255, 0.2);
+        }
+        .bot-message {
+            background: linear-gradient(135deg, rgba(3, 17, 39, 0.8), rgba(0, 5, 16, 0.8));
+            margin-right: auto;
+            color: #fff;
+            border: 1px solid rgba(0, 136, 255, 0.1);
+        }
+        .message-content {
+            margin: 0;
+            font-size: 15px;
+        }
+        .message-time {
+            font-size: 12px;
+            color: rgba(0, 136, 255, 0.7);
+            margin-top: 4px;
+        }
+        #input-container {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            background: rgba(3, 17, 39, 0.7);
+            padding: 16px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 136, 255, 0.1);
+            border: 1px solid rgba(0, 136, 255, 0.1);
+        }
+        #user-input {
+            flex-grow: 1;
+            padding: 12px;
+            border: 1px solid rgba(0, 136, 255, 0.2);
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.3s ease;
+            background: rgba(3, 17, 39, 0.5);
+            color: #fff;
+        }
+        #user-input::placeholder {
+            color: rgba(0, 136, 255, 0.5);
+        }
+        #user-input:focus {
+            border-color: #0088ff;
+            box-shadow: 0 0 10px rgba(0, 136, 255, 0.2);
+        }
+        button {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #0088ff, #00ffea);
+            color: #000510;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+        }
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(0, 136, 255, 0.3);
+        }
+        .uploaded-image {
+            max-width: 300px;
+            max-height: 300px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 136, 255, 0.2);
+            border: 1px solid rgba(0, 136, 255, 0.2);
+        }
+        #image-preview {
+            margin-top: 12px;
+            text-align: center;
+        }
+        .upload-button {
+            background: linear-gradient(135deg, #00ffea, #0088ff);
+        }
+        .typing-indicator {
+            display: none;
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: rgba(3, 17, 39, 0.7);
+            color: rgba(0, 136, 255, 0.7);
+            max-width: 80px;
+            margin-right: auto;
+            border: 1px solid rgba(0, 136, 255, 0.1);
+        }
+        #chat-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        #chat-container::-webkit-scrollbar-track {
+            background: rgba(3, 17, 39, 0.5);
+            border-radius: 4px;
+        }
+        #chat-container::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #0088ff, #00ffea);
+            border-radius: 4px;
+        }
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px rgba(0, 136, 255, 0.2); }
+            50% { box-shadow: 0 0 20px rgba(0, 136, 255, 0.3); }
+            100% { box-shadow: 0 0 10px rgba(0, 136, 255, 0.2); }
+        }
+        .message:hover {
+            animation: glow 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>CosmosChat</h1>
+        <p>Your Guide to the Universe</p>
+    </div>
+    <div id="chat-container"></div>
+    <div id="image-preview"></div>
+    <div class="typing-indicator">Thinking...</div>
+    <div id="input-container">
+        <input type="file" id="image-input" accept="image/*" style="display: none">
+        <button class="upload-button" onclick="document.getElementById('image-input').click()">
+            Upload Image
+        </button>
+        <input type="text" id="user-input" placeholder="Ask about the cosmos...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        const chatContainer = document.getElementById('chat-container');
+        const userInput = document.getElementById('user-input');
+        const imageInput = document.getElementById('image-input');
+        const imagePreview = document.getElementById('image-preview');
+        const typingIndicator = document.querySelector('.typing-indicator');
+        let currentImageUrl = null;
+
+        // Add welcome message when page loads
+        window.addEventListener('load', () => {
+            const welcomeMessages = [
+                "Welcome! I'm here to answer all your questions about cosmology and astronomy. What would you like to explore?",
+                "Hello! Curious about the universe? Ask me anything about stars, galaxies, black holes, or space mysteries!",
+                "Hi there! I love talking about space and the cosmos. What's on your mind today?"
+            ];
+            const randomMessage = welcomeMessages[Math.floor(Math.random() * welcomeMessages.length)];
+            addMessage(randomMessage, 'bot');
+        });
+
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        imageInput.addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'uploaded-image';
+                    imagePreview.innerHTML = '';
+                    imagePreview.appendChild(img);
+                    currentImageUrl = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function formatTimestamp() {
+            const now = new Date();
+            return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+
+        function addMessage(content, sender, isImage = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            
+            if (isImage) {
+                const img = document.createElement('img');
+                img.src = content;
+                img.className = 'uploaded-image';
+                messageDiv.appendChild(img);
+            } else {
+                const textDiv = document.createElement('p');
+                textDiv.className = 'message-content';
+                textDiv.textContent = content;
+                messageDiv.appendChild(textDiv);
+            }
+
+            const timeDiv = document.createElement('div');
+            timeDiv.className = 'message-time';
+            timeDiv.textContent = formatTimestamp();
+            messageDiv.appendChild(timeDiv);
+
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        async function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message && !currentImageUrl) return;
+
+            if (currentImageUrl) {
+                addMessage(currentImageUrl, 'user', true);
+            }
+            if (message) {
+                addMessage(message, 'user');
+            }
+
+            userInput.value = '';
+            imagePreview.innerHTML = '';
+            typingIndicator.style.display = 'block';
+
+            try {
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message })
+                });
+
+                const data = await response.json();
+                typingIndicator.style.display = 'none';
+                if (data.error) {
+                    addMessage(data.error, 'bot');
+                } else {
+                    addMessage(data.reply, 'bot');
+                }
+                currentImageUrl = null;
+            } catch (error) {
+                console.error('Error:', error);
+                typingIndicator.style.display = 'none';
+                addMessage('Sorry, something went wrong.', 'bot');
+            }
+        }
+    </script>
+</body>
+</html>

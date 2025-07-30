@@ -1,0 +1,636 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta Tags for Charset, Compatibility, and Viewport -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Page Title and SEO Meta Tags -->
+    <title>Cosmoscope - Online Model of Solar System</title> 
+  
+    <!-- Viewport Update Script: Adjusts for different screen orientations -->
+    <script>
+        var updateViewport = function() {
+            var minWidth = 500;
+            var screenWidth = screen.width;
+            switch (window.orientation) {
+                case -90:
+                case 90:
+                    minWidth = 730;
+                    screenWidth = screen.height;
+                    break;
+            }
+            document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=" + (screenWidth / minWidth));
+        }
+        window.addEventListener('orientationchange', updateViewport);
+        updateViewport();
+    </script>
+
+    <!-- Google Tag Manager Script -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MDW8FQ9');
+    </script>
+
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/jquery.validate.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="lib/bootstrap-xxs-tn.css">
+
+    <!-- Mobile Detect -->
+    <script src="lib/mobile-detect.min.js"></script>
+
+    <!-- CSS Files for Solar System Model -->
+    <link rel="stylesheet" href="css/fonts.css?v=2.015" />
+    <link rel="stylesheet" href="css/main.css?v=2.015" />
+    <link rel="stylesheet" href="css/ui.css?v=2.015" />
+    <link rel="stylesheet" href="css/header.css?v=2.015" />
+    <link rel="stylesheet" href="css/footer.css?v=2.015" />
+    <link rel="stylesheet" href="css/model-home.css?v=2.015" />
+    <link rel="stylesheet" href="css/home.css?v=2.015" />
+
+    <!-- JavaScript for Solar System Model -->
+    <script src="js/solar.js?v=2.015"></script>
+    <!-- Script for Menu Hover Show/Hide -->
+    <script>
+        
+        $(document).ready(function() {
+             
+            // Menu toggle functionality
+            var menu = $("#header .menu-hover");
+            var menuBtn = $("#header .menu-hover-start-button");
+            var menuDrop = $("#header .menu-hover-backdrop");
+
+            // Function to Hide Menu
+            var menuHideCheck = function(e) {
+                if (menu.is(":hidden")) return;
+                var target = $(e.target);
+                var modal = $(".modal");
+                if (menu.has(target).length || menu.is(target) || modal.has(target).length || modal.is(target)) return;
+                menu.slideUp();
+                menuDrop.fadeOut();
+                $(document).off("click", menuHideCheck);
+                setTimeout(function() {
+                    menuBtn.on("click", menuShow);
+                }, 1);
+            }
+
+            // Function to Show Menu
+            var menuShow = function(e) {
+                if (!menu.is(":hidden")) return;
+                menu.slideDown();
+                menuDrop.fadeIn();
+                menuBtn.off("click", menuShow);
+                setTimeout(function() {
+                    $(document).on("click", menuHideCheck);
+                }, 1);
+            }
+
+            menuBtn.on("click", menuShow);
+        });
+    </script>
+</head>
+
+<body page="home">
+
+    <!-- Google Tag Manager NoScript -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDW8FQ9" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+    <!-- Header with Navigation and Contact Details -->
+    <div id="header">
+        <div class="first hidden-xs">
+            <a class="contact" href="mailto:contact@Cosmoscope.com">
+                <span>Contact us:</span>
+                <span>contact@Cosmoscope.com</span>
+            </a>
+            <a class="button facebook hidden-xs hidden-sm hidden-md" href="https://www.facebook.com/" target="_blank">Facebook</a>
+            <a class="button show-on-start text-glow" href="http://localhost:3001/chatbot.html">Chatbot</a>
+        </div>
+
+                <!-- Navigation Menu -->
+        <div class="navbar">
+            <div class="glow-bottom-8px"></div>
+            <div class="logo-holder">
+                <a href="/"><h2>Cosmoscope</h2></a>
+            </div>
+            <div class="menu">
+                <a class="button show-on-start text-glow home selected" href="home.html">Home</a>
+                <a class="button show-on-start text-glow" href="about.html">About</a>
+                <a class="button show-on-start text-glow" href="skydiary.html">SkyDiary</a>
+                <a class="button show-on-start text-glow" href="lab.html">Mission</a>
+                <a class="button show-on-start text-glow" href="http://localhost:3001">Shop</a>
+                <a class="button show-on-start text-glow" href="quiz.html">Quiz Game</a>
+                <a class="button show-on-start text-glow" href="http://localhost:3002/chatbot.html">Cosmobot</a>
+                <a href="#" class="button show-on-start text-glow" id="logout">Logout</a>
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        <!-- Hidden Form for Logout -->
+        <form id="logoutForm" action="/logout" method="POST" style="display: none;">
+            <button type="submit">Logout</button>
+        </form>
+
+        <script>
+            // Attach event listener to the logout link
+            document.getElementById('logout').addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default link behavior
+                document.getElementById('logoutForm').submit(); // Submit the hidden form
+            });
+        </script>
+
+    </div>
+    <!-- Menu Hover Functionality (Hidden by Default) -->
+    <div class="menu-hover-backdrop" style="display: none;"></div>
+    <div class="menu-hover" style="display: none;"></div>
+
+    <div class="solar-model">
+
+        <!-- ------------------------INTRO VIDEO------------------------- -->
+        <!--video width="100%" height="100%" id="introVideo" style="position: absolute; left: 0; top: 0;" muted autoplay loop>
+            <source src="video/sss3_intro_720p_2-5b.mp4" type="video/mp4">
+            <source src="video/sss3_intro_720p_q15.webm" type="video/webm">
+        </video-->
+    
+        <!-- ------------------------MODEL WINDOW DESKTOP OK------------------------- -->
+        <div class="solar-model-ok only-dsk">
+            <div class="solar-model-ok-inner" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0;">
+                <div class="bg-image"></div>
+                <div class="model-header">
+                    <div class="solar-h1">Solar System</div>
+                    <div class="solar-h2">Free online model of Solar System and Night sky</div>
+                </div>
+                <a class="model-btn-start btn-type-8-turquoise" href="video.html">
+                    <div class="t1">Start</div>
+                    <div class="t2">online model</div>
+                </a>
+            </div>
+        </div>
+    
+        <!-- ------------------------MODEL WINDOW RUNNING------------------------- -->
+        <div class="solar-model-run" style="display: none;">
+            <div id="solar-model-container" style="width: 100%; height: 100%;">
+                <svg id="solar-system" viewBox="0 0 800 800" style="width: 100%; height: 100%;">
+                    <circle cx="400" cy="400" r="50" fill="yellow" id="sun" />
+                    <circle cx="300" cy="400" r="20" fill="blue" id="earth" />
+                    <circle cx="500" cy="400" r="15" fill="red" id="mars" />
+                    <!-- Add more planets as needed -->
+                </svg>
+            </div>
+        </div>
+    
+        <!-- ------------------------MODEL WINDOW BROWSER DISABLED------------------------- -->
+       
+        <!-- ------------------------MODEL WINDOW MOBILE------------------------- -->
+        <div class="solar-model-mobile only-mbl">
+            <div class="bg-image"></div>
+            <div class="model-header">
+                <div class="solar-h1">Solar System</div>
+                <div class="solar-h2" style="margin-bottom: 40px;">Free model of Solar System and Night sky</div>
+            </div>
+        </div>
+    
+        <!-- ------------------------SCRIPT FOR FUNCTIONALITY------------------------- -->
+        
+    </div>
+    
+    <div class="container solar-content content-home">
+
+
+        <div class="quote-holder">
+            <div class="fixed-position">
+                <div class="quote-box" id="5">
+                    <div class="text"><span style="font-size:109%">“We make our world significant by the courage of our questions and the depth of our answers.”</span></div>
+                    <div class="author">- Carl Sagan</div>
+                </div>
+
+                <div class="buttons">
+                    <a class="panel-type-10-semi-black-bg like"><span class="like-text">i like it!</span><span class="like-count">12061</span></a>
+                    <a class="panel-type-10-semi-black-bg next">next quote</a>
+                </div>
+            </div>
+
+            <script>
+                var quotes = [{
+                        id: 5,
+                        text: "The moon is a friend for the lonesome to talk to..",
+                        author: "Dr. A. P. J. Abdul Kalam",
+                        scale: 1.09,
+                        likes: 0,
+                        liked: 0
+                    },
+                    {
+                        id: 10,
+                        text: "Beyond the stars, there are yet more worlds.",
+                        author: "Javed Akhtar",
+                        scale: 1,
+                        likes: 0,
+                        liked: 0
+                    },
+                    {
+                        id: 7,
+                        text: "Chand ko chhune ki baat karte ho, pehle zameen to sambhalo.",
+                        author: "Gulzar",
+                        scale: 0.92,
+                        likes: 0,
+                        liked: 0
+                    },
+                    {
+                        id: 9,
+                        text: "By looking far out into space we are also looking far back into time, back toward the horizon of the universe, back toward the epoch of the Big Bang.",
+                        author: "Carl Sagan",
+                        scale: 1.05,
+                        likes: 0,
+                        liked: 0
+                    },
+                    {
+                        id: 11,
+                        text: "The moon has left the sky, lost is the morning star",
+                        author: "Sarojini Naidu",
+                        scale: 0.91,
+                        likes: 0,
+                        liked: 0
+                    },
+                    {
+                        id: 2,
+                        text: "Time is the eternal charioteer who never stops his journey.",
+                        author: "Kalidasa",
+                        scale: 1.1,
+                        likes: 0,
+                        liked: 0
+                    },
+                    {
+                        id: 6,
+                        text: "The visions we offer our children shape the future.",
+                        author: "Carl Sagan",
+                        scale: 1.01,
+                        likes: 0,
+                        liked: 0
+                    },
+                    {
+                        id: 8,
+                        text: "The lifetime of a human being is measured by decades, the lifetime of the Sun is a hundred million times longer. Compared to a star, we are like mayflies, fleeting ephemeral creatures who live out their lives in the course of a single day.",
+                        author: "Carl Sagan",
+                        scale: 0.85,
+                        likes: 0,
+                        liked: 0
+                    },
+                    {
+                        id: 1,
+                        text: "Exploration is in our nature. We began as wanderers, and we are wanderers still. We have lingered long enough on the shores of the cosmic ocean. We are ready at last to set sail for the stars.",
+                        author: "Carl Sagan",
+                        scale: 0.8,
+                        likes: 0,
+                        liked: 0
+                    },
+                    {
+                        id: 12,
+                        text: "There are as many atoms in a single molecule of your DNA as there are stars in the typical galaxy. We are, each of us, a little universe.",
+                        author: "Neil deGrasse Tyson",
+                        scale: 0.97,
+                        likes: 0,
+                        liked: 0
+                    },
+                    {
+                        id: 0,
+                        text: "The cosmos is within us. We are made of star-stuff. We are a way for the universe to know itself.",
+                        author: "Carl Sagan",
+                        scale: 1,
+                        likes: 0,
+                        liked: 0
+                    },
+                    {
+                        id: 3,
+                        text: "The universe is a pretty big place. If it's just us, seems like an awful waste of space.",
+                        author: "Carl Sagan",
+                        scale: 1.17,
+                        likes: 0,
+                        liked: 0
+                    },
+                    {
+                        id: 4,
+                        text: "Cosmos is a Greek word for the order of the universe. It is, in a way, the opposite of Chaos. It implies the deep interconnectedness of all things. It conveys awe for the intricate and subtle way in which the universe is put together.",
+                        author: "Carl Sagan",
+                        scale: 0.8,
+                        likes: 0,
+                        liked: 0
+                    },
+
+                ];
+                var quoteKey = 0;
+                var quoteHolder = $(".quote-holder");
+                var quoteBox = quoteHolder.find(".quote-box");
+                var buttons = quoteHolder.find(".buttons");
+                var tweenDuration = 400;
+                var tweenFunction = "linear";
+                var buttonLike = buttons.find("a.like");
+                var buttonNext = buttons.find("a.next");
+
+                var CreateQuoteBox = function(quote) {
+                    var quoteScaleCSS = "";
+                    if (quote.scale != 1)
+                        quoteScaleCSS = ' style="font-size:' + (quote.scale * 100) + '%"';
+                    var quoteBox = $(
+                        '<div class="quote-box" id="' + quote.id + '">' +
+                        '<div class="text"><span' + quoteScaleCSS + '>“' + quote.text + '”</span></div>' +
+                        '<div class="author">- ' + quote.author + '</div>' +
+                        '</div>');
+                    return quoteBox;
+                }
+
+                var UpdateButtonLike = function() {
+                    var quote = quotes[quoteKey];
+                    buttonLike.find(".like-count").html(quote.likes);
+                    if (quote.liked)
+                        quoteHolder.addClass("liked");
+                    else
+                        quoteHolder.removeClass("liked");
+                }
+
+                var QuoteNext = function() {
+                    quoteBox.animate({
+                        opacity: 0,
+                        height: 0,
+                        top: 0,
+                    }, tweenDuration, tweenFunction, function() {
+                        $(this).remove();
+                    });
+                    quoteKey++;
+                    if (quoteKey >= quotes.length)
+                        quoteKey = 0;
+                    UpdateButtonLike();
+                    var quote = quotes[quoteKey];
+                    var _quoteBox = CreateQuoteBox(quote);
+                    _quoteBox.css({
+                        height: 0,
+                        opacity: 0
+                    });
+                    quoteBox.after(_quoteBox);
+                    quoteBox = _quoteBox;
+                    var boxHeight = quoteBox.get(0).scrollHeight;
+                    quoteBox.animate({
+                        opacity: 1,
+                        height: boxHeight,
+                    }, tweenDuration, tweenFunction, function() {
+                        $(this).height('auto');
+                    });
+                }
+
+                var QuoteLike = function() {
+                    var quote = quotes[quoteKey];
+                    if (quote.liked)
+                        return;
+                    quote.liked = 1;
+                    quote.likes++;
+                    UpdateButtonLike();
+                    $.ajax({
+                        type: 'POST',
+                        url: './pages/quotes-data.php',
+                        data: {
+                            action: "quoteLike",
+                            quoteID: quote.id
+                        },
+                        success: function(likes) {
+                            if (quote.likes) {
+                                quote.likes = likes;
+                                UpdateButtonLike();
+                            }
+                        }
+                    });
+                }
+                buttonLike.click(QuoteLike);
+                buttonNext.click(QuoteNext);
+            </script>
+
+
+        </div>
+
+
+        <div class="panel-welcome panel-type-10">
+
+            <h3>Welcome space explorer!</h3>
+
+            <div class="info-main">Cosmoscope is a model of Milky Way Galaxy and lots of interesting facts.</div>
+
+            <div class="info-sub">
+               
+                <div class="info-sub-text">I hope you will have as much fun exploring the universe with this website as do I while making it :</div>
+            </div>
+
+            <div class="image-flare"></div>
+            <div class="image-jupiter"></div>
+
+        </div>
+
+        <div class="distance-small"></div>
+
+        <div class="panel-screenshots panel-type-1 pswp-gallery">
+
+            
+
+        </div>
+
+       <!--......................................news section.......................................-->
+
+        <div class="panel-news-header panel-type-10">
+
+            <h3><a href="news.html">Latest News</a></h3>
+
+            <div class="description"> "international and national both the news are here " </div>
+
+            <div class="image-hst"></div>
+
+        </div>
+
+        <div class="distance-small"></div>
+
+
+        <div class="panel-news-content panel-type-1">
+
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-release-logs">
+
+                    <div class="max-width-holder">
+
+                        <h3>Click here..</h3>
+
+
+                        <div class="row row-release-logs-data">
+                               
+                            
+                                <p class="release"><a href="news.html">  
+                                    [May 11, 2025] – Signs of Life on Exoplanet K2-18b</a>      
+                                </p><br><br>
+                            
+                          
+                                <p class="release"><a href="news.html">  
+                                    [May 9, 2025] – Meteorite in India Linked to Asteroid Itokawa</a>
+                                </p><br><br>
+                            
+                            
+                                <p class="release"><a href="news.html">  
+                                    [May 12, 2025] – ‘Flower Moon’ and Micromoon Event</a>
+                                </p><br><br>
+                            
+
+                            
+                             
+                                <p class="release"><a href="news.html">  
+                                    [May 5, 2025] – ISRO to Launch EOS-09 Satellite</a>
+                                </p><br>
+
+                            
+                        </div>
+                    </div>
+
+
+                </div>
+
+                
+
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-release-latest">
+
+                    <div class="max-width-holder">
+                        <h3>Latest</h3>
+                       
+                        <div class="release-latest-content astronomy-places">
+                            <div class="small-banner" style="background-image: url(images/home/news-small-banner_app-update-2018-dec.jpg);"></div>
+                            <span class="link-box">
+								<h4>Major News Update!</h4>
+							
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="distance-large"></div>
+
+
+        <div class="panel-lab panel-type-10">
+
+            <div class="row-holder">
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+
+                        <div class="row row-lab-header">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                <h3>Mission</h3>
+                                <div class="solarlab-lines">
+                                    <div class="line1"></div>
+                                    <div class="line2"></div>
+                                    <div class="line3"></div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                <p>I've created mission to share ideas and inspiration.</p>
+                                <p>You can vote here for the best ideas, find all news, releases, as well as things .</p>
+                            </div>
+                        </div>
+
+                        <a href="lab.html" target="_self" class="button-lab panel-type-10-blue-bg">Click hear to read mission!</a>
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+
+                        <div class="image-lab-art-holder">
+                            <img src="images/screenshots/solar_lab_art_1.png" alt="Solar Lab Art" class="image-lab-art">
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    
+
+    <div class="footer-dist-before"></div>
+    <div id="footer">
+        <div class="footer-background"></div>
+
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                    <div class="footer-col-topic">contact us</div>
+                    <div class="footer-col-content">
+                        <a class="email" href="mailto:contact@cosmoscope.com">contact@cosmoscope.com</a>
+                        <div class="footer-col-dist"></div>
+                        <div class="footer-social-btns">
+                            <a class="footer-social-btn fb" href="https://www.facebook.com/profile.php?id=61568329887459/" target="_blank"></a>
+                            <a class="footer-social-btn tw" href="https://twitter.com/solarsystscope" target="_blank"></a>
+                            <a class="footer-social-btn yt" href="https://www.youtube.com/user/solarsystemscope" target="_blank"></a>
+                            <!--<a class="footer-social-btn gp" href="" target="_blank"></a>-->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xs-12 col-sm-4">
+                    
+                </div>
+                
+                
+                <div class="col-xs-12 col-sm-4">
+
+                    <div class="footer-col-topic">POPULAR SPACEPEDIA</div>
+                    <div class="footer-col-content footer-col-content-spacepedia">
+                        <a href="spacepedia/handbook/orbital-and-rotational-characteristics-of-earth.html">
+							<span>1.</span>
+							<!--<span>Feb 01</span>-->
+							<span>Orbital and rotational characteristics...</span>
+						</a> <a href="spacepedia/handbook/sun.html">
+							<span>2.</span>
+							<!--<span>Jan 31</span>-->
+							<span>Handbook - The Sun</span>
+						</a> <a href="spacepedia/handbook/mars.html">
+							<span>3.</span>
+							<!--<span>Jan 31</span>-->
+							<span>Handbook - Mars</span>
+						</a> <a href="spacepedia/handbook/jupiter.html">
+							<span>4.</span>
+							<!--<span>Jan 31</span>-->
+							<span>Handbook - Jupiter</span>
+						</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+</body>
+
+</html>

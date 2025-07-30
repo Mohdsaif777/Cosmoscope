@@ -1,0 +1,75 @@
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('../img/star.jpg');
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  max-width: 400px;
+  padding: 20px;
+  background-color: #ffffff1a;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgb(130, 247, 255);
+  width: 90%;
+}
+
+h2 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px;
+  background-color: #00fd9c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #00b377;
+}
+
+.link-container {
+  text-align: center;
+  margin-top: 10px;
+}
+.link-container p{
+  color: #ffffff;
+}
+
+.link-container a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.link-container a:hover {
+  text-decoration: underline;
+}

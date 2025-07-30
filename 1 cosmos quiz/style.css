@@ -1,0 +1,722 @@
+/* Base styles */
+:root {
+    --primary-color: #00b4d8;
+    --secondary-color: #0077b6;
+    --accent-color: #48cae4;
+    --text-color: #caf0f8;
+    --dark-bg: rgba(2, 10, 25, 0.95);
+    --heading-font: 'Orbitron', sans-serif;
+    --body-font: 'Exo 2', sans-serif;
+    --text-font: 'Quicksand', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100vh;
+}
+
+body {
+    font-family: var(--body-font);
+    min-height: 100vh;
+    background: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80') center/cover fixed;
+    color: var(--text-color);
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="%2300B4D8"><path d="M8 5v14l11-7z"/></svg>') 16 16, auto;
+}
+
+button, 
+.btn,
+input[type="text"],
+a,
+.answer-btn {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="%2300B4D8"><path d="M8 5v14l11-7z"/></svg>') 16 16, pointer !important;
+}
+
+.btn:disabled {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="%23666666"><path d="M8 5v14l11-7z"/></svg>') 16 16, not-allowed !important;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(2, 10, 25, 0.7) 0%, rgba(2, 10, 25, 0.9) 100%);
+}
+
+/* Screen Layout */
+.screen {
+    width: 100%;
+    max-width: 1000px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+/* Welcome Screen */
+#welcome {
+    text-align: center;
+    padding: 2rem;
+    background: var(--dark-bg);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 180, 216, 0.2);
+    max-width: 600px;
+}
+
+#welcome h1 {
+    font-family: var(--heading-font);
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(72, 202, 228, 0.5);
+}
+
+.name-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 0.75rem;
+    width: 100%;
+    color: var(--text-color);
+    font-family: var(--body-font);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Game Layout */
+#game {
+    background: var(--dark-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(0, 180, 216, 0.15);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 1rem;
+    height: 90vh;
+    padding: 1.5rem;
+    position: relative;
+}
+
+#hud {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: rgba(0, 119, 182, 0.2);
+    border-radius: 15px;
+    gap: 1rem;
+}
+
+.progress-container {
+    width: 100%;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+/* Question Container */
+#question-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    margin-bottom: 80px;
+}
+
+.image-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    min-height: 200px;
+}
+
+.question-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 180, 216, 0.2);
+    transition: opacity 0.15s ease;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#question {
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    color: var(--accent-color);
+    font-family: var(--heading-font);
+    line-height: 1.3;
+    text-align: center;
+    margin: 0;
+}
+
+.btn-grid {
+    display: grid;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.btn, input[type="text"], #next-btn {
+    background: rgba(0, 180, 216, 0.1);
+    border: 2px solid var(--primary-color);
+    color: var(--text-color);
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-family: var(--body-font);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 180, 216, 0.4);
+}
+
+.difficulty-grid {
+    display: grid;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 1rem 0;
+}
+
+.end-buttons {
+    display: grid;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 1rem;
+}
+
+#home {
+    background: var(--dark-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 600px;
+    text-align: center;
+}
+
+#home h1 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+#home p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.hud-item {
+    text-align: center;
+}
+
+.hud-prefix {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.hud-main-text {
+    font-family: var(--heading-font);
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+/* Feedback Section */
+#feedback {
+    background: rgba(0, 119, 182, 0.2);
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(72, 202, 228, 0.3);
+    transition: all 0.3s ease;
+}
+
+#feedback.correct {
+    border-color: #4CAF50;
+    background: rgba(76, 175, 80, 0.2);
+}
+
+#feedback.incorrect {
+    border-color: #f44336;
+    background: rgba(244, 67, 54, 0.2);
+}
+
+.correct-answer-text {
+    color: #4CAF50;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background: rgba(76, 175, 80, 0.1);
+    border-radius: 8px;
+    border: 1px solid #4CAF50;
+}
+
+#feedback-text {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+#explanation {
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--text-color);
+    margin-bottom: 0.75rem;
+}
+
+#next-btn {
+    background: rgba(0, 180, 216, 0.2);
+    border-color: var(--accent-color);
+    font-size: 0.9rem;
+    padding: 0.5rem 1.5rem;
+    margin-top: 0.5rem;
+}
+
+/* High Scores Screen */
+#highscores {
+    background: var(--dark-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 600px;
+}
+
+.highscores-container {
+    max-height: 60vh;
+    overflow-y: auto;
+    margin: 1rem 0;
+}
+
+.high-score {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.high-score:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.high-score-main {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.high-score-rank {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00B4D8;
+    margin-right: 1.5rem;
+    min-width: 50px;
+}
+
+.high-score-name {
+    flex-grow: 1;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.high-score-score {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #4CAF50;
+    min-width: 100px;
+    text-align: right;
+}
+
+.high-score-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-left: calc(50px + 1.5rem);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.high-score-level {
+    color: #FFC107;
+}
+
+.high-score-date {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.rank {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffd700;
+    margin-right: 1rem;
+}
+
+.badge {
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    flex: 1;
+}
+
+.score {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-left: auto;
+    margin-right: 1rem;
+}
+
+.score-details {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.difficulty {
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    text-transform: capitalize;
+}
+
+.difficulty.easy {
+    background: #4CAF50;
+}
+
+.difficulty.moderate {
+    background: #FF9800;
+}
+
+.difficulty.hard {
+    background: #f44336;
+}
+
+.combo {
+    color: #ff9800;
+}
+
+.date {
+    color: #999;
+}
+
+/* End Screen */
+#end {
+    background: var(--dark-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 600px;
+    text-align: center;
+}
+
+.end-stats {
+    margin: 1rem 0;
+}
+
+.achievement {
+    margin: 1rem 0;
+}
+
+/* Level Completion Screen */
+#level-complete {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+#level-message {
+    font-size: 1.2rem;
+    color: #4CAF50;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background: rgba(76, 175, 80, 0.1);
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.level-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#nextLevel {
+    background: #4CAF50;
+}
+
+#nextLevel:hover {
+    background: #45a049;
+}
+
+#viewScore {
+    background: #2196F3;
+}
+
+#viewScore:hover {
+    background: #1e88e5;
+}
+
+#final-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Mission Score and Level Info Display */
+#finalScore {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4CAF50;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.level-info {
+    font-size: 1.2rem;
+    color: #FFC107;
+    margin-top: 0.5rem;
+    text-align: center;
+    font-style: italic;
+}
+
+/* Mission Score Container */
+.mission-score-container {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin: 1.5rem 0;
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.mission-score-container h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.score-display {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #4CAF50;
+    margin: 0.5rem 0;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.level-info {
+    font-size: 1.2rem;
+    color: #FFC107;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+.button-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+/* Quit Button */
+#quit-game {
+    background: rgba(255, 59, 48, 0.2);
+    border: 2px solid #ff3b30;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+#quit-game:hover {
+    background: rgba(255, 59, 48, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 59, 48, 0.4);
+}
+
+/* Dialog */
+.dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(2, 10, 25, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.dialog-content {
+    background: var(--dark-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px solid var(--primary-color);
+    text-align: center;
+    max-width: 400px;
+    box-shadow: 0 0 30px rgba(0, 180, 216, 0.2);
+}
+
+.dialog-content h3 {
+    font-family: var(--heading-font);
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.dialog-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+#confirm-quit {
+    background: rgba(255, 59, 48, 0.2);
+    border: 2px solid #ff3b30;
+}
+
+#confirm-quit:hover {
+    background: rgba(255, 59, 48, 0.3);
+    box-shadow: 0 5px 15px rgba(255, 59, 48, 0.4);
+}
+
+#cancel-quit {
+    background: rgba(46, 204, 113, 0.2);
+    border: 2px solid #2ecc71;
+}
+
+#cancel-quit:hover {
+    background: rgba(46, 204, 113, 0.3);
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .screen {
+        padding: 0.5rem;
+    }
+
+    #game {
+        gap: 0.5rem;
+    }
+
+    .question-image {
+        height: 180px;
+    }
+
+    #question {
+        font-size: clamp(1rem, 2.5vw, 1.4rem);
+    }
+
+    .btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    #feedback {
+        padding: 0.75rem;
+    }
+
+    #feedback-text {
+        font-size: 1rem;
+    }
+
+    #explanation {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0.5rem;
+    }
+
+    .question-image {
+        height: 150px;
+    }
+
+    #hud {
+        padding: 0.5rem;
+    }
+
+    .btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.85rem;
+    }
+}
+
+.hide {
+    display: none !important;
+}
+
+#highscore-btn, #goHome, #playAgain {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="%2300B4D8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>') 32 32, pointer;
+}

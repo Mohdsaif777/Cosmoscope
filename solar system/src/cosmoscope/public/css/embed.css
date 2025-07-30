@@ -1,0 +1,27 @@
+/*-----------------------------------*/
+/*EMBED PAGE*/
+/*-----------------------------------*/
+
+.row-embed {
+    text-align: left;
+}
+
+.col-embed-model .col-embed-model-text {
+    margin-bottom: 10px;
+}
+
+.col-embed-description .embed-topic,
+.col-embed-description .embed-code,
+.col-embed-description .embed-button-clipboard {
+    margin-bottom: 20px;
+}
+
+.col-embed-description .embed-button-clipboard {
+    padding: 16px;
+}
+
+.col-embed-description .embed-note {
+    color: #adadad;
+    font-size: 90%;
+    font-weight: bold;
+}

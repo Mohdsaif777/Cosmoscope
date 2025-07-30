@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Spacepedia | Cosmoscope</title>
+    <meta name="description" content="Articles about Astronomy, Space Discoveries, Observations and more." />
+    <meta name="keywords" content="spacepedia,encyclopedia,encyclopaedia,space,universe,planets,astronomy,facts,discoveries,articles,solar system" />
+    <link rel="shortcut icon" href="../../images/favicon.png" />
+    <link rel="image_src" type="image/jpeg" href="../../images/favicon.png" />
+
+    <script>
+        var updateViewport = function() {
+            var minWidth = 500;
+            var screenWidth = screen.width;
+            switch (window.orientation) {
+                case -90:
+                case 90:
+                    minWidth = 730;
+                    screenWidth = screen.height;
+                    break;
+            }
+            document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=" + (screenWidth / minWidth));
+        }
+        window.addEventListener('orientationchange', updateViewport);
+        updateViewport();
+    </script>
+
+
+    <!-- GOOGLE TAG MANAGER -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MDW8FQ9');
+    </script>
+
+
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../lib/jquery.validate.min.js"></script>
+
+    <!-- BOOTSTRAP -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="../lib/bootstrap-xxs-tn.css">
+
+    <!-- MOBILE DETECT -->
+    <script src="../lib/mobile-detect.min.js"></script>
+
+    <!-- SOLAR CSS -->
+    <link rel="stylesheet" href="../../css/fonts.css?v=2.015" />
+    <link rel="stylesheet" href="../../css/main.css?v=2.015" />
+    <link rel="stylesheet" href="../../css/ui.css?v=2.015" />
+    <link rel="stylesheet" href="../../css/header.css?v=2.015" />
+    <link rel="stylesheet" href="../../css/footer.css?v=2.015" />
+    <link rel="stylesheet" href="../../css/spacepedia.css?v=2.015" />
+    <!-- SOLAR JS -->
+    <script src="../../js/solar.js?v=2.015"></script>
+
+</head>
+
+<body page="spacepedia">
+    <!-- GOOGLE TAG MANAGER -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDW8FQ9" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <div id="header">
+        <div class="first hidden-xs">
+            <a class="contact" href="mailto:contact@solarsystemscope.com">
+				<span>Contact us:</span>
+				<span>contact@solarsystemscope.com</span>
+			</a>
+            <a class="button facebook hidden-xs hidden-sm hidden-md" href="https://www.facebook.com/SolarSystemScopeModels/" target="_blank">Facebook</a>
+           
+        </div>
+        <div class="navbar">
+            <div class="glow-bottom-8px"> </div>
+            <div class="logo-holder">
+                <a href="/"><h2>Cosmoscope</h2></a>
+            </div>
+            <div class="menu">
+                <a class="button show-on-start text-glow home selected" href="../../home.html">Home</a>
+                <a class="button show-on-start text-glow" href="../../about.html">About</a>
+                <a class="button show-on-start text-glow" href="../../skydiary.html">SkyDiary</a>
+                <a class="button show-on-start text-glow" href="../../lab.html">Mission</a>
+                <a class="button show-on-start text-glow" href="http://localhost:3001">Shop</a>
+                <a class="button show-on-start text-glow" href="../../quiz.html">Quiz Game</a>
+                <a class="button show-on-start text-glow" href="http://localhost:3002/chatbot.html">Cosmobot</a>
+                <a href="#" class="button show-on-start text-glow" id="logout">Logout</a>
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        <!-- Hidden Form for Logout -->
+        <form id="logoutForm" action="/logout" method="POST" style="display: none;">
+            <button type="submit">Logout</button>
+        </form>
+
+        <script>
+            // Attach event listener to the logout link
+            document.getElementById('logout').addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default link behavior
+                document.getElementById('logoutForm').submit(); // Submit the hidden form
+            });
+        </script>   
+    </div>
+    
+    <div class="spacepedia">
+        <div class="container">
+            <div class="spacepedia-header-title solar-h1-max"><a href="/spacepedia" target="_self">Spacepedia</a></div>
+        </div>
+        <div class="spacepedia-header-image " style="background-image: url(/spacepedia/images/handbook/photos/venus.jpg);">
+            <div class="container">
+                <div class="vcenter-title">
+                    <div class="spacepedia-header-image-title show-on-start larger-text">Venus</div>
+                </div>
+                <div class="spacepedia-header-image-credit show-on-start">Image Credit: Galileo spacecraft, NASA</div>
+                <div class="spacepedia-header-image-description">
+                    <div class="icon-holder"> <a class="icon"></a> </div>
+                    <div class="text-holder">
+                        This picture was obtained by Galileo's Solid State Imaging System as the spacecraft receded from Venus. Acquired on <span style="white-space:nowrap">Feb 10, 1990.</span> Read more on
+                        <a href="https://photojournal.jpl.nasa.gov/catalog/PIA00223" target="_blank" style="white-space:nowrap">NASA Photo Journal</a>
+                    </div>
+                </div>
+                <script>
+                    var description = $(".spacepedia-header-image-description");
+                    var showDescription = function() {
+                        description.find(".icon-holder").slideUp();
+                        description.find(".text-holder").slideDown();
+                    }
+                    description.find(".icon").on("click mouseover", showDescription);
+                </script>
+            </div>
+        </div>
+        <script>
+            var backgroundWidth = 700;
+            var backgroundHeight = 700;
+            var element = $(".spacepedia-header-image");
+            var updateCover = null;
+            if (element.hasClass("cover-small"))
+                updateCover = function() {
+                    element.css({
+                        backgroundSize: (element.width() > backgroundWidth || element.height() > backgroundHeight) ? "cover" : ""
+                    });
+                }
+            SolarSystemScope.Parallax.AddBackground(element, {
+                fixed: .5,
+                beforeUpdate: updateCover,
+                backgroundHeight: backgroundHeight,
+                enableScreenLimits: 1
+            });
+        </script>
+
+        <div class="container spacepedia-container-main">
+            <div class="article-icons">
+                <div class="article-icon-date">2018 January 31</div>
+                <div class="article-icon-views">66487 views</div>
+            </div>
+            <div class="spacepedia-left-major-right-minor">
+                <div>
+
+
+                    <div class="article-text">
+
+                        <html>
+
+                        <body><img src="../images/handbook/renders/venus.png" class="on-right">
+
+                            <p><b>Although Venus has very similar size and interior structure as Earth, its vulcanic surface and extremely hot and dense atmosphere makes it one of the most inhospitable places in the Solar System.</b></p>
+
+                            <h3>Atmosphere</h3>
+
+                            <p>Thick clouds of sulfuric acid and dust reflect most of the Suns light back to space, while carbon dioxide traps the Sunâ€™s heat inside the atmosphere, causing a runaway greenhouse effect. The atmospheric pressure on the
+                                surface of Venus is 92 times greater than on Earth.</p>
+
+                            <h3>Observation</h3>
+
+                            <p>Venus is one of the brightest objects in our night sky - second only to the Moon. It appears as either an evening or a morning star.</p>
+
+
+
+                            <h1>Structure</h1>
+
+                            <img src="../images/handbook/structures/structure_venus.png" class="on-right">
+
+                            <table>
+                                <tr>
+                                    <th>Layer</th>
+                                    <th>Composition</th>
+                                </tr>
+                                <tr>
+                                    <td>Crust</td>
+                                    <td>Solid silicate rock mostly basalt</td>
+                                </tr>
+                                <tr>
+                                    <td>Mantle</td>
+                                    <td>Solid silicate rock</td>
+                                </tr>
+                                <tr>
+                                    <td>Outer core</td>
+                                    <td>Liquid iron and nickel</td>
+                                </tr>
+                                <tr>
+                                    <td>Inner core</td>
+                                    <td>Dense solid iron and nickel</td>
+                                </tr>
+                            </table>
+
+                            <p>Currently, we have little direct information about the internal structure of Venus. However, its similar size and density to Earth suggests that they share aÂ common internal structure. The principal difference between the
+                                two planets is the lack of plate tectonics on Venus, likely due to the dry surface and mantle. This results in reduced heat loss from the planet, preventing it from cooling and providing a likely explanation for its lack
+                                of an internally generated magnetic field. Instead, Venus may lose its internal heat in periodic major resurfacing events.</p>
+
+
+
+                            <div class="planets-list-holder">
+                                <div class="planets-list">
+                                    <div class="title-dark-bg">Planets of the Solar System</div>
+                                    <div class="planet-boxes-holder">
+
+                                        <a class="planet-box" href="../images/handbook/photos/mercury.jpg">
+                                            <div class="planet-list-image-box" style="background-image: url(../images/handbook/photos/mercury.jpg)">
+                                            </div>
+                                            <div class="planet-list-image-title">
+                                                Mercury
+                                            </div>
+                                        </a>
+                                        <a class="planet-box" href="../images/handbook/photos/venus.jpg">
+                                            <div class="planet-list-image-box" style="background-image: url(../images/handbook/photos/venus.jpg)">
+                                            </div>
+                                            <div class="planet-list-image-title">
+                                                Venus
+                                            </div>
+                                        </a>
+                                        <a class="planet-box" href="../images/handbook/photos/earth.jpg">
+                                            <div class="planet-list-image-box" style="background-image: url(../images/handbook/photos/earth.jpg)">
+                                            </div>
+                                            <div class="planet-list-image-title">
+                                                Earth
+                                            </div>
+                                        </a>
+                                        <a class="planet-box" href="../images/handbook/photos/mars.jpg">
+                                            <div class="planet-list-image-box" style="background-image: url(../images/handbook/photos/mars.jpg)">
+                                            </div>
+                                            <div class="planet-list-image-title">
+                                                Mars
+                                            </div>
+                                        </a>
+                                        <a class="planet-box" href="../images/handbook/photos/jupiter.jpg">
+                                            <div class="planet-list-image-box" style="background-image: url(../images/handbook/photos/jupiter.jpg)">
+                                            </div>
+                                            <div class="planet-list-image-title">
+                                                Jupiter
+                                            </div>
+                                        </a>
+                                        <a class="planet-box" href="../images/handbook/photos/saturn.jpg">
+                                            <div class="planet-list-image-box" style="background-image: url(../images/handbook/photos/saturn.jpg)">
+                                            </div>
+                                            <div class="planet-list-image-title">
+                                                Saturn
+                                            </div>
+                                        </a>
+                                        <a class="planet-box" href="../images/handbook/photos/uranus.jpg">
+                                            <div class="planet-list-image-box" style="background-image: url(../images/handbook/photos/uranus.jpg)">
+                                            </div>
+                                            <div class="planet-list-image-title">
+                                                Uranus
+                                            </div>
+                                        </a>
+                                        <a class="planet-box" href="../images/handbook/photos/neptune.jpg">
+                                            <div class="planet-list-image-box" style="background-image: url(../images/handbook/photos/neptune.jpg)">
+                                            </div>
+                                            <div class="planet-list-image-title">
+                                                Neptune
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </body>
+
+                        </html>
+
+                        <div class="article-author">Article by: Adrian Bayer</div>
+
+                    </div>
+
+                </div>
+                <div>
+
+
+                    <div class="title-dark-bg">Most Read:</div>
+                    <div class="spacepedia-article-preview-title-list">
+                        <a href="sun.html">Handbook - Sun</a> 
+                        <a href="mercury.html">Handbook - Mercury</a> 
+                        <a href="venus.html">Handbook - Venus</a> 
+                        <a href="earth.html">Handbook - Earth</a> 
+                        <a href="mars.html">Handbook - Mars</a> 
+                        <a href="jupiter.html">Handbook - Jupiter</a> 
+                        <a href="venus.html">Handbook - Venus</a> 
+                        <a href="saturn.html">Handbook - Saturn</a>
+                        <a href="neptune.html">Handbook - Neptune</a> 
+                        <a href="uranus.html">Handbook - Uranus</a> 
+                     </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="footer-dist-before"></div>
+    <div id="footer">
+        <div class="footer-background"></div>
+
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                    <div class="footer-col-topic">contact us</div>
+                    <div class="footer-col-content">
+                        <a class="email" href="mailto:contact@cosmoscope.com">contact@cosmoscope.com</a>
+                        <div class="footer-col-dist"></div>
+                        <div class="footer-social-btns">
+                            <a class="footer-social-btn fb" href="https://www.facebook.com/SolarSystemScopeModels/" target="_blank"></a>
+                            <a class="footer-social-btn tw" href="https://twitter.com/solarsystscope" target="_blank"></a>
+                            <a class="footer-social-btn yt" href="https://www.youtube.com/user/solarsystemscope" target="_blank"></a>
+                            <!--<a class="footer-social-btn gp" href="" target="_blank"></a>-->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xs-12 col-sm-4">
+                    
+                </div>
+                
+                
+                <div class="col-xs-12 col-sm-4">
+
+                    <div class="footer-col-topic">POPULAR SPACEPEDIA</div>
+                    <div class="footer-col-content footer-col-content-spacepedia">
+                        <a href=".orbital-and-rotational-characteristics-of-earth.html">
+							<span>1.</span>
+							<!--<span>Feb 01</span>-->
+							<span>Orbital and rotational characteristics...</span>
+						</a> <a href="sun.html">
+							<span>2.</span>
+							<!--<span>Jan 31</span>-->
+							<span>Handbook - The Sun</span>
+						</a> <a href="mars.html">
+							<span>3.</span>
+							<!--<span>Jan 31</span>-->
+							<span>Handbook - Mars</span>
+						</a> <a href="jupiter.html">
+							<span>4.</span>
+							<!--<span>Jan 31</span>-->
+							<span>Handbook - Jupiter</span>
+						</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+</body>
+
+</html>
